@@ -1,0 +1,37 @@
+{
+  "productName": "NHA Water Billing",
+  "version": "0.1.0",
+  "identifier": "ph.gov.nha.camarin.waterbilling",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "NHA Water Billing — Camarin Residences",
+        "width": 1280,
+        "height": 800,
+        "minWidth": 1024,
+        "minHeight": 700,
+        "resizable": true,
+        "fullscreen": false
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/icon.ico"
+    ]
+  },
+  "plugins": {
+    "shell": { "open": true }
+  }
+}

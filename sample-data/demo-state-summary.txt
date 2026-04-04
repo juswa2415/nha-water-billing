@@ -1,0 +1,26 @@
+Seed: 20260328
+Database: C:\Users\peria\AppData\Roaming\ph.gov.nha.camarin.waterbilling\nha_billing.db
+
+Unit import/update:
+  inserted_units: 585
+  updated_units: 15
+  inserted_accounts: 495
+  updated_accounts: 11
+  deleted_accounts: 2
+
+Total active units seeded into cycles: 518
+Billing cycle ids: 2, 3, 4, 5
+
+Per-cycle reading status counts:
+  cycle 2: approved=518, submitted=0, flagged=0, pending=0
+  cycle 3: approved=518, submitted=0, flagged=0, pending=0
+  cycle 4: approved=518, submitted=0, flagged=0, pending=0
+  cycle 5: approved=51, submitted=145, flagged=36, pending=286
+
+Mobile reading list file: mobile-reading-list-current.json
+Units in mobile reading list: 518
+
+Notes:
+  - Historical cycles were seeded with approved readings, bills, and mixed payment states.
+  - The latest cycle is left in reading_phase so review/export screens have live data.
+  - Account outstanding balances now reflect the latest seeded unpaid amounts.

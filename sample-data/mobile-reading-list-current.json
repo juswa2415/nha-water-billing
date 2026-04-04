@@ -1,0 +1,5188 @@
+{
+  "billing_cycle_id": 5,
+  "period_start": "2026-03-12",
+  "period_end": "2026-04-11",
+  "exported_at": "2026-03-28T14:27:41.973814",
+  "units": [
+    {
+      "unit_id": 32,
+      "unit_number": "102",
+      "building_code": "BLDG-13",
+      "floor_number": 1,
+      "meter_number": "WM-13-102",
+      "resident_name": "NAVARRO, JOHN AGUILAR",
+      "previous_reading": 184.79,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 34,
+      "unit_number": "104",
+      "building_code": "BLDG-13",
+      "floor_number": 1,
+      "meter_number": "WM-13-104",
+      "resident_name": "MERCADO, ANGEL VILLANUEVA",
+      "previous_reading": 359.52,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 35,
+      "unit_number": "105",
+      "building_code": "BLDG-13",
+      "floor_number": 1,
+      "meter_number": "WM-13-105",
+      "resident_name": "SAMSON, CRISTINA PASCUAL",
+      "previous_reading": 279.63,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 37,
+      "unit_number": "107",
+      "building_code": "BLDG-13",
+      "floor_number": 1,
+      "meter_number": "WM-13-107",
+      "resident_name": "TOLENTINO, GERALD BAUTISTA",
+      "previous_reading": 343.25,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 38,
+      "unit_number": "108",
+      "building_code": "BLDG-13",
+      "floor_number": 1,
+      "meter_number": "WM-13-108",
+      "resident_name": "MARTINEZ, CRISTINA SANTOS",
+      "previous_reading": 398.45,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 39,
+      "unit_number": "109",
+      "building_code": "BLDG-13",
+      "floor_number": 1,
+      "meter_number": "WM-13-109",
+      "resident_name": "TORRES, MARIA LUISA BAUTISTA",
+      "previous_reading": 292.86,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 40,
+      "unit_number": "110",
+      "building_code": "BLDG-13",
+      "floor_number": 1,
+      "meter_number": "WM-13-110",
+      "resident_name": "CASTRO, CECILIA NAVARRO",
+      "previous_reading": 397.41,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 41,
+      "unit_number": "111",
+      "building_code": "BLDG-13",
+      "floor_number": 1,
+      "meter_number": "WM-13-111",
+      "resident_name": "OLIVARES, ANNA YAP",
+      "previous_reading": 340.26,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 42,
+      "unit_number": "112",
+      "building_code": "BLDG-13",
+      "floor_number": 1,
+      "meter_number": "WM-13-112",
+      "resident_name": "TORRES, LEONARDO MERCADO",
+      "previous_reading": 204.22,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 43,
+      "unit_number": "201",
+      "building_code": "BLDG-13",
+      "floor_number": 2,
+      "meter_number": "WM-13-201",
+      "resident_name": "ALVAREZ, NATHANIEL DELA CRUZ",
+      "previous_reading": 345.12,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 44,
+      "unit_number": "202",
+      "building_code": "BLDG-13",
+      "floor_number": 2,
+      "meter_number": "WM-13-202",
+      "resident_name": "MALABANAN, ELAINE DELA CRUZ",
+      "previous_reading": 367.22,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 45,
+      "unit_number": "203",
+      "building_code": "BLDG-13",
+      "floor_number": 2,
+      "meter_number": "WM-13-203",
+      "resident_name": "MALABANAN, CARLO REYES",
+      "previous_reading": 266.16,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 47,
+      "unit_number": "205",
+      "building_code": "BLDG-13",
+      "floor_number": 2,
+      "meter_number": "WM-13-205",
+      "resident_name": "CASTRO, RICHARD VILLANUEVA",
+      "previous_reading": 351.04,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 48,
+      "unit_number": "206",
+      "building_code": "BLDG-13",
+      "floor_number": 2,
+      "meter_number": "WM-13-206",
+      "resident_name": "ILAGAN, JOSE MERCADO",
+      "previous_reading": 305.41,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 49,
+      "unit_number": "207",
+      "building_code": "BLDG-13",
+      "floor_number": 2,
+      "meter_number": "WM-13-207",
+      "resident_name": "FLORES, DANICA AGUILAR",
+      "previous_reading": 253.46,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 50,
+      "unit_number": "208",
+      "building_code": "BLDG-13",
+      "floor_number": 2,
+      "meter_number": "WM-13-208",
+      "resident_name": "HERNANDEZ, CARLO VILLANUEVA",
+      "previous_reading": 314.05,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 52,
+      "unit_number": "210",
+      "building_code": "BLDG-13",
+      "floor_number": 2,
+      "meter_number": "WM-13-210",
+      "resident_name": "CASTRO, VICTOR TRINIDAD",
+      "previous_reading": 308.19,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 53,
+      "unit_number": "211",
+      "building_code": "BLDG-13",
+      "floor_number": 2,
+      "meter_number": "WM-13-211",
+      "resident_name": "CABRERA, CECILIA FLORES",
+      "previous_reading": 324.72,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 55,
+      "unit_number": "301",
+      "building_code": "BLDG-13",
+      "floor_number": 3,
+      "meter_number": "WM-13-301",
+      "resident_name": "FERNANDEZ, JOY CASTRO",
+      "previous_reading": 200.7,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 57,
+      "unit_number": "303",
+      "building_code": "BLDG-13",
+      "floor_number": 3,
+      "meter_number": "WM-13-303",
+      "resident_name": "LIM, PATRICK TORRES",
+      "previous_reading": 338.78,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 59,
+      "unit_number": "305",
+      "building_code": "BLDG-13",
+      "floor_number": 3,
+      "meter_number": "WM-13-305",
+      "resident_name": "HERNANDEZ, MARIA LUISA MENDOZA",
+      "previous_reading": 330.82,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 60,
+      "unit_number": "306",
+      "building_code": "BLDG-13",
+      "floor_number": 3,
+      "meter_number": "WM-13-306",
+      "resident_name": "FLORES, PATRICIA AQUINO",
+      "previous_reading": 281.07,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 61,
+      "unit_number": "307",
+      "building_code": "BLDG-13",
+      "floor_number": 3,
+      "meter_number": "WM-13-307",
+      "resident_name": "GONZALES, PATRICK DOMINGO",
+      "previous_reading": 317.41,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 62,
+      "unit_number": "308",
+      "building_code": "BLDG-13",
+      "floor_number": 3,
+      "meter_number": "WM-13-308",
+      "resident_name": "MERCADO, JANE SALVADOR",
+      "previous_reading": 219.28,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 63,
+      "unit_number": "309",
+      "building_code": "BLDG-13",
+      "floor_number": 3,
+      "meter_number": "WM-13-309",
+      "resident_name": "BAUTISTA, CRISTINA TORRES",
+      "previous_reading": 348.26,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 64,
+      "unit_number": "310",
+      "building_code": "BLDG-13",
+      "floor_number": 3,
+      "meter_number": "WM-13-310",
+      "resident_name": "ESPIRITU, FRANCIS RAMOS",
+      "previous_reading": 242.08,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 65,
+      "unit_number": "311",
+      "building_code": "BLDG-13",
+      "floor_number": 3,
+      "meter_number": "WM-13-311",
+      "resident_name": "DELA CRUZ, BENJAMIN TAN",
+      "previous_reading": 298.01,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 67,
+      "unit_number": "401",
+      "building_code": "BLDG-13",
+      "floor_number": 4,
+      "meter_number": "WM-13-401",
+      "resident_name": "LUCERO, ERIKA AQUINO",
+      "previous_reading": 261.11,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 68,
+      "unit_number": "402",
+      "building_code": "BLDG-13",
+      "floor_number": 4,
+      "meter_number": "WM-13-402",
+      "resident_name": "SAMSON, ALAN AGUILAR",
+      "previous_reading": 331.81,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 69,
+      "unit_number": "403",
+      "building_code": "BLDG-13",
+      "floor_number": 4,
+      "meter_number": "WM-13-403",
+      "resident_name": "RIVERA, VICTOR PASCUAL",
+      "previous_reading": 253.85,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 71,
+      "unit_number": "405",
+      "building_code": "BLDG-13",
+      "floor_number": 4,
+      "meter_number": "WM-13-405",
+      "resident_name": "GONZALES, CARLO YAP",
+      "previous_reading": 364.39,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 72,
+      "unit_number": "406",
+      "building_code": "BLDG-13",
+      "floor_number": 4,
+      "meter_number": "WM-13-406",
+      "resident_name": "ALVAREZ, CRISTINA TAN",
+      "previous_reading": 358.31,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 73,
+      "unit_number": "407",
+      "building_code": "BLDG-13",
+      "floor_number": 4,
+      "meter_number": "WM-13-407",
+      "resident_name": "SAMSON, MICHAEL GARCIA",
+      "previous_reading": 332.8,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 74,
+      "unit_number": "408",
+      "building_code": "BLDG-13",
+      "floor_number": 4,
+      "meter_number": "WM-13-408",
+      "resident_name": "CABRERA, RONALD NAVARRO",
+      "previous_reading": 274.83,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 76,
+      "unit_number": "410",
+      "building_code": "BLDG-13",
+      "floor_number": 4,
+      "meter_number": "WM-13-410",
+      "resident_name": "MALABANAN, GERALD CRUZ",
+      "previous_reading": 263.6,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 77,
+      "unit_number": "411",
+      "building_code": "BLDG-13",
+      "floor_number": 4,
+      "meter_number": "WM-13-411",
+      "resident_name": "RAMOS, LORENA AQUINO",
+      "previous_reading": 266.24,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 78,
+      "unit_number": "412",
+      "building_code": "BLDG-13",
+      "floor_number": 4,
+      "meter_number": "WM-13-412",
+      "resident_name": "MACAPAGAL, MELANIE GARCIA",
+      "previous_reading": 390.1,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 79,
+      "unit_number": "501",
+      "building_code": "BLDG-13",
+      "floor_number": 5,
+      "meter_number": "WM-13-501",
+      "resident_name": "VALDEZ, DANICA PASCUAL",
+      "previous_reading": 241.27,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 80,
+      "unit_number": "502",
+      "building_code": "BLDG-13",
+      "floor_number": 5,
+      "meter_number": "WM-13-502",
+      "resident_name": "CORTEZ, NATHANIEL CASTRO",
+      "previous_reading": 394.59,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 81,
+      "unit_number": "503",
+      "building_code": "BLDG-13",
+      "floor_number": 5,
+      "meter_number": "WM-13-503",
+      "resident_name": "MARTINEZ, RODERICK TORRES",
+      "previous_reading": 203.0,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 83,
+      "unit_number": "505",
+      "building_code": "BLDG-13",
+      "floor_number": 5,
+      "meter_number": "WM-13-505",
+      "resident_name": "MERCADO, LORENA VELASCO",
+      "previous_reading": 354.39,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 85,
+      "unit_number": "507",
+      "building_code": "BLDG-13",
+      "floor_number": 5,
+      "meter_number": "WM-13-507",
+      "resident_name": "SORIANO, MELANIE AGUILAR",
+      "previous_reading": 307.07,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 86,
+      "unit_number": "508",
+      "building_code": "BLDG-13",
+      "floor_number": 5,
+      "meter_number": "WM-13-508",
+      "resident_name": "MALABANAN, ERIKA YAP",
+      "previous_reading": 370.72,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 87,
+      "unit_number": "509",
+      "building_code": "BLDG-13",
+      "floor_number": 5,
+      "meter_number": "WM-13-509",
+      "resident_name": "NAVARRO, RICARDO NAVARRO",
+      "previous_reading": 381.92,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 88,
+      "unit_number": "510",
+      "building_code": "BLDG-13",
+      "floor_number": 5,
+      "meter_number": "WM-13-510",
+      "resident_name": "SALVADOR, HENRY PASCUAL",
+      "previous_reading": 239.77,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 91,
+      "unit_number": "101",
+      "building_code": "BLDG-14",
+      "floor_number": 1,
+      "meter_number": "WM-14-101",
+      "resident_name": "GONZALES, PAUL VELASCO",
+      "previous_reading": 239.56,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 92,
+      "unit_number": "102",
+      "building_code": "BLDG-14",
+      "floor_number": 1,
+      "meter_number": "WM-14-102",
+      "resident_name": "BAUTISTA, CARLO SANTOS",
+      "previous_reading": 212.85,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 93,
+      "unit_number": "103",
+      "building_code": "BLDG-14",
+      "floor_number": 1,
+      "meter_number": "WM-14-103",
+      "resident_name": "DEL ROSARIO, MARK NAVARRO",
+      "previous_reading": 394.64,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 94,
+      "unit_number": "104",
+      "building_code": "BLDG-14",
+      "floor_number": 1,
+      "meter_number": "WM-14-104",
+      "resident_name": "VALDEZ, CARMINA FLORES",
+      "previous_reading": 409.17,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 95,
+      "unit_number": "105",
+      "building_code": "BLDG-14",
+      "floor_number": 1,
+      "meter_number": "WM-14-105",
+      "resident_name": "NICOLAS, FRANCIS DOMINGO",
+      "previous_reading": 284.6,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 96,
+      "unit_number": "106",
+      "building_code": "BLDG-14",
+      "floor_number": 1,
+      "meter_number": "WM-14-106",
+      "resident_name": "ESPIRITU, RICARDO AQUINO",
+      "previous_reading": 286.02,
+      "reading_status": "approved"
+    },
+    {
+      "unit_id": 97,
+      "unit_number": "107",
+      "building_code": "BLDG-14",
+      "floor_number": 1,
+      "meter_number": "WM-14-107",
+      "resident_name": "MENDOZA, ANGELICA TAN",
+      "previous_reading": 353.09,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 98,
+      "unit_number": "108",
+      "building_code": "BLDG-14",
+      "floor_number": 1,
+      "meter_number": "WM-14-108",
+      "resident_name": "FAJARDO, JESSA NAVARRO",
+      "previous_reading": 375.86,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 99,
+      "unit_number": "109",
+      "building_code": "BLDG-14",
+      "floor_number": 1,
+      "meter_number": "WM-14-109",
+      "resident_name": "CABRERA, ERIKA PASCUAL",
+      "previous_reading": 305.27,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 100,
+      "unit_number": "110",
+      "building_code": "BLDG-14",
+      "floor_number": 1,
+      "meter_number": "WM-14-110",
+      "resident_name": "SAMSON, JOSE PEREZ",
+      "previous_reading": 261.73,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 101,
+      "unit_number": "111",
+      "building_code": "BLDG-14",
+      "floor_number": 1,
+      "meter_number": "WM-14-111",
+      "resident_name": "DELA CRUZ, LIZA AQUINO",
+      "previous_reading": 286.79,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 102,
+      "unit_number": "112",
+      "building_code": "BLDG-14",
+      "floor_number": 1,
+      "meter_number": "WM-14-112",
+      "resident_name": "AGUILAR, MICHELLE CRUZ",
+      "previous_reading": 331.14,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 103,
+      "unit_number": "201",
+      "building_code": "BLDG-14",
+      "floor_number": 2,
+      "meter_number": "WM-14-201",
+      "resident_name": "MANALO, RICARDO MERCADO",
+      "previous_reading": 211.78,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 104,
+      "unit_number": "202",
+      "building_code": "BLDG-14",
+      "floor_number": 2,
+      "meter_number": "WM-14-202",
+      "resident_name": "RAMOS, ELAINE AQUINO",
+      "previous_reading": 391.91,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 105,
+      "unit_number": "203",
+      "building_code": "BLDG-14",
+      "floor_number": 2,
+      "meter_number": "WM-14-203",
+      "resident_name": "ILAGAN, JANE CASTRO",
+      "previous_reading": 211.96,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 108,
+      "unit_number": "206",
+      "building_code": "BLDG-14",
+      "floor_number": 2,
+      "meter_number": "WM-14-206",
+      "resident_name": "ESTRADA, GERALD MERCADO",
+      "previous_reading": 337.96,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 109,
+      "unit_number": "207",
+      "building_code": "BLDG-14",
+      "floor_number": 2,
+      "meter_number": "WM-14-207",
+      "resident_name": "GONZALES, MICHELLE AGUILAR",
+      "previous_reading": 305.18,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 110,
+      "unit_number": "208",
+      "building_code": "BLDG-14",
+      "floor_number": 2,
+      "meter_number": "WM-14-208",
+      "resident_name": "YAP, ELAINE VILLANUEVA",
+      "previous_reading": 341.53,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 111,
+      "unit_number": "209",
+      "building_code": "BLDG-14",
+      "floor_number": 2,
+      "meter_number": "WM-14-209",
+      "resident_name": "DELA CRUZ, ARNEL YAP",
+      "previous_reading": 251.85,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 112,
+      "unit_number": "210",
+      "building_code": "BLDG-14",
+      "floor_number": 2,
+      "meter_number": "WM-14-210",
+      "resident_name": "RAMOS, LEONARDO RIVERA",
+      "previous_reading": 331.57,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 114,
+      "unit_number": "212",
+      "building_code": "BLDG-14",
+      "floor_number": 2,
+      "meter_number": "WM-14-212",
+      "resident_name": "MIRANDA, ELIZABETH TAN",
+      "previous_reading": 378.3,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 115,
+      "unit_number": "301",
+      "building_code": "BLDG-14",
+      "floor_number": 3,
+      "meter_number": "WM-14-301",
+      "resident_name": "ESPIRITU, ALAN TAN",
+      "previous_reading": 370.85,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 116,
+      "unit_number": "302",
+      "building_code": "BLDG-14",
+      "floor_number": 3,
+      "meter_number": "WM-14-302",
+      "resident_name": "FAJARDO, ROSEMARIE VILLANUEVA",
+      "previous_reading": 412.0,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 117,
+      "unit_number": "303",
+      "building_code": "BLDG-14",
+      "floor_number": 3,
+      "meter_number": "WM-14-303",
+      "resident_name": "LUCERO, LORENA MERCADO",
+      "previous_reading": 300.26,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 118,
+      "unit_number": "304",
+      "building_code": "BLDG-14",
+      "floor_number": 3,
+      "meter_number": "WM-14-304",
+      "resident_name": "TORRES, JASMINE LOPEZ",
+      "previous_reading": 220.39,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 119,
+      "unit_number": "305",
+      "building_code": "BLDG-14",
+      "floor_number": 3,
+      "meter_number": "WM-14-305",
+      "resident_name": "TAN, CRISTINA DOMINGO",
+      "previous_reading": 335.97,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 120,
+      "unit_number": "306",
+      "building_code": "BLDG-14",
+      "floor_number": 3,
+      "meter_number": "WM-14-306",
+      "resident_name": "DELA CRUZ, PAOLO VELASCO",
+      "previous_reading": 294.06,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 121,
+      "unit_number": "307",
+      "building_code": "BLDG-14",
+      "floor_number": 3,
+      "meter_number": "WM-14-307",
+      "resident_name": "VALDEZ, LIZA CRUZ",
+      "previous_reading": 242.68,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 122,
+      "unit_number": "308",
+      "building_code": "BLDG-14",
+      "floor_number": 3,
+      "meter_number": "WM-14-308",
+      "resident_name": "MACAPAGAL, CARMINA AQUINO",
+      "previous_reading": 334.83,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 123,
+      "unit_number": "309",
+      "building_code": "BLDG-14",
+      "floor_number": 3,
+      "meter_number": "WM-14-309",
+      "resident_name": "FAJARDO, HENRY SANTOS",
+      "previous_reading": 390.19,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 124,
+      "unit_number": "310",
+      "building_code": "BLDG-14",
+      "floor_number": 3,
+      "meter_number": "WM-14-310",
+      "resident_name": "REYES, JOSE YAP",
+      "previous_reading": 238.81,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 125,
+      "unit_number": "311",
+      "building_code": "BLDG-14",
+      "floor_number": 3,
+      "meter_number": "WM-14-311",
+      "resident_name": "CORTEZ, NOEL PASCUAL",
+      "previous_reading": 232.07,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 127,
+      "unit_number": "401",
+      "building_code": "BLDG-14",
+      "floor_number": 4,
+      "meter_number": "WM-14-401",
+      "resident_name": "LIM, ANNA VILLANUEVA",
+      "previous_reading": 276.73,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 128,
+      "unit_number": "402",
+      "building_code": "BLDG-14",
+      "floor_number": 4,
+      "meter_number": "WM-14-402",
+      "resident_name": "DOMINGO, DANICA SALVADOR",
+      "previous_reading": 256.94,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 129,
+      "unit_number": "403",
+      "building_code": "BLDG-14",
+      "floor_number": 4,
+      "meter_number": "WM-14-403",
+      "resident_name": "DE GUZMAN, PATRICIA TORRES",
+      "previous_reading": 204.71,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 130,
+      "unit_number": "404",
+      "building_code": "BLDG-14",
+      "floor_number": 4,
+      "meter_number": "WM-14-404",
+      "resident_name": "MARTINEZ, MARY ANN BAUTISTA",
+      "previous_reading": 377.25,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 131,
+      "unit_number": "405",
+      "building_code": "BLDG-14",
+      "floor_number": 4,
+      "meter_number": "WM-14-405",
+      "resident_name": "TOLENTINO, PATRICIA AGUILAR",
+      "previous_reading": 264.9,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 132,
+      "unit_number": "406",
+      "building_code": "BLDG-14",
+      "floor_number": 4,
+      "meter_number": "WM-14-406",
+      "resident_name": "FLORES, JUAN MERCADO",
+      "previous_reading": 194.5,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 133,
+      "unit_number": "407",
+      "building_code": "BLDG-14",
+      "floor_number": 4,
+      "meter_number": "WM-14-407",
+      "resident_name": "MACAPAGAL, CRISTINA TORRES",
+      "previous_reading": 278.4,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 134,
+      "unit_number": "408",
+      "building_code": "BLDG-14",
+      "floor_number": 4,
+      "meter_number": "WM-14-408",
+      "resident_name": "MALABANAN, ARNEL SANTOS",
+      "previous_reading": 350.74,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 135,
+      "unit_number": "409",
+      "building_code": "BLDG-14",
+      "floor_number": 4,
+      "meter_number": "WM-14-409",
+      "resident_name": "VILLANUEVA, ANGELICA VILLANUEVA",
+      "previous_reading": 382.53,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 136,
+      "unit_number": "410",
+      "building_code": "BLDG-14",
+      "floor_number": 4,
+      "meter_number": "WM-14-410",
+      "resident_name": "FERNANDEZ, JULIUS FLORES",
+      "previous_reading": 354.81,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 137,
+      "unit_number": "411",
+      "building_code": "BLDG-14",
+      "floor_number": 4,
+      "meter_number": "WM-14-411",
+      "resident_name": "TORRES, LEONARDO AQUINO",
+      "previous_reading": 321.18,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 138,
+      "unit_number": "412",
+      "building_code": "BLDG-14",
+      "floor_number": 4,
+      "meter_number": "WM-14-412",
+      "resident_name": "VILLANUEVA, FRANCIS BAUTISTA",
+      "previous_reading": 378.64,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 140,
+      "unit_number": "502",
+      "building_code": "BLDG-14",
+      "floor_number": 5,
+      "meter_number": "WM-14-502",
+      "resident_name": "CASTRO, GERALD RIVERA",
+      "previous_reading": 404.31,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 141,
+      "unit_number": "503",
+      "building_code": "BLDG-14",
+      "floor_number": 5,
+      "meter_number": "WM-14-503",
+      "resident_name": "ESTRADA, ELIZABETH MERCADO",
+      "previous_reading": 212.12,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 142,
+      "unit_number": "504",
+      "building_code": "BLDG-14",
+      "floor_number": 5,
+      "meter_number": "WM-14-504",
+      "resident_name": "AGUILAR, ALAN PEREZ",
+      "previous_reading": 210.84,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 143,
+      "unit_number": "505",
+      "building_code": "BLDG-14",
+      "floor_number": 5,
+      "meter_number": "WM-14-505",
+      "resident_name": "DEL ROSARIO, EDUARDO FLORES",
+      "previous_reading": 306.76,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 144,
+      "unit_number": "506",
+      "building_code": "BLDG-14",
+      "floor_number": 5,
+      "meter_number": "WM-14-506",
+      "resident_name": "OLIVARES, EDUARDO SANTOS",
+      "previous_reading": 391.97,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 145,
+      "unit_number": "507",
+      "building_code": "BLDG-14",
+      "floor_number": 5,
+      "meter_number": "WM-14-507",
+      "resident_name": "CABRERA, JASMINE RAMOS",
+      "previous_reading": 352.99,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 146,
+      "unit_number": "508",
+      "building_code": "BLDG-14",
+      "floor_number": 5,
+      "meter_number": "WM-14-508",
+      "resident_name": "YAP, ROSEMARIE CRUZ",
+      "previous_reading": 250.42,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 147,
+      "unit_number": "509",
+      "building_code": "BLDG-14",
+      "floor_number": 5,
+      "meter_number": "WM-14-509",
+      "resident_name": "SALVADOR, JOHN DELA CRUZ",
+      "previous_reading": 309.69,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 148,
+      "unit_number": "510",
+      "building_code": "BLDG-14",
+      "floor_number": 5,
+      "meter_number": "WM-14-510",
+      "resident_name": "REYES, LEONARDO PASCUAL",
+      "previous_reading": 273.1,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 150,
+      "unit_number": "512",
+      "building_code": "BLDG-14",
+      "floor_number": 5,
+      "meter_number": "WM-14-512",
+      "resident_name": "TRINIDAD, ERIKA PASCUAL",
+      "previous_reading": 198.75,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 151,
+      "unit_number": "101",
+      "building_code": "BLDG-15",
+      "floor_number": 1,
+      "meter_number": "WM-15-101",
+      "resident_name": "NAVARRO, JANE VELASCO",
+      "previous_reading": 238.35,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 152,
+      "unit_number": "102",
+      "building_code": "BLDG-15",
+      "floor_number": 1,
+      "meter_number": "WM-15-102",
+      "resident_name": "ESPIRITU, CARLO GARCIA",
+      "previous_reading": 345.13,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 153,
+      "unit_number": "103",
+      "building_code": "BLDG-15",
+      "floor_number": 1,
+      "meter_number": "WM-15-103",
+      "resident_name": "VELASCO, NATHANIEL CRUZ",
+      "previous_reading": 322.05,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 154,
+      "unit_number": "104",
+      "building_code": "BLDG-15",
+      "floor_number": 1,
+      "meter_number": "WM-15-104",
+      "resident_name": "LIM, ROSEMARIE SALVADOR",
+      "previous_reading": 336.52,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 155,
+      "unit_number": "105",
+      "building_code": "BLDG-15",
+      "floor_number": 1,
+      "meter_number": "WM-15-105",
+      "resident_name": "ESTRADA, ANGEL DOMINGO",
+      "previous_reading": 319.71,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 156,
+      "unit_number": "106",
+      "building_code": "BLDG-15",
+      "floor_number": 1,
+      "meter_number": "WM-15-106",
+      "resident_name": "SORIANO, MARIA LUISA AQUINO",
+      "previous_reading": 319.88,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 157,
+      "unit_number": "107",
+      "building_code": "BLDG-15",
+      "floor_number": 1,
+      "meter_number": "WM-15-107",
+      "resident_name": "MERCADO, JASMINE CASTRO",
+      "previous_reading": 290.47,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 158,
+      "unit_number": "108",
+      "building_code": "BLDG-15",
+      "floor_number": 1,
+      "meter_number": "WM-15-108",
+      "resident_name": "HERNANDEZ, VICTOR PEREZ",
+      "previous_reading": 353.5,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 159,
+      "unit_number": "109",
+      "building_code": "BLDG-15",
+      "floor_number": 1,
+      "meter_number": "WM-15-109",
+      "resident_name": "PADILLA, RICHARD PASCUAL",
+      "previous_reading": 235.81,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 160,
+      "unit_number": "110",
+      "building_code": "BLDG-15",
+      "floor_number": 1,
+      "meter_number": "WM-15-110",
+      "resident_name": "MERCADO, JOSE VELASCO",
+      "previous_reading": 236.49,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 161,
+      "unit_number": "111",
+      "building_code": "BLDG-15",
+      "floor_number": 1,
+      "meter_number": "WM-15-111",
+      "resident_name": "MIRANDA, CARMINA CRUZ",
+      "previous_reading": 399.77,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 162,
+      "unit_number": "112",
+      "building_code": "BLDG-15",
+      "floor_number": 1,
+      "meter_number": "WM-15-112",
+      "resident_name": "VILLANUEVA, ANGEL PASCUAL",
+      "previous_reading": 320.58,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 163,
+      "unit_number": "201",
+      "building_code": "BLDG-15",
+      "floor_number": 2,
+      "meter_number": "WM-15-201",
+      "resident_name": "RAMOS, ANNA SANTOS",
+      "previous_reading": 407.07,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 165,
+      "unit_number": "203",
+      "building_code": "BLDG-15",
+      "floor_number": 2,
+      "meter_number": "WM-15-203",
+      "resident_name": "REYES, RINA RAMOS",
+      "previous_reading": 364.86,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 166,
+      "unit_number": "204",
+      "building_code": "BLDG-15",
+      "floor_number": 2,
+      "meter_number": "WM-15-204",
+      "resident_name": "AQUINO, RINA DELA CRUZ",
+      "previous_reading": 369.63,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 167,
+      "unit_number": "205",
+      "building_code": "BLDG-15",
+      "floor_number": 2,
+      "meter_number": "WM-15-205",
+      "resident_name": "REYES, CARLO SALVADOR",
+      "previous_reading": 401.87,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 168,
+      "unit_number": "206",
+      "building_code": "BLDG-15",
+      "floor_number": 2,
+      "meter_number": "WM-15-206",
+      "resident_name": "FLORES, JOY PEREZ",
+      "previous_reading": 343.05,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 169,
+      "unit_number": "207",
+      "building_code": "BLDG-15",
+      "floor_number": 2,
+      "meter_number": "WM-15-207",
+      "resident_name": "MERCADO, MICHELLE MERCADO",
+      "previous_reading": 304.29,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 170,
+      "unit_number": "208",
+      "building_code": "BLDG-15",
+      "floor_number": 2,
+      "meter_number": "WM-15-208",
+      "resident_name": "DE GUZMAN, JULIUS TORRES",
+      "previous_reading": 321.97,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 171,
+      "unit_number": "209",
+      "building_code": "BLDG-15",
+      "floor_number": 2,
+      "meter_number": "WM-15-209",
+      "resident_name": "PASCUAL, EDUARDO RAMOS",
+      "previous_reading": 226.81,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 172,
+      "unit_number": "210",
+      "building_code": "BLDG-15",
+      "floor_number": 2,
+      "meter_number": "WM-15-210",
+      "resident_name": "TORRES, ANGEL GARCIA",
+      "previous_reading": 344.87,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 174,
+      "unit_number": "212",
+      "building_code": "BLDG-15",
+      "floor_number": 2,
+      "meter_number": "WM-15-212",
+      "resident_name": "DELA CRUZ, JOEL CRUZ",
+      "previous_reading": 393.37,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 175,
+      "unit_number": "301",
+      "building_code": "BLDG-15",
+      "floor_number": 3,
+      "meter_number": "WM-15-301",
+      "resident_name": "LOPEZ, ANGELICA CASTRO",
+      "previous_reading": 373.03,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 176,
+      "unit_number": "302",
+      "building_code": "BLDG-15",
+      "floor_number": 3,
+      "meter_number": "WM-15-302",
+      "resident_name": "BAUTISTA, GERALD TAN",
+      "previous_reading": 297.06,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 177,
+      "unit_number": "303",
+      "building_code": "BLDG-15",
+      "floor_number": 3,
+      "meter_number": "WM-15-303",
+      "resident_name": "LIM, FRANCIS RAMOS",
+      "previous_reading": 351.14,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 178,
+      "unit_number": "304",
+      "building_code": "BLDG-15",
+      "floor_number": 3,
+      "meter_number": "WM-15-304",
+      "resident_name": "VILLANUEVA, JOEL DOMINGO",
+      "previous_reading": 399.47,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 179,
+      "unit_number": "305",
+      "building_code": "BLDG-15",
+      "floor_number": 3,
+      "meter_number": "WM-15-305",
+      "resident_name": "TORRES, ALAN GARCIA",
+      "previous_reading": 368.71,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 180,
+      "unit_number": "306",
+      "building_code": "BLDG-15",
+      "floor_number": 3,
+      "meter_number": "WM-15-306",
+      "resident_name": "MENDOZA, JULIUS PASCUAL",
+      "previous_reading": 194.65,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 181,
+      "unit_number": "307",
+      "building_code": "BLDG-15",
+      "floor_number": 3,
+      "meter_number": "WM-15-307",
+      "resident_name": "MENDOZA, JANE TRINIDAD",
+      "previous_reading": 366.89,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 182,
+      "unit_number": "308",
+      "building_code": "BLDG-15",
+      "floor_number": 3,
+      "meter_number": "WM-15-308",
+      "resident_name": "BAUTISTA, ALAN FLORES",
+      "previous_reading": 187.82,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 183,
+      "unit_number": "309",
+      "building_code": "BLDG-15",
+      "floor_number": 3,
+      "meter_number": "WM-15-309",
+      "resident_name": "SALVADOR, ANGEL GARCIA",
+      "previous_reading": 311.57,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 184,
+      "unit_number": "310",
+      "building_code": "BLDG-15",
+      "floor_number": 3,
+      "meter_number": "WM-15-310",
+      "resident_name": "MANALO, MELANIE RIVERA",
+      "previous_reading": 200.08,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 185,
+      "unit_number": "311",
+      "building_code": "BLDG-15",
+      "floor_number": 3,
+      "meter_number": "WM-15-311",
+      "resident_name": "LUCERO, DANICA MERCADO",
+      "previous_reading": 320.84,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 186,
+      "unit_number": "312",
+      "building_code": "BLDG-15",
+      "floor_number": 3,
+      "meter_number": "WM-15-312",
+      "resident_name": "DOMINGO, MELANIE LOPEZ",
+      "previous_reading": 379.32,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 187,
+      "unit_number": "401",
+      "building_code": "BLDG-15",
+      "floor_number": 4,
+      "meter_number": "WM-15-401",
+      "resident_name": "SALVADOR, CARMINA RAMOS",
+      "previous_reading": 198.28,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 188,
+      "unit_number": "402",
+      "building_code": "BLDG-15",
+      "floor_number": 4,
+      "meter_number": "WM-15-402",
+      "resident_name": "YAP, JOSE PEREZ",
+      "previous_reading": 249.35,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 190,
+      "unit_number": "404",
+      "building_code": "BLDG-15",
+      "floor_number": 4,
+      "meter_number": "WM-15-404",
+      "resident_name": "VILLANUEVA, HENRY LOPEZ",
+      "previous_reading": 414.07,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 191,
+      "unit_number": "405",
+      "building_code": "BLDG-15",
+      "floor_number": 4,
+      "meter_number": "WM-15-405",
+      "resident_name": "SAMSON, RICHARD VILLANUEVA",
+      "previous_reading": 293.96,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 192,
+      "unit_number": "406",
+      "building_code": "BLDG-15",
+      "floor_number": 4,
+      "meter_number": "WM-15-406",
+      "resident_name": "CORTEZ, NOEL SANTOS",
+      "previous_reading": 215.15,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 193,
+      "unit_number": "407",
+      "building_code": "BLDG-15",
+      "floor_number": 4,
+      "meter_number": "WM-15-407",
+      "resident_name": "FLORES, JANE TORRES",
+      "previous_reading": 307.15,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 194,
+      "unit_number": "408",
+      "building_code": "BLDG-15",
+      "floor_number": 4,
+      "meter_number": "WM-15-408",
+      "resident_name": "CASTRO, ANA AGUILAR",
+      "previous_reading": 194.58,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 195,
+      "unit_number": "409",
+      "building_code": "BLDG-15",
+      "floor_number": 4,
+      "meter_number": "WM-15-409",
+      "resident_name": "MARTINEZ, FRANCIS RAMOS",
+      "previous_reading": 241.77,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 196,
+      "unit_number": "410",
+      "building_code": "BLDG-15",
+      "floor_number": 4,
+      "meter_number": "WM-15-410",
+      "resident_name": "ESTRADA, LORENA NAVARRO",
+      "previous_reading": 350.07,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 197,
+      "unit_number": "411",
+      "building_code": "BLDG-15",
+      "floor_number": 4,
+      "meter_number": "WM-15-411",
+      "resident_name": "YAP, MICHELLE BAUTISTA",
+      "previous_reading": 215.43,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 199,
+      "unit_number": "501",
+      "building_code": "BLDG-15",
+      "floor_number": 5,
+      "meter_number": "WM-15-501",
+      "resident_name": "BAUTISTA, ELIZABETH TRINIDAD",
+      "previous_reading": 221.32,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 200,
+      "unit_number": "502",
+      "building_code": "BLDG-15",
+      "floor_number": 5,
+      "meter_number": "WM-15-502",
+      "resident_name": "VILLANUEVA, MICHAEL PASCUAL",
+      "previous_reading": 254.74,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 201,
+      "unit_number": "503",
+      "building_code": "BLDG-15",
+      "floor_number": 5,
+      "meter_number": "WM-15-503",
+      "resident_name": "LIM, RONALD VELASCO",
+      "previous_reading": 364.74,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 203,
+      "unit_number": "505",
+      "building_code": "BLDG-15",
+      "floor_number": 5,
+      "meter_number": "WM-15-505",
+      "resident_name": "ILAGAN, JULIUS REYES",
+      "previous_reading": 337.31,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 204,
+      "unit_number": "506",
+      "building_code": "BLDG-15",
+      "floor_number": 5,
+      "meter_number": "WM-15-506",
+      "resident_name": "LIM, PETER SALVADOR",
+      "previous_reading": 259.8,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 205,
+      "unit_number": "507",
+      "building_code": "BLDG-15",
+      "floor_number": 5,
+      "meter_number": "WM-15-507",
+      "resident_name": "PADILLA, ANGELICA CRUZ",
+      "previous_reading": 202.06,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 207,
+      "unit_number": "509",
+      "building_code": "BLDG-15",
+      "floor_number": 5,
+      "meter_number": "WM-15-509",
+      "resident_name": "REYES, PAUL SALVADOR",
+      "previous_reading": 362.12,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 208,
+      "unit_number": "510",
+      "building_code": "BLDG-15",
+      "floor_number": 5,
+      "meter_number": "WM-15-510",
+      "resident_name": "CRUZ, ERIKA TRINIDAD",
+      "previous_reading": 225.18,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 209,
+      "unit_number": "511",
+      "building_code": "BLDG-15",
+      "floor_number": 5,
+      "meter_number": "WM-15-511",
+      "resident_name": "FAJARDO, RICHARD VILLANUEVA",
+      "previous_reading": 239.8,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 210,
+      "unit_number": "512",
+      "building_code": "BLDG-15",
+      "floor_number": 5,
+      "meter_number": "WM-15-512",
+      "resident_name": "TORRES, EDUARDO YAP",
+      "previous_reading": 312.65,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 211,
+      "unit_number": "101",
+      "building_code": "BLDG-16",
+      "floor_number": 1,
+      "meter_number": "WM-16-101",
+      "resident_name": "AQUINO, JOY NAVARRO",
+      "previous_reading": 256.65,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 212,
+      "unit_number": "102",
+      "building_code": "BLDG-16",
+      "floor_number": 1,
+      "meter_number": "WM-16-102",
+      "resident_name": "TAN, JOY CASTRO",
+      "previous_reading": 289.81,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 213,
+      "unit_number": "103",
+      "building_code": "BLDG-16",
+      "floor_number": 1,
+      "meter_number": "WM-16-103",
+      "resident_name": "DOMINGO, PAOLO GARCIA",
+      "previous_reading": 400.67,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 214,
+      "unit_number": "104",
+      "building_code": "BLDG-16",
+      "floor_number": 1,
+      "meter_number": "WM-16-104",
+      "resident_name": "CRUZ, DANICA TAN",
+      "previous_reading": 206.66,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 215,
+      "unit_number": "105",
+      "building_code": "BLDG-16",
+      "floor_number": 1,
+      "meter_number": "WM-16-105",
+      "resident_name": "TORRES, ANNA DOMINGO",
+      "previous_reading": 377.85,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 216,
+      "unit_number": "106",
+      "building_code": "BLDG-16",
+      "floor_number": 1,
+      "meter_number": "WM-16-106",
+      "resident_name": "MARTINEZ, NATHANIEL TORRES",
+      "previous_reading": 230.85,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 218,
+      "unit_number": "108",
+      "building_code": "BLDG-16",
+      "floor_number": 1,
+      "meter_number": "WM-16-108",
+      "resident_name": "YAP, FE VILLANUEVA",
+      "previous_reading": 342.16,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 219,
+      "unit_number": "109",
+      "building_code": "BLDG-16",
+      "floor_number": 1,
+      "meter_number": "WM-16-109",
+      "resident_name": "LUCERO, LORENA VELASCO",
+      "previous_reading": 396.68,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 221,
+      "unit_number": "111",
+      "building_code": "BLDG-16",
+      "floor_number": 1,
+      "meter_number": "WM-16-111",
+      "resident_name": "REYES, CATHERINE YAP",
+      "previous_reading": 372.82,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 222,
+      "unit_number": "112",
+      "building_code": "BLDG-16",
+      "floor_number": 1,
+      "meter_number": "WM-16-112",
+      "resident_name": "SAMSON, ANA CRUZ",
+      "previous_reading": 359.82,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 223,
+      "unit_number": "201",
+      "building_code": "BLDG-16",
+      "floor_number": 2,
+      "meter_number": "WM-16-201",
+      "resident_name": "LIM, JUAN FLORES",
+      "previous_reading": 285.78,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 226,
+      "unit_number": "204",
+      "building_code": "BLDG-16",
+      "floor_number": 2,
+      "meter_number": "WM-16-204",
+      "resident_name": "ESTRADA, PATRICK PEREZ",
+      "previous_reading": 278.14,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 227,
+      "unit_number": "205",
+      "building_code": "BLDG-16",
+      "floor_number": 2,
+      "meter_number": "WM-16-205",
+      "resident_name": "REYES, JUAN DOMINGO",
+      "previous_reading": 209.56,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 228,
+      "unit_number": "206",
+      "building_code": "BLDG-16",
+      "floor_number": 2,
+      "meter_number": "WM-16-206",
+      "resident_name": "MARTINEZ, ROSEMARIE DOMINGO",
+      "previous_reading": 353.03,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 229,
+      "unit_number": "207",
+      "building_code": "BLDG-16",
+      "floor_number": 2,
+      "meter_number": "WM-16-207",
+      "resident_name": "TRINIDAD, CARMINA YAP",
+      "previous_reading": 328.81,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 230,
+      "unit_number": "208",
+      "building_code": "BLDG-16",
+      "floor_number": 2,
+      "meter_number": "WM-16-208",
+      "resident_name": "NAVARRO, PAUL DOMINGO",
+      "previous_reading": 338.48,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 231,
+      "unit_number": "209",
+      "building_code": "BLDG-16",
+      "floor_number": 2,
+      "meter_number": "WM-16-209",
+      "resident_name": "FERNANDEZ, MARK YAP",
+      "previous_reading": 363.6,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 234,
+      "unit_number": "212",
+      "building_code": "BLDG-16",
+      "floor_number": 2,
+      "meter_number": "WM-16-212",
+      "resident_name": "VELASCO, JASMINE REYES",
+      "previous_reading": 354.81,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 235,
+      "unit_number": "301",
+      "building_code": "BLDG-16",
+      "floor_number": 3,
+      "meter_number": "WM-16-301",
+      "resident_name": "PASCUAL, RINA FLORES",
+      "previous_reading": 196.61,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 236,
+      "unit_number": "302",
+      "building_code": "BLDG-16",
+      "floor_number": 3,
+      "meter_number": "WM-16-302",
+      "resident_name": "VILLANUEVA, MARIA LUISA LOPEZ",
+      "previous_reading": 208.48,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 237,
+      "unit_number": "303",
+      "building_code": "BLDG-16",
+      "floor_number": 3,
+      "meter_number": "WM-16-303",
+      "resident_name": "PADILLA, MARY ANN GARCIA",
+      "previous_reading": 249.45,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 239,
+      "unit_number": "305",
+      "building_code": "BLDG-16",
+      "floor_number": 3,
+      "meter_number": "WM-16-305",
+      "resident_name": "MARTINEZ, JOY SALVADOR",
+      "previous_reading": 403.57,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 240,
+      "unit_number": "306",
+      "building_code": "BLDG-16",
+      "floor_number": 3,
+      "meter_number": "WM-16-306",
+      "resident_name": "SAMSON, CATHERINE PASCUAL",
+      "previous_reading": 351.46,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 242,
+      "unit_number": "308",
+      "building_code": "BLDG-16",
+      "floor_number": 3,
+      "meter_number": "WM-16-308",
+      "resident_name": "DELA CRUZ, JUAN MERCADO",
+      "previous_reading": 396.24,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 243,
+      "unit_number": "309",
+      "building_code": "BLDG-16",
+      "floor_number": 3,
+      "meter_number": "WM-16-309",
+      "resident_name": "CASTRO, JOEL VILLANUEVA",
+      "previous_reading": 281.55,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 244,
+      "unit_number": "310",
+      "building_code": "BLDG-16",
+      "floor_number": 3,
+      "meter_number": "WM-16-310",
+      "resident_name": "TORRES, PAOLO SANTOS",
+      "previous_reading": 395.19,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 245,
+      "unit_number": "311",
+      "building_code": "BLDG-16",
+      "floor_number": 3,
+      "meter_number": "WM-16-311",
+      "resident_name": "BAUTISTA, NATHANIEL TORRES",
+      "previous_reading": 301.52,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 246,
+      "unit_number": "312",
+      "building_code": "BLDG-16",
+      "floor_number": 3,
+      "meter_number": "WM-16-312",
+      "resident_name": "DOMINGO, MARIA VILLANUEVA",
+      "previous_reading": 307.96,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 247,
+      "unit_number": "401",
+      "building_code": "BLDG-16",
+      "floor_number": 4,
+      "meter_number": "WM-16-401",
+      "resident_name": "MERCADO, ERIKA DELA CRUZ",
+      "previous_reading": 381.34,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 248,
+      "unit_number": "402",
+      "building_code": "BLDG-16",
+      "floor_number": 4,
+      "meter_number": "WM-16-402",
+      "resident_name": "TOLENTINO, MARIA NAVARRO",
+      "previous_reading": 333.06,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 250,
+      "unit_number": "404",
+      "building_code": "BLDG-16",
+      "floor_number": 4,
+      "meter_number": "WM-16-404",
+      "resident_name": "AGUILAR, ELAINE NAVARRO",
+      "previous_reading": 279.48,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 251,
+      "unit_number": "405",
+      "building_code": "BLDG-16",
+      "floor_number": 4,
+      "meter_number": "WM-16-405",
+      "resident_name": "MERCADO, JOHN AGUILAR",
+      "previous_reading": 271.43,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 252,
+      "unit_number": "406",
+      "building_code": "BLDG-16",
+      "floor_number": 4,
+      "meter_number": "WM-16-406",
+      "resident_name": "MERCADO, JESSA PASCUAL",
+      "previous_reading": 380.36,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 253,
+      "unit_number": "407",
+      "building_code": "BLDG-16",
+      "floor_number": 4,
+      "meter_number": "WM-16-407",
+      "resident_name": "MALABANAN, JANE RAMOS",
+      "previous_reading": 350.93,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 254,
+      "unit_number": "408",
+      "building_code": "BLDG-16",
+      "floor_number": 4,
+      "meter_number": "WM-16-408",
+      "resident_name": "LUCERO, ALAN AGUILAR",
+      "previous_reading": 360.29,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 255,
+      "unit_number": "409",
+      "building_code": "BLDG-16",
+      "floor_number": 4,
+      "meter_number": "WM-16-409",
+      "resident_name": "ALVAREZ, ANGEL VELASCO",
+      "previous_reading": 334.22,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 256,
+      "unit_number": "410",
+      "building_code": "BLDG-16",
+      "floor_number": 4,
+      "meter_number": "WM-16-410",
+      "resident_name": "VALDEZ, LEONARDO RAMOS",
+      "previous_reading": 253.87,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 257,
+      "unit_number": "411",
+      "building_code": "BLDG-16",
+      "floor_number": 4,
+      "meter_number": "WM-16-411",
+      "resident_name": "CORTEZ, JOEL NAVARRO",
+      "previous_reading": 219.34,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 258,
+      "unit_number": "412",
+      "building_code": "BLDG-16",
+      "floor_number": 4,
+      "meter_number": "WM-16-412",
+      "resident_name": "SANTOS, ARNEL GARCIA",
+      "previous_reading": 275.44,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 259,
+      "unit_number": "501",
+      "building_code": "BLDG-16",
+      "floor_number": 5,
+      "meter_number": "WM-16-501",
+      "resident_name": "FERNANDEZ, CATHERINE CRUZ",
+      "previous_reading": 229.94,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 260,
+      "unit_number": "502",
+      "building_code": "BLDG-16",
+      "floor_number": 5,
+      "meter_number": "WM-16-502",
+      "resident_name": "MERCADO, FRANCIS BAUTISTA",
+      "previous_reading": 258.17,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 261,
+      "unit_number": "503",
+      "building_code": "BLDG-16",
+      "floor_number": 5,
+      "meter_number": "WM-16-503",
+      "resident_name": "TOLENTINO, LIZA PEREZ",
+      "previous_reading": 343.52,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 262,
+      "unit_number": "504",
+      "building_code": "BLDG-16",
+      "floor_number": 5,
+      "meter_number": "WM-16-504",
+      "resident_name": "RIVERA, LORENA CRUZ",
+      "previous_reading": 363.9,
+      "reading_status": "submitted"
+    },
+    {
+      "unit_id": 263,
+      "unit_number": "505",
+      "building_code": "BLDG-16",
+      "floor_number": 5,
+      "meter_number": "WM-16-505",
+      "resident_name": "AGUILAR, FRANCIS TRINIDAD",
+      "previous_reading": 352.88,
+      "reading_status": "flagged"
+    },
+    {
+      "unit_id": 264,
+      "unit_number": "506",
+      "building_code": "BLDG-16",
+      "floor_number": 5,
+      "meter_number": "WM-16-506",
+      "resident_name": "TRINIDAD, JOY RIVERA",
+      "previous_reading": 391.4,
+      "reading_status": "flagged"
+    },
+    {
+      "unit_id": 265,
+      "unit_number": "507",
+      "building_code": "BLDG-16",
+      "floor_number": 5,
+      "meter_number": "WM-16-507",
+      "resident_name": "VELASCO, MARY ANN SANTOS",
+      "previous_reading": 201.81,
+      "reading_status": "flagged"
+    },
+    {
+      "unit_id": 266,
+      "unit_number": "508",
+      "building_code": "BLDG-16",
+      "floor_number": 5,
+      "meter_number": "WM-16-508",
+      "resident_name": "LUCERO, VICTOR YAP",
+      "previous_reading": 406.23,
+      "reading_status": "flagged"
+    },
+    {
+      "unit_id": 267,
+      "unit_number": "509",
+      "building_code": "BLDG-16",
+      "floor_number": 5,
+      "meter_number": "WM-16-509",
+      "resident_name": "SANTOS, BENJAMIN TORRES",
+      "previous_reading": 350.63,
+      "reading_status": "flagged"
+    },
+    {
+      "unit_id": 268,
+      "unit_number": "510",
+      "building_code": "BLDG-16",
+      "floor_number": 5,
+      "meter_number": "WM-16-510",
+      "resident_name": "TORRES, MARIA PEREZ",
+      "previous_reading": 294.07,
+      "reading_status": "flagged"
+    },
+    {
+      "unit_id": 269,
+      "unit_number": "511",
+      "building_code": "BLDG-16",
+      "floor_number": 5,
+      "meter_number": "WM-16-511",
+      "resident_name": "REYES, JOSE VILLANUEVA",
+      "previous_reading": 211.09,
+      "reading_status": "flagged"
+    },
+    {
+      "unit_id": 270,
+      "unit_number": "512",
+      "building_code": "BLDG-16",
+      "floor_number": 5,
+      "meter_number": "WM-16-512",
+      "resident_name": "HERNANDEZ, PATRICIA BAUTISTA",
+      "previous_reading": 286.55,
+      "reading_status": "flagged"
+    },
+    {
+      "unit_id": 271,
+      "unit_number": "101",
+      "building_code": "BLDG-17",
+      "floor_number": 1,
+      "meter_number": "WM-17-101",
+      "resident_name": "TAN, MELANIE MENDOZA",
+      "previous_reading": 394.03,
+      "reading_status": "flagged"
+    },
+    {
+      "unit_id": 272,
+      "unit_number": "102",
+      "building_code": "BLDG-17",
+      "floor_number": 1,
+      "meter_number": "WM-17-102",
+      "resident_name": "VILLANUEVA, MARIA LUISA DELA CRUZ",
+      "previous_reading": 210.21,
+      "reading_status": "flagged"
+    },
+    {
+      "unit_id": 273,
+      "unit_number": "103",
+      "building_code": "BLDG-17",
+      "floor_number": 1,
+      "meter_number": "WM-17-103",
+      "resident_name": "ESPIRITU, JESSA CASTRO",
+      "previous_reading": 356.96,
+      "reading_status": "flagged"
+    },
+    {
+      "unit_id": 274,
+      "unit_number": "104",
+      "building_code": "BLDG-17",
+      "floor_number": 1,
+      "meter_number": "WM-17-104",
+      "resident_name": "PASCUAL, SHARON VILLANUEVA",
+      "previous_reading": 383.65,
+      "reading_status": "flagged"
+    },
+    {
+      "unit_id": 275,
+      "unit_number": "105",
+      "building_code": "BLDG-17",
+      "floor_number": 1,
+      "meter_number": "WM-17-105",
+      "resident_name": "OLIVARES, NATHANIEL BAUTISTA",
+      "previous_reading": 324.85,
+      "reading_status": "flagged"
+    },
+    {
+      "unit_id": 276,
+      "unit_number": "106",
+      "building_code": "BLDG-17",
+      "floor_number": 1,
+      "meter_number": "WM-17-106",
+      "resident_name": "LIM, JESSA DELA CRUZ",
+      "previous_reading": 208.61,
+      "reading_status": "flagged"
+    },
+    {
+      "unit_id": 278,
+      "unit_number": "108",
+      "building_code": "BLDG-17",
+      "floor_number": 1,
+      "meter_number": "WM-17-108",
+      "resident_name": "TORRES, PATRICK CASTRO",
+      "previous_reading": 368.41,
+      "reading_status": "flagged"
+    },
+    {
+      "unit_id": 279,
+      "unit_number": "109",
+      "building_code": "BLDG-17",
+      "floor_number": 1,
+      "meter_number": "WM-17-109",
+      "resident_name": "MERCADO, NATHANIEL VELASCO",
+      "previous_reading": 270.75,
+      "reading_status": "flagged"
+    },
+    {
+      "unit_id": 280,
+      "unit_number": "110",
+      "building_code": "BLDG-17",
+      "floor_number": 1,
+      "meter_number": "WM-17-110",
+      "resident_name": "MALABANAN, GERALD PASCUAL",
+      "previous_reading": 298.22,
+      "reading_status": "flagged"
+    },
+    {
+      "unit_id": 281,
+      "unit_number": "111",
+      "building_code": "BLDG-17",
+      "floor_number": 1,
+      "meter_number": "WM-17-111",
+      "resident_name": "BAUTISTA, JOY VELASCO",
+      "previous_reading": 367.62,
+      "reading_status": "flagged"
+    },
+    {
+      "unit_id": 282,
+      "unit_number": "112",
+      "building_code": "BLDG-17",
+      "floor_number": 1,
+      "meter_number": "WM-17-112",
+      "resident_name": "CASTRO, JOY AGUILAR",
+      "previous_reading": 383.43,
+      "reading_status": "flagged"
+    },
+    {
+      "unit_id": 283,
+      "unit_number": "201",
+      "building_code": "BLDG-17",
+      "floor_number": 2,
+      "meter_number": "WM-17-201",
+      "resident_name": "CRUZ, LORENA RIVERA",
+      "previous_reading": 274.18,
+      "reading_status": "flagged"
+    },
+    {
+      "unit_id": 284,
+      "unit_number": "202",
+      "building_code": "BLDG-17",
+      "floor_number": 2,
+      "meter_number": "WM-17-202",
+      "resident_name": "DOMINGO, PATRICIA PEREZ",
+      "previous_reading": 312.77,
+      "reading_status": "flagged"
+    },
+    {
+      "unit_id": 285,
+      "unit_number": "203",
+      "building_code": "BLDG-17",
+      "floor_number": 2,
+      "meter_number": "WM-17-203",
+      "resident_name": "FERNANDEZ, ANNA NAVARRO",
+      "previous_reading": 253.83,
+      "reading_status": "flagged"
+    },
+    {
+      "unit_id": 286,
+      "unit_number": "204",
+      "building_code": "BLDG-17",
+      "floor_number": 2,
+      "meter_number": "WM-17-204",
+      "resident_name": "GONZALES, FE CASTRO",
+      "previous_reading": 315.98,
+      "reading_status": "flagged"
+    },
+    {
+      "unit_id": 287,
+      "unit_number": "205",
+      "building_code": "BLDG-17",
+      "floor_number": 2,
+      "meter_number": "WM-17-205",
+      "resident_name": "TAN, DANICA SALVADOR",
+      "previous_reading": 248.45,
+      "reading_status": "flagged"
+    },
+    {
+      "unit_id": 288,
+      "unit_number": "206",
+      "building_code": "BLDG-17",
+      "floor_number": 2,
+      "meter_number": "WM-17-206",
+      "resident_name": "MARQUEZ, JANE BAUTISTA",
+      "previous_reading": 253.94,
+      "reading_status": "flagged"
+    },
+    {
+      "unit_id": 289,
+      "unit_number": "207",
+      "building_code": "BLDG-17",
+      "floor_number": 2,
+      "meter_number": "WM-17-207",
+      "resident_name": "LUCERO, CARMINA BAUTISTA",
+      "previous_reading": 221.72,
+      "reading_status": "flagged"
+    },
+    {
+      "unit_id": 290,
+      "unit_number": "208",
+      "building_code": "BLDG-17",
+      "floor_number": 2,
+      "meter_number": "WM-17-208",
+      "resident_name": "MARTINEZ, BENJAMIN DELA CRUZ",
+      "previous_reading": 299.05,
+      "reading_status": "flagged"
+    },
+    {
+      "unit_id": 291,
+      "unit_number": "209",
+      "building_code": "BLDG-17",
+      "floor_number": 2,
+      "meter_number": "WM-17-209",
+      "resident_name": "ILAGAN, BENJAMIN TORRES",
+      "previous_reading": 227.33,
+      "reading_status": "flagged"
+    },
+    {
+      "unit_id": 292,
+      "unit_number": "210",
+      "building_code": "BLDG-17",
+      "floor_number": 2,
+      "meter_number": "WM-17-210",
+      "resident_name": "ESPIRITU, JUAN YAP",
+      "previous_reading": 401.38,
+      "reading_status": "flagged"
+    },
+    {
+      "unit_id": 293,
+      "unit_number": "211",
+      "building_code": "BLDG-17",
+      "floor_number": 2,
+      "meter_number": "WM-17-211",
+      "resident_name": "GARCIA, PETER CASTRO",
+      "previous_reading": 405.06,
+      "reading_status": "flagged"
+    },
+    {
+      "unit_id": 294,
+      "unit_number": "212",
+      "building_code": "BLDG-17",
+      "floor_number": 2,
+      "meter_number": "WM-17-212",
+      "resident_name": "REYES, JANE VELASCO",
+      "previous_reading": 248.66,
+      "reading_status": "flagged"
+    },
+    {
+      "unit_id": 295,
+      "unit_number": "301",
+      "building_code": "BLDG-17",
+      "floor_number": 3,
+      "meter_number": "WM-17-301",
+      "resident_name": "DE GUZMAN, CARLO TAN",
+      "previous_reading": 257.58,
+      "reading_status": "flagged"
+    },
+    {
+      "unit_id": 297,
+      "unit_number": "303",
+      "building_code": "BLDG-17",
+      "floor_number": 3,
+      "meter_number": "WM-17-303",
+      "resident_name": "VILLANUEVA, JUAN SANTOS",
+      "previous_reading": 304.58,
+      "reading_status": "flagged"
+    },
+    {
+      "unit_id": 298,
+      "unit_number": "304",
+      "building_code": "BLDG-17",
+      "floor_number": 3,
+      "meter_number": "WM-17-304",
+      "resident_name": "SALVADOR, RODERICK VELASCO",
+      "previous_reading": 294.52,
+      "reading_status": "flagged"
+    },
+    {
+      "unit_id": 299,
+      "unit_number": "305",
+      "building_code": "BLDG-17",
+      "floor_number": 3,
+      "meter_number": "WM-17-305",
+      "resident_name": "DE GUZMAN, JOY DELA CRUZ",
+      "previous_reading": 240.66,
+      "reading_status": "flagged"
+    },
+    {
+      "unit_id": 300,
+      "unit_number": "306",
+      "building_code": "BLDG-17",
+      "floor_number": 3,
+      "meter_number": "WM-17-306",
+      "resident_name": "YAP, CATHERINE BAUTISTA",
+      "previous_reading": 372.01,
+      "reading_status": "flagged"
+    },
+    {
+      "unit_id": 301,
+      "unit_number": "307",
+      "building_code": "BLDG-17",
+      "floor_number": 3,
+      "meter_number": "WM-17-307",
+      "resident_name": "AGUILAR, CARMINA REYES",
+      "previous_reading": 390.27,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 302,
+      "unit_number": "308",
+      "building_code": "BLDG-17",
+      "floor_number": 3,
+      "meter_number": "WM-17-308",
+      "resident_name": "GONZALES, PATRICK AGUILAR",
+      "previous_reading": 333.22,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 303,
+      "unit_number": "309",
+      "building_code": "BLDG-17",
+      "floor_number": 3,
+      "meter_number": "WM-17-309",
+      "resident_name": "SALVADOR, ERIKA PEREZ",
+      "previous_reading": 394.51,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 304,
+      "unit_number": "310",
+      "building_code": "BLDG-17",
+      "floor_number": 3,
+      "meter_number": "WM-17-310",
+      "resident_name": "GONZALES, MARK SALVADOR",
+      "previous_reading": 276.43,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 305,
+      "unit_number": "311",
+      "building_code": "BLDG-17",
+      "floor_number": 3,
+      "meter_number": "WM-17-311",
+      "resident_name": "MENDOZA, GERALD TORRES",
+      "previous_reading": 387.68,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 306,
+      "unit_number": "312",
+      "building_code": "BLDG-17",
+      "floor_number": 3,
+      "meter_number": "WM-17-312",
+      "resident_name": "SORIANO, MARK VELASCO",
+      "previous_reading": 222.53,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 307,
+      "unit_number": "401",
+      "building_code": "BLDG-17",
+      "floor_number": 4,
+      "meter_number": "WM-17-401",
+      "resident_name": "TOLENTINO, PATRICIA MENDOZA",
+      "previous_reading": 398.21,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 308,
+      "unit_number": "402",
+      "building_code": "BLDG-17",
+      "floor_number": 4,
+      "meter_number": "WM-17-402",
+      "resident_name": "TAN, ANA MERCADO",
+      "previous_reading": 346.26,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 309,
+      "unit_number": "403",
+      "building_code": "BLDG-17",
+      "floor_number": 4,
+      "meter_number": "WM-17-403",
+      "resident_name": "FERNANDEZ, ANA CRUZ",
+      "previous_reading": 296.79,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 311,
+      "unit_number": "405",
+      "building_code": "BLDG-17",
+      "floor_number": 4,
+      "meter_number": "WM-17-405",
+      "resident_name": "CRUZ, JOEL AQUINO",
+      "previous_reading": 233.12,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 312,
+      "unit_number": "406",
+      "building_code": "BLDG-17",
+      "floor_number": 4,
+      "meter_number": "WM-17-406",
+      "resident_name": "YAP, MARY ANN BAUTISTA",
+      "previous_reading": 400.72,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 313,
+      "unit_number": "407",
+      "building_code": "BLDG-17",
+      "floor_number": 4,
+      "meter_number": "WM-17-407",
+      "resident_name": "AQUINO, LORENA FLORES",
+      "previous_reading": 209.21,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 314,
+      "unit_number": "408",
+      "building_code": "BLDG-17",
+      "floor_number": 4,
+      "meter_number": "WM-17-408",
+      "resident_name": "MARTINEZ, JESSA PASCUAL",
+      "previous_reading": 356.02,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 315,
+      "unit_number": "409",
+      "building_code": "BLDG-17",
+      "floor_number": 4,
+      "meter_number": "WM-17-409",
+      "resident_name": "LIM, SHARON TAN",
+      "previous_reading": 206.61,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 317,
+      "unit_number": "411",
+      "building_code": "BLDG-17",
+      "floor_number": 4,
+      "meter_number": "WM-17-411",
+      "resident_name": "CABRERA, JOSE FLORES",
+      "previous_reading": 359.88,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 318,
+      "unit_number": "412",
+      "building_code": "BLDG-17",
+      "floor_number": 4,
+      "meter_number": "WM-17-412",
+      "resident_name": "VELASCO, MARK DOMINGO",
+      "previous_reading": 275.63,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 319,
+      "unit_number": "501",
+      "building_code": "BLDG-17",
+      "floor_number": 5,
+      "meter_number": "WM-17-501",
+      "resident_name": "FERNANDEZ, ERIKA SANTOS",
+      "previous_reading": 347.46,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 320,
+      "unit_number": "502",
+      "building_code": "BLDG-17",
+      "floor_number": 5,
+      "meter_number": "WM-17-502",
+      "resident_name": "FAJARDO, GERALD VILLANUEVA",
+      "previous_reading": 383.56,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 321,
+      "unit_number": "503",
+      "building_code": "BLDG-17",
+      "floor_number": 5,
+      "meter_number": "WM-17-503",
+      "resident_name": "TOLENTINO, PAOLO FLORES",
+      "previous_reading": 359.86,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 322,
+      "unit_number": "504",
+      "building_code": "BLDG-17",
+      "floor_number": 5,
+      "meter_number": "WM-17-504",
+      "resident_name": "DOMINGO, LEONARDO FLORES",
+      "previous_reading": 378.43,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 323,
+      "unit_number": "505",
+      "building_code": "BLDG-17",
+      "floor_number": 5,
+      "meter_number": "WM-17-505",
+      "resident_name": "ILAGAN, JESSA REYES",
+      "previous_reading": 314.99,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 325,
+      "unit_number": "507",
+      "building_code": "BLDG-17",
+      "floor_number": 5,
+      "meter_number": "WM-17-507",
+      "resident_name": "SAMSON, JOHN RIVERA",
+      "previous_reading": 283.12,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 326,
+      "unit_number": "508",
+      "building_code": "BLDG-17",
+      "floor_number": 5,
+      "meter_number": "WM-17-508",
+      "resident_name": "PADILLA, MARIA LUISA FLORES",
+      "previous_reading": 329.74,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 328,
+      "unit_number": "510",
+      "building_code": "BLDG-17",
+      "floor_number": 5,
+      "meter_number": "WM-17-510",
+      "resident_name": "CRUZ, CARMINA NAVARRO",
+      "previous_reading": 391.79,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 329,
+      "unit_number": "511",
+      "building_code": "BLDG-17",
+      "floor_number": 5,
+      "meter_number": "WM-17-511",
+      "resident_name": "AGUILAR, PAOLO TORRES",
+      "previous_reading": 261.83,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 330,
+      "unit_number": "512",
+      "building_code": "BLDG-17",
+      "floor_number": 5,
+      "meter_number": "WM-17-512",
+      "resident_name": "CRUZ, LIZA VELASCO",
+      "previous_reading": 399.44,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 331,
+      "unit_number": "101",
+      "building_code": "BLDG-18",
+      "floor_number": 1,
+      "meter_number": "WM-18-101",
+      "resident_name": "MALABANAN, PAUL CASTRO",
+      "previous_reading": 340.48,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 332,
+      "unit_number": "102",
+      "building_code": "BLDG-18",
+      "floor_number": 1,
+      "meter_number": "WM-18-102",
+      "resident_name": "TRINIDAD, ROSEMARIE DOMINGO",
+      "previous_reading": 216.97,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 333,
+      "unit_number": "103",
+      "building_code": "BLDG-18",
+      "floor_number": 1,
+      "meter_number": "WM-18-103",
+      "resident_name": "TAN, HENRY GARCIA",
+      "previous_reading": 399.04,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 334,
+      "unit_number": "104",
+      "building_code": "BLDG-18",
+      "floor_number": 1,
+      "meter_number": "WM-18-104",
+      "resident_name": "OLIVARES, DANICA NAVARRO",
+      "previous_reading": 386.57,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 335,
+      "unit_number": "105",
+      "building_code": "BLDG-18",
+      "floor_number": 1,
+      "meter_number": "WM-18-105",
+      "resident_name": "YAP, JASMINE TORRES",
+      "previous_reading": 270.52,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 336,
+      "unit_number": "106",
+      "building_code": "BLDG-18",
+      "floor_number": 1,
+      "meter_number": "WM-18-106",
+      "resident_name": "FERNANDEZ, ELIZABETH MERCADO",
+      "previous_reading": 218.88,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 337,
+      "unit_number": "107",
+      "building_code": "BLDG-18",
+      "floor_number": 1,
+      "meter_number": "WM-18-107",
+      "resident_name": "MIRANDA, EDUARDO GARCIA",
+      "previous_reading": 295.93,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 338,
+      "unit_number": "108",
+      "building_code": "BLDG-18",
+      "floor_number": 1,
+      "meter_number": "WM-18-108",
+      "resident_name": "AGUILAR, MARIA LUISA LOPEZ",
+      "previous_reading": 209.5,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 339,
+      "unit_number": "109",
+      "building_code": "BLDG-18",
+      "floor_number": 1,
+      "meter_number": "WM-18-109",
+      "resident_name": "MALABANAN, FRANCIS FLORES",
+      "previous_reading": 279.11,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 340,
+      "unit_number": "110",
+      "building_code": "BLDG-18",
+      "floor_number": 1,
+      "meter_number": "WM-18-110",
+      "resident_name": "SAMSON, NATHANIEL AGUILAR",
+      "previous_reading": 245.95,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 342,
+      "unit_number": "112",
+      "building_code": "BLDG-18",
+      "floor_number": 1,
+      "meter_number": "WM-18-112",
+      "resident_name": "VELASCO, DANICA SANTOS",
+      "previous_reading": 312.76,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 343,
+      "unit_number": "201",
+      "building_code": "BLDG-18",
+      "floor_number": 2,
+      "meter_number": "WM-18-201",
+      "resident_name": "VELASCO, PATRICK AGUILAR",
+      "previous_reading": 342.7,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 344,
+      "unit_number": "202",
+      "building_code": "BLDG-18",
+      "floor_number": 2,
+      "meter_number": "WM-18-202",
+      "resident_name": "MERCADO, PAUL DOMINGO",
+      "previous_reading": 402.04,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 345,
+      "unit_number": "203",
+      "building_code": "BLDG-18",
+      "floor_number": 2,
+      "meter_number": "WM-18-203",
+      "resident_name": "GARCIA, SHARON BAUTISTA",
+      "previous_reading": 265.13,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 346,
+      "unit_number": "204",
+      "building_code": "BLDG-18",
+      "floor_number": 2,
+      "meter_number": "WM-18-204",
+      "resident_name": "FLORES, PAUL AGUILAR",
+      "previous_reading": 336.21,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 348,
+      "unit_number": "206",
+      "building_code": "BLDG-18",
+      "floor_number": 2,
+      "meter_number": "WM-18-206",
+      "resident_name": "VILLANUEVA, JOEL AGUILAR",
+      "previous_reading": 305.63,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 349,
+      "unit_number": "207",
+      "building_code": "BLDG-18",
+      "floor_number": 2,
+      "meter_number": "WM-18-207",
+      "resident_name": "GONZALES, JANE TRINIDAD",
+      "previous_reading": 401.56,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 351,
+      "unit_number": "209",
+      "building_code": "BLDG-18",
+      "floor_number": 2,
+      "meter_number": "WM-18-209",
+      "resident_name": "MARQUEZ, PATRICK PASCUAL",
+      "previous_reading": 265.3,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 352,
+      "unit_number": "210",
+      "building_code": "BLDG-18",
+      "floor_number": 2,
+      "meter_number": "WM-18-210",
+      "resident_name": "VALDEZ, GERALD AGUILAR",
+      "previous_reading": 416.93,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 353,
+      "unit_number": "211",
+      "building_code": "BLDG-18",
+      "floor_number": 2,
+      "meter_number": "WM-18-211",
+      "resident_name": "DEL ROSARIO, ALAN TORRES",
+      "previous_reading": 234.47,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 354,
+      "unit_number": "212",
+      "building_code": "BLDG-18",
+      "floor_number": 2,
+      "meter_number": "WM-18-212",
+      "resident_name": "DOMINGO, JUAN VELASCO",
+      "previous_reading": 359.43,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 355,
+      "unit_number": "301",
+      "building_code": "BLDG-18",
+      "floor_number": 3,
+      "meter_number": "WM-18-301",
+      "resident_name": "OLIVARES, DANICA DOMINGO",
+      "previous_reading": 337.07,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 356,
+      "unit_number": "302",
+      "building_code": "BLDG-18",
+      "floor_number": 3,
+      "meter_number": "WM-18-302",
+      "resident_name": "AGUILAR, ROSEMARIE CASTRO",
+      "previous_reading": 219.15,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 357,
+      "unit_number": "303",
+      "building_code": "BLDG-18",
+      "floor_number": 3,
+      "meter_number": "WM-18-303",
+      "resident_name": "GARCIA, JOY SALVADOR",
+      "previous_reading": 328.01,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 358,
+      "unit_number": "304",
+      "building_code": "BLDG-18",
+      "floor_number": 3,
+      "meter_number": "WM-18-304",
+      "resident_name": "MARQUEZ, LORENA GARCIA",
+      "previous_reading": 255.06,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 359,
+      "unit_number": "305",
+      "building_code": "BLDG-18",
+      "floor_number": 3,
+      "meter_number": "WM-18-305",
+      "resident_name": "CASTRO, LORENA CASTRO",
+      "previous_reading": 342.23,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 360,
+      "unit_number": "306",
+      "building_code": "BLDG-18",
+      "floor_number": 3,
+      "meter_number": "WM-18-306",
+      "resident_name": "NICOLAS, SHARON TORRES",
+      "previous_reading": 235.66,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 361,
+      "unit_number": "307",
+      "building_code": "BLDG-18",
+      "floor_number": 3,
+      "meter_number": "WM-18-307",
+      "resident_name": "MIRANDA, ELIZABETH SANTOS",
+      "previous_reading": 199.24,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 363,
+      "unit_number": "309",
+      "building_code": "BLDG-18",
+      "floor_number": 3,
+      "meter_number": "WM-18-309",
+      "resident_name": "TORRES, JOY LOPEZ",
+      "previous_reading": 262.35,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 366,
+      "unit_number": "312",
+      "building_code": "BLDG-18",
+      "floor_number": 3,
+      "meter_number": "WM-18-312",
+      "resident_name": "DOMINGO, JULIUS DOMINGO",
+      "previous_reading": 327.83,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 367,
+      "unit_number": "401",
+      "building_code": "BLDG-18",
+      "floor_number": 4,
+      "meter_number": "WM-18-401",
+      "resident_name": "OLIVARES, RICHARD PASCUAL",
+      "previous_reading": 335.18,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 368,
+      "unit_number": "402",
+      "building_code": "BLDG-18",
+      "floor_number": 4,
+      "meter_number": "WM-18-402",
+      "resident_name": "NICOLAS, PATRICIA AQUINO",
+      "previous_reading": 379.35,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 369,
+      "unit_number": "403",
+      "building_code": "BLDG-18",
+      "floor_number": 4,
+      "meter_number": "WM-18-403",
+      "resident_name": "YAP, RONALD VILLANUEVA",
+      "previous_reading": 255.93,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 371,
+      "unit_number": "405",
+      "building_code": "BLDG-18",
+      "floor_number": 4,
+      "meter_number": "WM-18-405",
+      "resident_name": "RIVERA, PATRICK TRINIDAD",
+      "previous_reading": 266.86,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 372,
+      "unit_number": "406",
+      "building_code": "BLDG-18",
+      "floor_number": 4,
+      "meter_number": "WM-18-406",
+      "resident_name": "MERCADO, LORENA AGUILAR",
+      "previous_reading": 296.69,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 373,
+      "unit_number": "407",
+      "building_code": "BLDG-18",
+      "floor_number": 4,
+      "meter_number": "WM-18-407",
+      "resident_name": "FERNANDEZ, RONALD LOPEZ",
+      "previous_reading": 207.02,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 374,
+      "unit_number": "408",
+      "building_code": "BLDG-18",
+      "floor_number": 4,
+      "meter_number": "WM-18-408",
+      "resident_name": "RAMOS, ELIZABETH MERCADO",
+      "previous_reading": 403.31,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 375,
+      "unit_number": "409",
+      "building_code": "BLDG-18",
+      "floor_number": 4,
+      "meter_number": "WM-18-409",
+      "resident_name": "GONZALES, JESSA AGUILAR",
+      "previous_reading": 278.84,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 376,
+      "unit_number": "410",
+      "building_code": "BLDG-18",
+      "floor_number": 4,
+      "meter_number": "WM-18-410",
+      "resident_name": "LOPEZ, LEONARDO SALVADOR",
+      "previous_reading": 379.44,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 377,
+      "unit_number": "411",
+      "building_code": "BLDG-18",
+      "floor_number": 4,
+      "meter_number": "WM-18-411",
+      "resident_name": "ALVAREZ, MARIA LUISA CRUZ",
+      "previous_reading": 302.66,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 378,
+      "unit_number": "412",
+      "building_code": "BLDG-18",
+      "floor_number": 4,
+      "meter_number": "WM-18-412",
+      "resident_name": "RAMOS, MICHELLE SALVADOR",
+      "previous_reading": 327.72,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 379,
+      "unit_number": "501",
+      "building_code": "BLDG-18",
+      "floor_number": 5,
+      "meter_number": "WM-18-501",
+      "resident_name": "CORTEZ, JOHN MERCADO",
+      "previous_reading": 336.91,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 380,
+      "unit_number": "502",
+      "building_code": "BLDG-18",
+      "floor_number": 5,
+      "meter_number": "WM-18-502",
+      "resident_name": "ILAGAN, JOSE AGUILAR",
+      "previous_reading": 304.65,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 381,
+      "unit_number": "503",
+      "building_code": "BLDG-18",
+      "floor_number": 5,
+      "meter_number": "WM-18-503",
+      "resident_name": "CRUZ, HENRY BAUTISTA",
+      "previous_reading": 347.03,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 382,
+      "unit_number": "504",
+      "building_code": "BLDG-18",
+      "floor_number": 5,
+      "meter_number": "WM-18-504",
+      "resident_name": "MARQUEZ, FRANCIS YAP",
+      "previous_reading": 245.68,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 384,
+      "unit_number": "506",
+      "building_code": "BLDG-18",
+      "floor_number": 5,
+      "meter_number": "WM-18-506",
+      "resident_name": "PADILLA, MICHAEL DOMINGO",
+      "previous_reading": 286.9,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 385,
+      "unit_number": "507",
+      "building_code": "BLDG-18",
+      "floor_number": 5,
+      "meter_number": "WM-18-507",
+      "resident_name": "SAMSON, ANGELICA CRUZ",
+      "previous_reading": 379.3,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 386,
+      "unit_number": "508",
+      "building_code": "BLDG-18",
+      "floor_number": 5,
+      "meter_number": "WM-18-508",
+      "resident_name": "AGUILAR, NOEL PEREZ",
+      "previous_reading": 211.47,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 387,
+      "unit_number": "509",
+      "building_code": "BLDG-18",
+      "floor_number": 5,
+      "meter_number": "WM-18-509",
+      "resident_name": "FLORES, MICHELLE CASTRO",
+      "previous_reading": 267.99,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 388,
+      "unit_number": "510",
+      "building_code": "BLDG-18",
+      "floor_number": 5,
+      "meter_number": "WM-18-510",
+      "resident_name": "TOLENTINO, CARLO GARCIA",
+      "previous_reading": 232.41,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 389,
+      "unit_number": "511",
+      "building_code": "BLDG-18",
+      "floor_number": 5,
+      "meter_number": "WM-18-511",
+      "resident_name": "VALDEZ, MICHELLE AQUINO",
+      "previous_reading": 315.13,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 390,
+      "unit_number": "512",
+      "building_code": "BLDG-18",
+      "floor_number": 5,
+      "meter_number": "WM-18-512",
+      "resident_name": "MENDOZA, MARY ANN AGUILAR",
+      "previous_reading": 199.69,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 391,
+      "unit_number": "101",
+      "building_code": "BLDG-19",
+      "floor_number": 1,
+      "meter_number": "WM-19-101",
+      "resident_name": "GONZALES, ANGEL AQUINO",
+      "previous_reading": 420.44,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 392,
+      "unit_number": "102",
+      "building_code": "BLDG-19",
+      "floor_number": 1,
+      "meter_number": "WM-19-102",
+      "resident_name": "SORIANO, MELANIE DELA CRUZ",
+      "previous_reading": 316.53,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 393,
+      "unit_number": "103",
+      "building_code": "BLDG-19",
+      "floor_number": 1,
+      "meter_number": "WM-19-103",
+      "resident_name": "DOMINGO, JOHN CRUZ",
+      "previous_reading": 371.71,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 394,
+      "unit_number": "104",
+      "building_code": "BLDG-19",
+      "floor_number": 1,
+      "meter_number": "WM-19-104",
+      "resident_name": "GARCIA, ANGEL AQUINO",
+      "previous_reading": 263.32,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 395,
+      "unit_number": "105",
+      "building_code": "BLDG-19",
+      "floor_number": 1,
+      "meter_number": "WM-19-105",
+      "resident_name": "MARQUEZ, EDUARDO CASTRO",
+      "previous_reading": 409.19,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 396,
+      "unit_number": "106",
+      "building_code": "BLDG-19",
+      "floor_number": 1,
+      "meter_number": "WM-19-106",
+      "resident_name": "TORRES, CARMINA MERCADO",
+      "previous_reading": 324.65,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 398,
+      "unit_number": "108",
+      "building_code": "BLDG-19",
+      "floor_number": 1,
+      "meter_number": "WM-19-108",
+      "resident_name": "AQUINO, RICARDO CRUZ",
+      "previous_reading": 316.72,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 399,
+      "unit_number": "109",
+      "building_code": "BLDG-19",
+      "floor_number": 1,
+      "meter_number": "WM-19-109",
+      "resident_name": "BAUTISTA, ANGEL VILLANUEVA",
+      "previous_reading": 202.47,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 400,
+      "unit_number": "110",
+      "building_code": "BLDG-19",
+      "floor_number": 1,
+      "meter_number": "WM-19-110",
+      "resident_name": "GONZALES, JANE MENDOZA",
+      "previous_reading": 233.05,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 402,
+      "unit_number": "112",
+      "building_code": "BLDG-19",
+      "floor_number": 1,
+      "meter_number": "WM-19-112",
+      "resident_name": "GONZALES, MARY ANN REYES",
+      "previous_reading": 274.7,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 403,
+      "unit_number": "201",
+      "building_code": "BLDG-19",
+      "floor_number": 2,
+      "meter_number": "WM-19-201",
+      "resident_name": "LUCERO, DANICA VILLANUEVA",
+      "previous_reading": 389.41,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 404,
+      "unit_number": "202",
+      "building_code": "BLDG-19",
+      "floor_number": 2,
+      "meter_number": "WM-19-202",
+      "resident_name": "REYES, JOHN VILLANUEVA",
+      "previous_reading": 207.07,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 406,
+      "unit_number": "204",
+      "building_code": "BLDG-19",
+      "floor_number": 2,
+      "meter_number": "WM-19-204",
+      "resident_name": "CRUZ, JOHN DELA CRUZ",
+      "previous_reading": 229.99,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 407,
+      "unit_number": "205",
+      "building_code": "BLDG-19",
+      "floor_number": 2,
+      "meter_number": "WM-19-205",
+      "resident_name": "LIM, NOEL AQUINO",
+      "previous_reading": 335.86,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 408,
+      "unit_number": "206",
+      "building_code": "BLDG-19",
+      "floor_number": 2,
+      "meter_number": "WM-19-206",
+      "resident_name": "GONZALES, RODERICK NAVARRO",
+      "previous_reading": 249.57,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 409,
+      "unit_number": "207",
+      "building_code": "BLDG-19",
+      "floor_number": 2,
+      "meter_number": "WM-19-207",
+      "resident_name": "BAUTISTA, CARMINA CASTRO",
+      "previous_reading": 385.23,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 410,
+      "unit_number": "208",
+      "building_code": "BLDG-19",
+      "floor_number": 2,
+      "meter_number": "WM-19-208",
+      "resident_name": "PASCUAL, MICHAEL MERCADO",
+      "previous_reading": 294.03,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 411,
+      "unit_number": "209",
+      "building_code": "BLDG-19",
+      "floor_number": 2,
+      "meter_number": "WM-19-209",
+      "resident_name": "MERCADO, RINA MENDOZA",
+      "previous_reading": 388.86,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 413,
+      "unit_number": "211",
+      "building_code": "BLDG-19",
+      "floor_number": 2,
+      "meter_number": "WM-19-211",
+      "resident_name": "DELA CRUZ, EDUARDO VILLANUEVA",
+      "previous_reading": 378.76,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 414,
+      "unit_number": "212",
+      "building_code": "BLDG-19",
+      "floor_number": 2,
+      "meter_number": "WM-19-212",
+      "resident_name": "NAVARRO, LORENA VELASCO",
+      "previous_reading": 377.08,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 415,
+      "unit_number": "301",
+      "building_code": "BLDG-19",
+      "floor_number": 3,
+      "meter_number": "WM-19-301",
+      "resident_name": "VILLANUEVA, LEONARDO DELA CRUZ",
+      "previous_reading": 220.68,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 416,
+      "unit_number": "302",
+      "building_code": "BLDG-19",
+      "floor_number": 3,
+      "meter_number": "WM-19-302",
+      "resident_name": "DELA CRUZ, MICHELLE TORRES",
+      "previous_reading": 219.05,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 418,
+      "unit_number": "304",
+      "building_code": "BLDG-19",
+      "floor_number": 3,
+      "meter_number": "WM-19-304",
+      "resident_name": "CASTRO, NATHANIEL DELA CRUZ",
+      "previous_reading": 214.92,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 419,
+      "unit_number": "305",
+      "building_code": "BLDG-19",
+      "floor_number": 3,
+      "meter_number": "WM-19-305",
+      "resident_name": "RIVERA, PETER REYES",
+      "previous_reading": 211.55,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 420,
+      "unit_number": "306",
+      "building_code": "BLDG-19",
+      "floor_number": 3,
+      "meter_number": "WM-19-306",
+      "resident_name": "ALVAREZ, MARIA LUISA LOPEZ",
+      "previous_reading": 318.02,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 421,
+      "unit_number": "307",
+      "building_code": "BLDG-19",
+      "floor_number": 3,
+      "meter_number": "WM-19-307",
+      "resident_name": "SAMSON, JOSE VILLANUEVA",
+      "previous_reading": 421.19,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 422,
+      "unit_number": "308",
+      "building_code": "BLDG-19",
+      "floor_number": 3,
+      "meter_number": "WM-19-308",
+      "resident_name": "MANALO, ANA SALVADOR",
+      "previous_reading": 379.96,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 423,
+      "unit_number": "309",
+      "building_code": "BLDG-19",
+      "floor_number": 3,
+      "meter_number": "WM-19-309",
+      "resident_name": "MACAPAGAL, RICHARD TAN",
+      "previous_reading": 283.12,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 424,
+      "unit_number": "310",
+      "building_code": "BLDG-19",
+      "floor_number": 3,
+      "meter_number": "WM-19-310",
+      "resident_name": "NICOLAS, CARMINA TAN",
+      "previous_reading": 319.15,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 425,
+      "unit_number": "311",
+      "building_code": "BLDG-19",
+      "floor_number": 3,
+      "meter_number": "WM-19-311",
+      "resident_name": "TAN, EDUARDO NAVARRO",
+      "previous_reading": 396.69,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 426,
+      "unit_number": "312",
+      "building_code": "BLDG-19",
+      "floor_number": 3,
+      "meter_number": "WM-19-312",
+      "resident_name": "TAN, GERALD LOPEZ",
+      "previous_reading": 261.63,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 427,
+      "unit_number": "401",
+      "building_code": "BLDG-19",
+      "floor_number": 4,
+      "meter_number": "WM-19-401",
+      "resident_name": "LUCERO, LORENA RIVERA",
+      "previous_reading": 305.18,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 428,
+      "unit_number": "402",
+      "building_code": "BLDG-19",
+      "floor_number": 4,
+      "meter_number": "WM-19-402",
+      "resident_name": "ESPIRITU, BENJAMIN PEREZ",
+      "previous_reading": 339.01,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 429,
+      "unit_number": "403",
+      "building_code": "BLDG-19",
+      "floor_number": 4,
+      "meter_number": "WM-19-403",
+      "resident_name": "MENDOZA, MICHELLE RIVERA",
+      "previous_reading": 224.65,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 430,
+      "unit_number": "404",
+      "building_code": "BLDG-19",
+      "floor_number": 4,
+      "meter_number": "WM-19-404",
+      "resident_name": "MACAPAGAL, ROSEMARIE BAUTISTA",
+      "previous_reading": 387.77,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 431,
+      "unit_number": "405",
+      "building_code": "BLDG-19",
+      "floor_number": 4,
+      "meter_number": "WM-19-405",
+      "resident_name": "MIRANDA, ANA LOPEZ",
+      "previous_reading": 218.94,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 432,
+      "unit_number": "406",
+      "building_code": "BLDG-19",
+      "floor_number": 4,
+      "meter_number": "WM-19-406",
+      "resident_name": "TOLENTINO, ELIZABETH SALVADOR",
+      "previous_reading": 368.63,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 433,
+      "unit_number": "407",
+      "building_code": "BLDG-19",
+      "floor_number": 4,
+      "meter_number": "WM-19-407",
+      "resident_name": "SANTOS, ANA VILLANUEVA",
+      "previous_reading": 343.91,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 434,
+      "unit_number": "408",
+      "building_code": "BLDG-19",
+      "floor_number": 4,
+      "meter_number": "WM-19-408",
+      "resident_name": "VELASCO, JESSA VELASCO",
+      "previous_reading": 276.84,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 435,
+      "unit_number": "409",
+      "building_code": "BLDG-19",
+      "floor_number": 4,
+      "meter_number": "WM-19-409",
+      "resident_name": "AGUILAR, CARMINA SANTOS",
+      "previous_reading": 272.78,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 437,
+      "unit_number": "411",
+      "building_code": "BLDG-19",
+      "floor_number": 4,
+      "meter_number": "WM-19-411",
+      "resident_name": "AGUILAR, ANGEL REYES",
+      "previous_reading": 339.76,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 438,
+      "unit_number": "412",
+      "building_code": "BLDG-19",
+      "floor_number": 4,
+      "meter_number": "WM-19-412",
+      "resident_name": "ESPIRITU, ALAN DOMINGO",
+      "previous_reading": 350.99,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 439,
+      "unit_number": "501",
+      "building_code": "BLDG-19",
+      "floor_number": 5,
+      "meter_number": "WM-19-501",
+      "resident_name": "ALVAREZ, JOY CRUZ",
+      "previous_reading": 363.46,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 440,
+      "unit_number": "502",
+      "building_code": "BLDG-19",
+      "floor_number": 5,
+      "meter_number": "WM-19-502",
+      "resident_name": "DOMINGO, PETER YAP",
+      "previous_reading": 272.51,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 441,
+      "unit_number": "503",
+      "building_code": "BLDG-19",
+      "floor_number": 5,
+      "meter_number": "WM-19-503",
+      "resident_name": "CASTRO, VICTOR YAP",
+      "previous_reading": 289.11,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 443,
+      "unit_number": "505",
+      "building_code": "BLDG-19",
+      "floor_number": 5,
+      "meter_number": "WM-19-505",
+      "resident_name": "LIM, MARK LOPEZ",
+      "previous_reading": 387.69,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 444,
+      "unit_number": "506",
+      "building_code": "BLDG-19",
+      "floor_number": 5,
+      "meter_number": "WM-19-506",
+      "resident_name": "CORTEZ, PAUL TORRES",
+      "previous_reading": 381.31,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 445,
+      "unit_number": "507",
+      "building_code": "BLDG-19",
+      "floor_number": 5,
+      "meter_number": "WM-19-507",
+      "resident_name": "DOMINGO, ERIKA SANTOS",
+      "previous_reading": 219.91,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 446,
+      "unit_number": "508",
+      "building_code": "BLDG-19",
+      "floor_number": 5,
+      "meter_number": "WM-19-508",
+      "resident_name": "LOPEZ, FE AGUILAR",
+      "previous_reading": 319.49,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 447,
+      "unit_number": "509",
+      "building_code": "BLDG-19",
+      "floor_number": 5,
+      "meter_number": "WM-19-509",
+      "resident_name": "ESPIRITU, ERIKA TORRES",
+      "previous_reading": 280.44,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 448,
+      "unit_number": "510",
+      "building_code": "BLDG-19",
+      "floor_number": 5,
+      "meter_number": "WM-19-510",
+      "resident_name": "MARTINEZ, CARMINA TORRES",
+      "previous_reading": 232.57,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 449,
+      "unit_number": "511",
+      "building_code": "BLDG-19",
+      "floor_number": 5,
+      "meter_number": "WM-19-511",
+      "resident_name": "MARTINEZ, LIZA CRUZ",
+      "previous_reading": 306.54,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 451,
+      "unit_number": "101",
+      "building_code": "BLDG-20",
+      "floor_number": 1,
+      "meter_number": "WM-20-101",
+      "resident_name": "CASTRO, LIZA SALVADOR",
+      "previous_reading": 193.81,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 452,
+      "unit_number": "102",
+      "building_code": "BLDG-20",
+      "floor_number": 1,
+      "meter_number": "WM-20-102",
+      "resident_name": "LIM, ANNA MENDOZA",
+      "previous_reading": 275.66,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 453,
+      "unit_number": "103",
+      "building_code": "BLDG-20",
+      "floor_number": 1,
+      "meter_number": "WM-20-103",
+      "resident_name": "REYES, JOSE REYES",
+      "previous_reading": 264.62,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 454,
+      "unit_number": "104",
+      "building_code": "BLDG-20",
+      "floor_number": 1,
+      "meter_number": "WM-20-104",
+      "resident_name": "NICOLAS, ANGEL BAUTISTA",
+      "previous_reading": 325.04,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 455,
+      "unit_number": "105",
+      "building_code": "BLDG-20",
+      "floor_number": 1,
+      "meter_number": "WM-20-105",
+      "resident_name": "CASTRO, RINA DELA CRUZ",
+      "previous_reading": 330.14,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 456,
+      "unit_number": "106",
+      "building_code": "BLDG-20",
+      "floor_number": 1,
+      "meter_number": "WM-20-106",
+      "resident_name": "FAJARDO, CRISTINA REYES",
+      "previous_reading": 212.72,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 457,
+      "unit_number": "107",
+      "building_code": "BLDG-20",
+      "floor_number": 1,
+      "meter_number": "WM-20-107",
+      "resident_name": "SALVADOR, HENRY PEREZ",
+      "previous_reading": 243.98,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 458,
+      "unit_number": "108",
+      "building_code": "BLDG-20",
+      "floor_number": 1,
+      "meter_number": "WM-20-108",
+      "resident_name": "NAVARRO, LIZA BAUTISTA",
+      "previous_reading": 370.64,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 459,
+      "unit_number": "109",
+      "building_code": "BLDG-20",
+      "floor_number": 1,
+      "meter_number": "WM-20-109",
+      "resident_name": "NAVARRO, ELIZABETH NAVARRO",
+      "previous_reading": 256.22,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 460,
+      "unit_number": "110",
+      "building_code": "BLDG-20",
+      "floor_number": 1,
+      "meter_number": "WM-20-110",
+      "resident_name": "SANTOS, ANNA VELASCO",
+      "previous_reading": 231.86,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 462,
+      "unit_number": "112",
+      "building_code": "BLDG-20",
+      "floor_number": 1,
+      "meter_number": "WM-20-112",
+      "resident_name": "AGUILAR, ALAN VILLANUEVA",
+      "previous_reading": 412.04,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 463,
+      "unit_number": "201",
+      "building_code": "BLDG-20",
+      "floor_number": 2,
+      "meter_number": "WM-20-201",
+      "resident_name": "GONZALES, RONALD LOPEZ",
+      "previous_reading": 232.15,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 465,
+      "unit_number": "203",
+      "building_code": "BLDG-20",
+      "floor_number": 2,
+      "meter_number": "WM-20-203",
+      "resident_name": "MARQUEZ, RICARDO DELA CRUZ",
+      "previous_reading": 318.25,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 466,
+      "unit_number": "204",
+      "building_code": "BLDG-20",
+      "floor_number": 2,
+      "meter_number": "WM-20-204",
+      "resident_name": "MANALO, ANNA VILLANUEVA",
+      "previous_reading": 326.35,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 467,
+      "unit_number": "205",
+      "building_code": "BLDG-20",
+      "floor_number": 2,
+      "meter_number": "WM-20-205",
+      "resident_name": "BAUTISTA, JANE AGUILAR",
+      "previous_reading": 346.32,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 468,
+      "unit_number": "206",
+      "building_code": "BLDG-20",
+      "floor_number": 2,
+      "meter_number": "WM-20-206",
+      "resident_name": "VELASCO, ARNEL SANTOS",
+      "previous_reading": 241.41,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 469,
+      "unit_number": "207",
+      "building_code": "BLDG-20",
+      "floor_number": 2,
+      "meter_number": "WM-20-207",
+      "resident_name": "PASCUAL, PAUL TRINIDAD",
+      "previous_reading": 276.54,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 470,
+      "unit_number": "208",
+      "building_code": "BLDG-20",
+      "floor_number": 2,
+      "meter_number": "WM-20-208",
+      "resident_name": "MIRANDA, CRISTINA TRINIDAD",
+      "previous_reading": 363.04,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 471,
+      "unit_number": "209",
+      "building_code": "BLDG-20",
+      "floor_number": 2,
+      "meter_number": "WM-20-209",
+      "resident_name": "CABRERA, DANICA SANTOS",
+      "previous_reading": 405.28,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 472,
+      "unit_number": "210",
+      "building_code": "BLDG-20",
+      "floor_number": 2,
+      "meter_number": "WM-20-210",
+      "resident_name": "LIM, ARNEL AQUINO",
+      "previous_reading": 201.28,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 473,
+      "unit_number": "211",
+      "building_code": "BLDG-20",
+      "floor_number": 2,
+      "meter_number": "WM-20-211",
+      "resident_name": "GARCIA, MARIA LUISA CRUZ",
+      "previous_reading": 321.31,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 474,
+      "unit_number": "212",
+      "building_code": "BLDG-20",
+      "floor_number": 2,
+      "meter_number": "WM-20-212",
+      "resident_name": "MACAPAGAL, JOEL LOPEZ",
+      "previous_reading": 368.28,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 475,
+      "unit_number": "301",
+      "building_code": "BLDG-20",
+      "floor_number": 3,
+      "meter_number": "WM-20-301",
+      "resident_name": "RIVERA, DANICA FLORES",
+      "previous_reading": 335.63,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 476,
+      "unit_number": "302",
+      "building_code": "BLDG-20",
+      "floor_number": 3,
+      "meter_number": "WM-20-302",
+      "resident_name": "VILLANUEVA, NATHANIEL MERCADO",
+      "previous_reading": 325.22,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 477,
+      "unit_number": "303",
+      "building_code": "BLDG-20",
+      "floor_number": 3,
+      "meter_number": "WM-20-303",
+      "resident_name": "TORRES, BENJAMIN DOMINGO",
+      "previous_reading": 225.76,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 479,
+      "unit_number": "305",
+      "building_code": "BLDG-20",
+      "floor_number": 3,
+      "meter_number": "WM-20-305",
+      "resident_name": "PASCUAL, MARY ANN AGUILAR",
+      "previous_reading": 365.85,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 480,
+      "unit_number": "306",
+      "building_code": "BLDG-20",
+      "floor_number": 3,
+      "meter_number": "WM-20-306",
+      "resident_name": "ESPIRITU, PATRICK GARCIA",
+      "previous_reading": 362.14,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 481,
+      "unit_number": "307",
+      "building_code": "BLDG-20",
+      "floor_number": 3,
+      "meter_number": "WM-20-307",
+      "resident_name": "ILAGAN, MARIA BAUTISTA",
+      "previous_reading": 393.45,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 484,
+      "unit_number": "310",
+      "building_code": "BLDG-20",
+      "floor_number": 3,
+      "meter_number": "WM-20-310",
+      "resident_name": "REYES, CECILIA GARCIA",
+      "previous_reading": 354.27,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 485,
+      "unit_number": "311",
+      "building_code": "BLDG-20",
+      "floor_number": 3,
+      "meter_number": "WM-20-311",
+      "resident_name": "SAMSON, RINA AQUINO",
+      "previous_reading": 242.42,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 486,
+      "unit_number": "312",
+      "building_code": "BLDG-20",
+      "floor_number": 3,
+      "meter_number": "WM-20-312",
+      "resident_name": "FLORES, FE CASTRO",
+      "previous_reading": 413.59,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 487,
+      "unit_number": "401",
+      "building_code": "BLDG-20",
+      "floor_number": 4,
+      "meter_number": "WM-20-401",
+      "resident_name": "SALVADOR, CECILIA VELASCO",
+      "previous_reading": 383.2,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 489,
+      "unit_number": "403",
+      "building_code": "BLDG-20",
+      "floor_number": 4,
+      "meter_number": "WM-20-403",
+      "resident_name": "ILAGAN, JASMINE DELA CRUZ",
+      "previous_reading": 374.38,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 490,
+      "unit_number": "404",
+      "building_code": "BLDG-20",
+      "floor_number": 4,
+      "meter_number": "WM-20-404",
+      "resident_name": "PADILLA, ANA SANTOS",
+      "previous_reading": 399.94,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 492,
+      "unit_number": "406",
+      "building_code": "BLDG-20",
+      "floor_number": 4,
+      "meter_number": "WM-20-406",
+      "resident_name": "DE GUZMAN, ROSEMARIE CRUZ",
+      "previous_reading": 357.76,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 493,
+      "unit_number": "407",
+      "building_code": "BLDG-20",
+      "floor_number": 4,
+      "meter_number": "WM-20-407",
+      "resident_name": "DELA CRUZ, JANE MERCADO",
+      "previous_reading": 319.34,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 498,
+      "unit_number": "412",
+      "building_code": "BLDG-20",
+      "floor_number": 4,
+      "meter_number": "WM-20-412",
+      "resident_name": "SALVADOR, FRANCIS PEREZ",
+      "previous_reading": 202.59,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 500,
+      "unit_number": "502",
+      "building_code": "BLDG-20",
+      "floor_number": 5,
+      "meter_number": "WM-20-502",
+      "resident_name": "DEL ROSARIO, RICARDO CRUZ",
+      "previous_reading": 335.48,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 502,
+      "unit_number": "504",
+      "building_code": "BLDG-20",
+      "floor_number": 5,
+      "meter_number": "WM-20-504",
+      "resident_name": "RIVERA, ERIKA MERCADO",
+      "previous_reading": 353.47,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 503,
+      "unit_number": "505",
+      "building_code": "BLDG-20",
+      "floor_number": 5,
+      "meter_number": "WM-20-505",
+      "resident_name": "MENDOZA, RICHARD LOPEZ",
+      "previous_reading": 420.81,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 505,
+      "unit_number": "507",
+      "building_code": "BLDG-20",
+      "floor_number": 5,
+      "meter_number": "WM-20-507",
+      "resident_name": "NICOLAS, CARMINA CASTRO",
+      "previous_reading": 292.95,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 506,
+      "unit_number": "508",
+      "building_code": "BLDG-20",
+      "floor_number": 5,
+      "meter_number": "WM-20-508",
+      "resident_name": "TORRES, VICTOR BAUTISTA",
+      "previous_reading": 356.46,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 508,
+      "unit_number": "510",
+      "building_code": "BLDG-20",
+      "floor_number": 5,
+      "meter_number": "WM-20-510",
+      "resident_name": "LUCERO, JANE BAUTISTA",
+      "previous_reading": 230.68,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 509,
+      "unit_number": "511",
+      "building_code": "BLDG-20",
+      "floor_number": 5,
+      "meter_number": "WM-20-511",
+      "resident_name": "FAJARDO, MARIA MENDOZA",
+      "previous_reading": 353.29,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 510,
+      "unit_number": "512",
+      "building_code": "BLDG-20",
+      "floor_number": 5,
+      "meter_number": "WM-20-512",
+      "resident_name": "VALDEZ, LORENA AGUILAR",
+      "previous_reading": 391.97,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 511,
+      "unit_number": "101",
+      "building_code": "BLDG-21",
+      "floor_number": 1,
+      "meter_number": "WM-21-101",
+      "resident_name": "CASTRO, ALAN MERCADO",
+      "previous_reading": 389.3,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 512,
+      "unit_number": "102",
+      "building_code": "BLDG-21",
+      "floor_number": 1,
+      "meter_number": "WM-21-102",
+      "resident_name": "TRINIDAD, ELIZABETH TRINIDAD",
+      "previous_reading": 331.63,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 513,
+      "unit_number": "103",
+      "building_code": "BLDG-21",
+      "floor_number": 1,
+      "meter_number": "WM-21-103",
+      "resident_name": "MACAPAGAL, LEONARDO MENDOZA",
+      "previous_reading": 285.79,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 514,
+      "unit_number": "104",
+      "building_code": "BLDG-21",
+      "floor_number": 1,
+      "meter_number": "WM-21-104",
+      "resident_name": "DELA CRUZ, ANGEL LOPEZ",
+      "previous_reading": 221.87,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 515,
+      "unit_number": "105",
+      "building_code": "BLDG-21",
+      "floor_number": 1,
+      "meter_number": "WM-21-105",
+      "resident_name": "TOLENTINO, RODERICK MENDOZA",
+      "previous_reading": 410.75,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 516,
+      "unit_number": "106",
+      "building_code": "BLDG-21",
+      "floor_number": 1,
+      "meter_number": "WM-21-106",
+      "resident_name": "LOPEZ, ANGEL MENDOZA",
+      "previous_reading": 235.53,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 517,
+      "unit_number": "107",
+      "building_code": "BLDG-21",
+      "floor_number": 1,
+      "meter_number": "WM-21-107",
+      "resident_name": "AQUINO, LORENA AGUILAR",
+      "previous_reading": 372.56,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 518,
+      "unit_number": "108",
+      "building_code": "BLDG-21",
+      "floor_number": 1,
+      "meter_number": "WM-21-108",
+      "resident_name": "SAMSON, JOY CASTRO",
+      "previous_reading": 344.17,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 519,
+      "unit_number": "109",
+      "building_code": "BLDG-21",
+      "floor_number": 1,
+      "meter_number": "WM-21-109",
+      "resident_name": "SAMSON, ANGELICA DELA CRUZ",
+      "previous_reading": 258.7,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 521,
+      "unit_number": "111",
+      "building_code": "BLDG-21",
+      "floor_number": 1,
+      "meter_number": "WM-21-111",
+      "resident_name": "LOPEZ, JUAN SANTOS",
+      "previous_reading": 407.5,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 522,
+      "unit_number": "112",
+      "building_code": "BLDG-21",
+      "floor_number": 1,
+      "meter_number": "WM-21-112",
+      "resident_name": "SANTOS, LORENA CASTRO",
+      "previous_reading": 236.21,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 523,
+      "unit_number": "201",
+      "building_code": "BLDG-21",
+      "floor_number": 2,
+      "meter_number": "WM-21-201",
+      "resident_name": "CABRERA, DANICA BAUTISTA",
+      "previous_reading": 198.28,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 524,
+      "unit_number": "202",
+      "building_code": "BLDG-21",
+      "floor_number": 2,
+      "meter_number": "WM-21-202",
+      "resident_name": "DELA CRUZ, ARNEL BAUTISTA",
+      "previous_reading": 275.93,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 525,
+      "unit_number": "203",
+      "building_code": "BLDG-21",
+      "floor_number": 2,
+      "meter_number": "WM-21-203",
+      "resident_name": "DELA CRUZ, ERIKA DOMINGO",
+      "previous_reading": 409.73,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 526,
+      "unit_number": "204",
+      "building_code": "BLDG-21",
+      "floor_number": 2,
+      "meter_number": "WM-21-204",
+      "resident_name": "SALVADOR, JOSE LOPEZ",
+      "previous_reading": 401.28,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 527,
+      "unit_number": "205",
+      "building_code": "BLDG-21",
+      "floor_number": 2,
+      "meter_number": "WM-21-205",
+      "resident_name": "SANTOS, JOHN REYES",
+      "previous_reading": 364.13,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 529,
+      "unit_number": "207",
+      "building_code": "BLDG-21",
+      "floor_number": 2,
+      "meter_number": "WM-21-207",
+      "resident_name": "MARTINEZ, RICHARD VILLANUEVA",
+      "previous_reading": 217.0,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 530,
+      "unit_number": "208",
+      "building_code": "BLDG-21",
+      "floor_number": 2,
+      "meter_number": "WM-21-208",
+      "resident_name": "SAMSON, ELIZABETH AQUINO",
+      "previous_reading": 244.02,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 531,
+      "unit_number": "209",
+      "building_code": "BLDG-21",
+      "floor_number": 2,
+      "meter_number": "WM-21-209",
+      "resident_name": "HERNANDEZ, CATHERINE DELA CRUZ",
+      "previous_reading": 395.99,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 532,
+      "unit_number": "210",
+      "building_code": "BLDG-21",
+      "floor_number": 2,
+      "meter_number": "WM-21-210",
+      "resident_name": "VALDEZ, PETER DOMINGO",
+      "previous_reading": 229.54,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 533,
+      "unit_number": "211",
+      "building_code": "BLDG-21",
+      "floor_number": 2,
+      "meter_number": "WM-21-211",
+      "resident_name": "ILAGAN, NATHANIEL FLORES",
+      "previous_reading": 277.73,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 535,
+      "unit_number": "301",
+      "building_code": "BLDG-21",
+      "floor_number": 3,
+      "meter_number": "WM-21-301",
+      "resident_name": "DEL ROSARIO, JASMINE PASCUAL",
+      "previous_reading": 335.27,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 536,
+      "unit_number": "302",
+      "building_code": "BLDG-21",
+      "floor_number": 3,
+      "meter_number": "WM-21-302",
+      "resident_name": "HERNANDEZ, PATRICIA NAVARRO",
+      "previous_reading": 413.24,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 538,
+      "unit_number": "304",
+      "building_code": "BLDG-21",
+      "floor_number": 3,
+      "meter_number": "WM-21-304",
+      "resident_name": "GARCIA, CARMINA YAP",
+      "previous_reading": 401.04,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 539,
+      "unit_number": "305",
+      "building_code": "BLDG-21",
+      "floor_number": 3,
+      "meter_number": "WM-21-305",
+      "resident_name": "TORRES, ANNA TORRES",
+      "previous_reading": 291.61,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 540,
+      "unit_number": "306",
+      "building_code": "BLDG-21",
+      "floor_number": 3,
+      "meter_number": "WM-21-306",
+      "resident_name": "NICOLAS, FRANCIS NAVARRO",
+      "previous_reading": 228.43,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 542,
+      "unit_number": "308",
+      "building_code": "BLDG-21",
+      "floor_number": 3,
+      "meter_number": "WM-21-308",
+      "resident_name": "PADILLA, ELIZABETH PEREZ",
+      "previous_reading": 210.28,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 543,
+      "unit_number": "309",
+      "building_code": "BLDG-21",
+      "floor_number": 3,
+      "meter_number": "WM-21-309",
+      "resident_name": "AGUILAR, MARIA LUISA VELASCO",
+      "previous_reading": 366.09,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 544,
+      "unit_number": "310",
+      "building_code": "BLDG-21",
+      "floor_number": 3,
+      "meter_number": "WM-21-310",
+      "resident_name": "ALVAREZ, NATHANIEL YAP",
+      "previous_reading": 306.71,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 545,
+      "unit_number": "311",
+      "building_code": "BLDG-21",
+      "floor_number": 3,
+      "meter_number": "WM-21-311",
+      "resident_name": "MARQUEZ, ANA SALVADOR",
+      "previous_reading": 336.25,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 546,
+      "unit_number": "312",
+      "building_code": "BLDG-21",
+      "floor_number": 3,
+      "meter_number": "WM-21-312",
+      "resident_name": "MIRANDA, MICHAEL GARCIA",
+      "previous_reading": 253.85,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 547,
+      "unit_number": "401",
+      "building_code": "BLDG-21",
+      "floor_number": 4,
+      "meter_number": "WM-21-401",
+      "resident_name": "VALDEZ, EDUARDO SANTOS",
+      "previous_reading": 354.28,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 548,
+      "unit_number": "402",
+      "building_code": "BLDG-21",
+      "floor_number": 4,
+      "meter_number": "WM-21-402",
+      "resident_name": "MENDOZA, PAOLO BAUTISTA",
+      "previous_reading": 346.21,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 549,
+      "unit_number": "403",
+      "building_code": "BLDG-21",
+      "floor_number": 4,
+      "meter_number": "WM-21-403",
+      "resident_name": "MARQUEZ, MARY ANN LOPEZ",
+      "previous_reading": 307.21,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 552,
+      "unit_number": "406",
+      "building_code": "BLDG-21",
+      "floor_number": 4,
+      "meter_number": "WM-21-406",
+      "resident_name": "TRINIDAD, LEONARDO REYES",
+      "previous_reading": 399.36,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 553,
+      "unit_number": "407",
+      "building_code": "BLDG-21",
+      "floor_number": 4,
+      "meter_number": "WM-21-407",
+      "resident_name": "REYES, SHARON DOMINGO",
+      "previous_reading": 393.57,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 554,
+      "unit_number": "408",
+      "building_code": "BLDG-21",
+      "floor_number": 4,
+      "meter_number": "WM-21-408",
+      "resident_name": "BAUTISTA, MARK VELASCO",
+      "previous_reading": 369.92,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 555,
+      "unit_number": "409",
+      "building_code": "BLDG-21",
+      "floor_number": 4,
+      "meter_number": "WM-21-409",
+      "resident_name": "MANALO, NATHANIEL BAUTISTA",
+      "previous_reading": 412.27,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 556,
+      "unit_number": "410",
+      "building_code": "BLDG-21",
+      "floor_number": 4,
+      "meter_number": "WM-21-410",
+      "resident_name": "GARCIA, JULIUS LOPEZ",
+      "previous_reading": 381.46,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 557,
+      "unit_number": "411",
+      "building_code": "BLDG-21",
+      "floor_number": 4,
+      "meter_number": "WM-21-411",
+      "resident_name": "LOPEZ, PATRICIA VELASCO",
+      "previous_reading": 313.19,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 558,
+      "unit_number": "412",
+      "building_code": "BLDG-21",
+      "floor_number": 4,
+      "meter_number": "WM-21-412",
+      "resident_name": "GONZALES, GERALD MENDOZA",
+      "previous_reading": 390.57,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 559,
+      "unit_number": "501",
+      "building_code": "BLDG-21",
+      "floor_number": 5,
+      "meter_number": "WM-21-501",
+      "resident_name": "AGUILAR, CRISTINA MERCADO",
+      "previous_reading": 332.27,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 560,
+      "unit_number": "502",
+      "building_code": "BLDG-21",
+      "floor_number": 5,
+      "meter_number": "WM-21-502",
+      "resident_name": "HERNANDEZ, CATHERINE REYES",
+      "previous_reading": 224.83,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 561,
+      "unit_number": "503",
+      "building_code": "BLDG-21",
+      "floor_number": 5,
+      "meter_number": "WM-21-503",
+      "resident_name": "CASTRO, SHARON PASCUAL",
+      "previous_reading": 201.4,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 562,
+      "unit_number": "504",
+      "building_code": "BLDG-21",
+      "floor_number": 5,
+      "meter_number": "WM-21-504",
+      "resident_name": "HERNANDEZ, CARLO CRUZ",
+      "previous_reading": 333.63,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 563,
+      "unit_number": "505",
+      "building_code": "BLDG-21",
+      "floor_number": 5,
+      "meter_number": "WM-21-505",
+      "resident_name": "ILAGAN, MICHELLE NAVARRO",
+      "previous_reading": 405.44,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 564,
+      "unit_number": "506",
+      "building_code": "BLDG-21",
+      "floor_number": 5,
+      "meter_number": "WM-21-506",
+      "resident_name": "YAP, RONALD SANTOS",
+      "previous_reading": 320.31,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 565,
+      "unit_number": "507",
+      "building_code": "BLDG-21",
+      "floor_number": 5,
+      "meter_number": "WM-21-507",
+      "resident_name": "TORRES, GERALD CASTRO",
+      "previous_reading": 373.58,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 566,
+      "unit_number": "508",
+      "building_code": "BLDG-21",
+      "floor_number": 5,
+      "meter_number": "WM-21-508",
+      "resident_name": "RAMOS, RODERICK BAUTISTA",
+      "previous_reading": 383.96,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 567,
+      "unit_number": "509",
+      "building_code": "BLDG-21",
+      "floor_number": 5,
+      "meter_number": "WM-21-509",
+      "resident_name": "HERNANDEZ, ELAINE RIVERA",
+      "previous_reading": 277.55,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 568,
+      "unit_number": "510",
+      "building_code": "BLDG-21",
+      "floor_number": 5,
+      "meter_number": "WM-21-510",
+      "resident_name": "LIM, MARY ANN LOPEZ",
+      "previous_reading": 308.64,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 569,
+      "unit_number": "511",
+      "building_code": "BLDG-21",
+      "floor_number": 5,
+      "meter_number": "WM-21-511",
+      "resident_name": "TAN, PATRICK SALVADOR",
+      "previous_reading": 250.65,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 570,
+      "unit_number": "512",
+      "building_code": "BLDG-21",
+      "floor_number": 5,
+      "meter_number": "WM-21-512",
+      "resident_name": "PASCUAL, JASMINE DELA CRUZ",
+      "previous_reading": 259.02,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 1,
+      "unit_number": "101",
+      "building_code": "BLDG-22",
+      "floor_number": 1,
+      "meter_number": "WM-22-101",
+      "resident_name": "CRUZ, DANICA VILLANUEVA",
+      "previous_reading": 242.96,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 2,
+      "unit_number": "102",
+      "building_code": "BLDG-22",
+      "floor_number": 1,
+      "meter_number": "WM-22-102",
+      "resident_name": "MERCADO, ANGELICA DELA CRUZ",
+      "previous_reading": 287.37,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 3,
+      "unit_number": "103",
+      "building_code": "BLDG-22",
+      "floor_number": 1,
+      "meter_number": "WM-22-103",
+      "resident_name": "TAN, RODERICK YAP",
+      "previous_reading": 269.84,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 571,
+      "unit_number": "104",
+      "building_code": "BLDG-22",
+      "floor_number": 1,
+      "meter_number": "WM-22-104",
+      "resident_name": "SAMSON, MICHELLE LOPEZ",
+      "previous_reading": 293.46,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 573,
+      "unit_number": "106",
+      "building_code": "BLDG-22",
+      "floor_number": 1,
+      "meter_number": "WM-22-106",
+      "resident_name": "MALABANAN, ANNA PEREZ",
+      "previous_reading": 290.5,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 577,
+      "unit_number": "110",
+      "building_code": "BLDG-22",
+      "floor_number": 1,
+      "meter_number": "WM-22-110",
+      "resident_name": "TORRES, CATHERINE SANTOS",
+      "previous_reading": 275.0,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 579,
+      "unit_number": "112",
+      "building_code": "BLDG-22",
+      "floor_number": 1,
+      "meter_number": "WM-22-112",
+      "resident_name": "YAP, NOEL CASTRO",
+      "previous_reading": 334.8,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 4,
+      "unit_number": "201",
+      "building_code": "BLDG-22",
+      "floor_number": 2,
+      "meter_number": "WM-22-201",
+      "resident_name": "LIM, ELIZABETH MENDOZA",
+      "previous_reading": 423.39,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 5,
+      "unit_number": "202",
+      "building_code": "BLDG-22",
+      "floor_number": 2,
+      "meter_number": "WM-22-202",
+      "resident_name": "CRUZ, MARY ANN VELASCO",
+      "previous_reading": 265.89,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 580,
+      "unit_number": "204",
+      "building_code": "BLDG-22",
+      "floor_number": 2,
+      "meter_number": "WM-22-204",
+      "resident_name": "TAN, HENRY BAUTISTA",
+      "previous_reading": 319.07,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 581,
+      "unit_number": "205",
+      "building_code": "BLDG-22",
+      "floor_number": 2,
+      "meter_number": "WM-22-205",
+      "resident_name": "TAN, LORENA AQUINO",
+      "previous_reading": 399.55,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 582,
+      "unit_number": "206",
+      "building_code": "BLDG-22",
+      "floor_number": 2,
+      "meter_number": "WM-22-206",
+      "resident_name": "FERNANDEZ, JOEL DELA CRUZ",
+      "previous_reading": 419.65,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 584,
+      "unit_number": "208",
+      "building_code": "BLDG-22",
+      "floor_number": 2,
+      "meter_number": "WM-22-208",
+      "resident_name": "HERNANDEZ, ALAN REYES",
+      "previous_reading": 210.29,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 585,
+      "unit_number": "209",
+      "building_code": "BLDG-22",
+      "floor_number": 2,
+      "meter_number": "WM-22-209",
+      "resident_name": "CORTEZ, ANGELICA FLORES",
+      "previous_reading": 280.83,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 586,
+      "unit_number": "210",
+      "building_code": "BLDG-22",
+      "floor_number": 2,
+      "meter_number": "WM-22-210",
+      "resident_name": "HERNANDEZ, ALAN CRUZ",
+      "previous_reading": 345.38,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 7,
+      "unit_number": "301",
+      "building_code": "BLDG-22",
+      "floor_number": 3,
+      "meter_number": "WM-22-301",
+      "resident_name": "FERNANDEZ, CECILIA MERCADO",
+      "previous_reading": 241.85,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 8,
+      "unit_number": "302",
+      "building_code": "BLDG-22",
+      "floor_number": 3,
+      "meter_number": "WM-22-302",
+      "resident_name": "FLORES, JULIUS PASCUAL",
+      "previous_reading": 201.65,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 9,
+      "unit_number": "303",
+      "building_code": "BLDG-22",
+      "floor_number": 3,
+      "meter_number": "WM-22-303",
+      "resident_name": "RIVERA, MARK RAMOS",
+      "previous_reading": 294.9,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 589,
+      "unit_number": "304",
+      "building_code": "BLDG-22",
+      "floor_number": 3,
+      "meter_number": "WM-22-304",
+      "resident_name": "NAVARRO, MARK SALVADOR",
+      "previous_reading": 276.46,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 591,
+      "unit_number": "306",
+      "building_code": "BLDG-22",
+      "floor_number": 3,
+      "meter_number": "WM-22-306",
+      "resident_name": "YAP, ANA CASTRO",
+      "previous_reading": 340.08,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 592,
+      "unit_number": "307",
+      "building_code": "BLDG-22",
+      "floor_number": 3,
+      "meter_number": "WM-22-307",
+      "resident_name": "ILAGAN, JOY GARCIA",
+      "previous_reading": 250.49,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 593,
+      "unit_number": "308",
+      "building_code": "BLDG-22",
+      "floor_number": 3,
+      "meter_number": "WM-22-308",
+      "resident_name": "ESPIRITU, MELANIE GARCIA",
+      "previous_reading": 358.37,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 594,
+      "unit_number": "309",
+      "building_code": "BLDG-22",
+      "floor_number": 3,
+      "meter_number": "WM-22-309",
+      "resident_name": "ALVAREZ, CARMINA BAUTISTA",
+      "previous_reading": 216.33,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 595,
+      "unit_number": "310",
+      "building_code": "BLDG-22",
+      "floor_number": 3,
+      "meter_number": "WM-22-310",
+      "resident_name": "MENDOZA, PATRICK AGUILAR",
+      "previous_reading": 410.5,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 596,
+      "unit_number": "311",
+      "building_code": "BLDG-22",
+      "floor_number": 3,
+      "meter_number": "WM-22-311",
+      "resident_name": "LOPEZ, ANGEL BAUTISTA",
+      "previous_reading": 279.09,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 597,
+      "unit_number": "312",
+      "building_code": "BLDG-22",
+      "floor_number": 3,
+      "meter_number": "WM-22-312",
+      "resident_name": "AGUILAR, DANICA CRUZ",
+      "previous_reading": 394.62,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 10,
+      "unit_number": "401",
+      "building_code": "BLDG-22",
+      "floor_number": 4,
+      "meter_number": "WM-22-401",
+      "resident_name": "GONZALES, DANICA FLORES",
+      "previous_reading": 254.81,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 12,
+      "unit_number": "403",
+      "building_code": "BLDG-22",
+      "floor_number": 4,
+      "meter_number": "WM-22-403",
+      "resident_name": "MARQUEZ, MARY ANN BAUTISTA",
+      "previous_reading": 401.61,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 599,
+      "unit_number": "405",
+      "building_code": "BLDG-22",
+      "floor_number": 4,
+      "meter_number": "WM-22-405",
+      "resident_name": "MANALO, CARLO SANTOS",
+      "previous_reading": 397.61,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 600,
+      "unit_number": "406",
+      "building_code": "BLDG-22",
+      "floor_number": 4,
+      "meter_number": "WM-22-406",
+      "resident_name": "YAP, RICHARD PEREZ",
+      "previous_reading": 226.06,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 601,
+      "unit_number": "407",
+      "building_code": "BLDG-22",
+      "floor_number": 4,
+      "meter_number": "WM-22-407",
+      "resident_name": "DOMINGO, PAUL CASTRO",
+      "previous_reading": 290.81,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 602,
+      "unit_number": "408",
+      "building_code": "BLDG-22",
+      "floor_number": 4,
+      "meter_number": "WM-22-408",
+      "resident_name": "TORRES, CARLO FLORES",
+      "previous_reading": 222.89,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 603,
+      "unit_number": "409",
+      "building_code": "BLDG-22",
+      "floor_number": 4,
+      "meter_number": "WM-22-409",
+      "resident_name": "BAUTISTA, RINA VILLANUEVA",
+      "previous_reading": 396.08,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 604,
+      "unit_number": "410",
+      "building_code": "BLDG-22",
+      "floor_number": 4,
+      "meter_number": "WM-22-410",
+      "resident_name": "CABRERA, JASMINE TRINIDAD",
+      "previous_reading": 339.46,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 605,
+      "unit_number": "411",
+      "building_code": "BLDG-22",
+      "floor_number": 4,
+      "meter_number": "WM-22-411",
+      "resident_name": "NAVARRO, MELANIE MENDOZA",
+      "previous_reading": 333.86,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 606,
+      "unit_number": "412",
+      "building_code": "BLDG-22",
+      "floor_number": 4,
+      "meter_number": "WM-22-412",
+      "resident_name": "GONZALES, PAOLO VELASCO",
+      "previous_reading": 222.77,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 13,
+      "unit_number": "501",
+      "building_code": "BLDG-22",
+      "floor_number": 5,
+      "meter_number": "WM-22-501",
+      "resident_name": "VILLANUEVA, RINA DELA CRUZ",
+      "previous_reading": 301.42,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 14,
+      "unit_number": "502",
+      "building_code": "BLDG-22",
+      "floor_number": 5,
+      "meter_number": "WM-22-502",
+      "resident_name": "SAMSON, ANNA NAVARRO",
+      "previous_reading": 341.55,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 607,
+      "unit_number": "504",
+      "building_code": "BLDG-22",
+      "floor_number": 5,
+      "meter_number": "WM-22-504",
+      "resident_name": "MALABANAN, RONALD TAN",
+      "previous_reading": 396.7,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 608,
+      "unit_number": "505",
+      "building_code": "BLDG-22",
+      "floor_number": 5,
+      "meter_number": "WM-22-505",
+      "resident_name": "BAUTISTA, JUAN SALVADOR",
+      "previous_reading": 323.17,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 610,
+      "unit_number": "507",
+      "building_code": "BLDG-22",
+      "floor_number": 5,
+      "meter_number": "WM-22-507",
+      "resident_name": "PASCUAL, NATHANIEL NAVARRO",
+      "previous_reading": 368.25,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 611,
+      "unit_number": "508",
+      "building_code": "BLDG-22",
+      "floor_number": 5,
+      "meter_number": "WM-22-508",
+      "resident_name": "MARQUEZ, MARY ANN TAN",
+      "previous_reading": 212.71,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 612,
+      "unit_number": "509",
+      "building_code": "BLDG-22",
+      "floor_number": 5,
+      "meter_number": "WM-22-509",
+      "resident_name": "HERNANDEZ, JOHN MERCADO",
+      "previous_reading": 272.14,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 613,
+      "unit_number": "510",
+      "building_code": "BLDG-22",
+      "floor_number": 5,
+      "meter_number": "WM-22-510",
+      "resident_name": "MENDOZA, PAUL VILLANUEVA",
+      "previous_reading": 266.24,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 614,
+      "unit_number": "511",
+      "building_code": "BLDG-22",
+      "floor_number": 5,
+      "meter_number": "WM-22-511",
+      "resident_name": "REYES, PATRICIA LOPEZ",
+      "previous_reading": 218.71,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 615,
+      "unit_number": "512",
+      "building_code": "BLDG-22",
+      "floor_number": 5,
+      "meter_number": "WM-22-512",
+      "resident_name": "TORRES, ANA SALVADOR",
+      "previous_reading": 254.41,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 16,
+      "unit_number": "101",
+      "building_code": "BLDG-23",
+      "floor_number": 1,
+      "meter_number": "WM-23-101",
+      "resident_name": "LOPEZ, NATHANIEL C.",
+      "previous_reading": 262.53,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 17,
+      "unit_number": "102",
+      "building_code": "BLDG-23",
+      "floor_number": 1,
+      "meter_number": "WM-23-102",
+      "resident_name": "HERNANDEZ, RINA M.",
+      "previous_reading": 318.05,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 18,
+      "unit_number": "103",
+      "building_code": "BLDG-23",
+      "floor_number": 1,
+      "meter_number": "WM-23-103",
+      "resident_name": "CASTRO, BENJAMIN V.",
+      "previous_reading": 227.21,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 19,
+      "unit_number": "201",
+      "building_code": "BLDG-23",
+      "floor_number": 2,
+      "meter_number": "WM-23-201",
+      "resident_name": "CRUZ, ANGELICA P.",
+      "previous_reading": 242.55,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 21,
+      "unit_number": "203",
+      "building_code": "BLDG-23",
+      "floor_number": 2,
+      "meter_number": "WM-23-203",
+      "resident_name": "NAVARRO, GERALD T.",
+      "previous_reading": 284.15,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 22,
+      "unit_number": "301",
+      "building_code": "BLDG-23",
+      "floor_number": 3,
+      "meter_number": "WM-23-301",
+      "resident_name": "AGUILAR, RONALD M.",
+      "previous_reading": 411.36,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 23,
+      "unit_number": "302",
+      "building_code": "BLDG-23",
+      "floor_number": 3,
+      "meter_number": "WM-23-302",
+      "resident_name": "MERCADO, ELAINE S.",
+      "previous_reading": 376.34,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 25,
+      "unit_number": "401",
+      "building_code": "BLDG-23",
+      "floor_number": 4,
+      "meter_number": "WM-23-401",
+      "resident_name": "DOMINGO, PATRICIA L.",
+      "previous_reading": 404.32,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 26,
+      "unit_number": "402",
+      "building_code": "BLDG-23",
+      "floor_number": 4,
+      "meter_number": "WM-23-402",
+      "resident_name": "ESPIRITU, NOEL R.",
+      "previous_reading": 265.96,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 28,
+      "unit_number": "501",
+      "building_code": "BLDG-23",
+      "floor_number": 5,
+      "meter_number": "WM-23-501",
+      "resident_name": "PASCUAL, RODERICK S.",
+      "previous_reading": 201.85,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 29,
+      "unit_number": "502",
+      "building_code": "BLDG-23",
+      "floor_number": 5,
+      "meter_number": "WM-23-502",
+      "resident_name": "DE GUZMAN, ANNA K.",
+      "previous_reading": 394.18,
+      "reading_status": "pending"
+    },
+    {
+      "unit_id": 30,
+      "unit_number": "503",
+      "building_code": "BLDG-23",
+      "floor_number": 5,
+      "meter_number": "WM-23-503",
+      "resident_name": "MALABANAN, JOSEPH D.",
+      "previous_reading": 375.75,
+      "reading_status": "pending"
+    }
+  ]
+}

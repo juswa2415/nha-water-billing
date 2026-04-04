@@ -1,0 +1,23 @@
+Seed: 20260328
+Buildings: 13-22 inclusive
+Floors per building: 5
+Units per floor: 12
+
+Per-building occupancy:
+BLDG-13: 45 occupied, 15 vacant, 60 total
+BLDG-14: 54 occupied, 6 vacant, 60 total
+BLDG-15: 54 occupied, 6 vacant, 60 total
+BLDG-16: 51 occupied, 9 vacant, 60 total
+BLDG-17: 54 occupied, 6 vacant, 60 total
+BLDG-18: 52 occupied, 8 vacant, 60 total
+BLDG-19: 52 occupied, 8 vacant, 60 total
+BLDG-20: 45 occupied, 15 vacant, 60 total
+BLDG-21: 53 occupied, 7 vacant, 60 total
+BLDG-22: 46 occupied, 14 vacant, 60 total
+
+Grand total occupied units: 506
+Grand total vacant units: 94
+Grand total units: 600
+
+CSV: desktop-units-13-22.csv
+SQL: desktop-buildings-13-22.sql
