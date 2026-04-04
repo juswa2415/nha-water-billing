@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { invoke } from '@tauri-apps/api/core';
 import { open, save } from '@tauri-apps/plugin-dialog';
+import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import { Download, FileCheck2, Upload } from 'lucide-react';
+import { ArrowLeft, Download, FileCheck2, Upload } from 'lucide-react';
 import { importMobileReadings } from '../../services/syncService';
 
 interface CycleOption {
@@ -20,6 +21,7 @@ interface ImportResult {
 }
 
 export function SyncImport() {
+  const navigate = useNavigate();
   const [cycles, setCycles] = useState<CycleOption[]>([]);
   const [cycleId, setCycleId] = useState<number | null>(null);
   const [busy, setBusy] = useState(false);
@@ -84,8 +86,24 @@ export function SyncImport() {
 
   return (
     <div className="max-w-4xl space-y-4">
+      <div className="flex items-start gap-3">
+        <button
+          type="button"
+          onClick={() => navigate('/readings')}
+          className="rounded-lg p-1.5 transition-colors hover:bg-gray-100"
+        >
+          <ArrowLeft size={16} className="text-gray-500" />
+        </button>
+        <div>
+          <h2 className="text-base font-semibold text-gray-900">Mobile Sync</h2>
+          <p className="mt-1 text-sm text-gray-500">
+            Use this only when field readings were collected from the mobile app.
+          </p>
+        </div>
+      </div>
+
       <div className="rounded-xl border border-gray-200 bg-white p-5">
-        <h2 className="text-sm font-semibold text-gray-900">Mobile Sync</h2>
+        <h3 className="text-sm font-semibold text-gray-900">Import / Export</h3>
         <p className="mt-1 text-sm text-gray-500">
           Export a reading list for the field app, then import the completed mobile JSON back into the review queue.
         </p>

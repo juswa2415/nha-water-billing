@@ -10,6 +10,7 @@ import { UnitForm } from './pages/Units/UnitForm';
 import { BulkImport } from './pages/Units/BulkImport';
 import { ReadingQueue } from './pages/Readings/ReadingQueue';
 import { ReadingReview } from './pages/Readings/ReadingReview';
+import { ManualEntry } from './pages/Readings/ManualEntry';
 import { SyncImport } from './pages/Readings/SyncImport';
 import { BillingCycleList } from './pages/Billing/BillingCycleList';
 import { BillGenerate } from './pages/Billing/BillGenerate';
@@ -97,9 +98,38 @@ export default function App() {
             }
           />
 
-          <Route path="readings" element={<ReadingQueue />} />
-          <Route path="readings/review/:cycleId" element={<ReadingReview />} />
-          <Route path="readings/sync" element={<SyncImport />} />
+          <Route
+            path="readings"
+            element={(
+              <RequireRole roles={['admin', 'billing_staff']}>
+                <ReadingQueue />
+              </RequireRole>
+            )}
+          />
+          <Route
+            path="readings/manual/:cycleId"
+            element={(
+              <RequireRole roles={['admin', 'billing_staff']}>
+                <ManualEntry />
+              </RequireRole>
+            )}
+          />
+          <Route
+            path="readings/review/:cycleId"
+            element={(
+              <RequireRole roles={['admin', 'billing_staff']}>
+                <ReadingReview />
+              </RequireRole>
+            )}
+          />
+          <Route
+            path="readings/sync"
+            element={(
+              <RequireRole roles={['admin', 'billing_staff']}>
+                <SyncImport />
+              </RequireRole>
+            )}
+          />
 
           <Route path="billing" element={<BillingCycleList />} />
           <Route path="billing/:cycleId/generate" element={<BillGenerate />} />

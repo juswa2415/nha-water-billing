@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
-import 'screens/building_list_screen.dart';
+import 'screens/app_shell.dart';
 import 'screens/login_screen.dart';
 import 'services/database_service.dart';
 import 'services/session_provider.dart';
@@ -50,7 +50,8 @@ class NhaWaterApp extends StatelessWidget {
           ),
           inputDecorationTheme: InputDecorationTheme(
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-            contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+            contentPadding:
+                const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
             filled: true,
             fillColor: Colors.grey.shade50,
           ),
@@ -59,8 +60,10 @@ class NhaWaterApp extends StatelessWidget {
               backgroundColor: const Color(0xFF1D4ED8),
               foregroundColor: Colors.white,
               padding: const EdgeInsets.symmetric(vertical: 14),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-              textStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+              textStyle:
+                  const TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
             ),
           ),
         ),
@@ -81,6 +84,6 @@ class _AppRoot extends StatelessWidget {
         body: Center(child: CircularProgressIndicator()),
       );
     }
-    return session.isLoggedIn ? const BuildingListScreen() : const LoginScreen();
+    return session.isLoggedIn ? const AppShell() : const LoginScreen();
   }
 }

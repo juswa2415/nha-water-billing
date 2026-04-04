@@ -1,8 +1,8 @@
-// lib/screens/unit_list_screen.dart
-
 import 'package:flutter/material.dart';
-import '../services/database_service.dart';
+
 import '../models/unit.dart';
+import '../services/database_service.dart';
+import 'continuous_entry_screen.dart';
 import 'reading_entry_screen.dart';
 
 class UnitListScreen extends StatefulWidget {
@@ -24,7 +24,7 @@ class UnitListScreen extends StatefulWidget {
 class _UnitListScreenState extends State<UnitListScreen> {
   List<Unit> _units = [];
   bool _loading = true;
-  String _filter = 'all'; // all | pending | done
+  String _filter = 'all';
 
   @override
   void initState() {
@@ -39,7 +39,10 @@ class _UnitListScreenState extends State<UnitListScreen> {
       widget.buildingCode,
       widget.floor,
     );
-    setState(() { _units = units; _loading = false; });
+    setState(() {
+      _units = units;
+      _loading = false;
+    });
   }
 
   List<Unit> get _filtered {
@@ -59,7 +62,26 @@ class _UnitListScreenState extends State<UnitListScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('${widget.buildingCode} · Floor ${widget.floor}'),
+        title: Text('${widget.buildingCode} - Floor ${widget.floor}'),
+        actions: [
+          TextButton.icon(
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => ContinuousEntryScreen(
+                  cycleId: widget.cycleId,
+                  buildingCode: widget.buildingCode,
+                  floor: widget.floor,
+                ),
+              ),
+            ).then((_) => _load()),
+            icon: const Icon(Icons.speed, color: Colors.white),
+            label: const Text(
+              'Quick Entry',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        ],
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(44),
           child: Container(
@@ -67,25 +89,33 @@ class _UnitListScreenState extends State<UnitListScreen> {
             padding: const EdgeInsets.fromLTRB(12, 0, 12, 8),
             child: Row(
               children: [
-                for (final f in ['all', 'pending', 'done'])
+                for (final filter in ['all', 'pending', 'done'])
                   Padding(
                     padding: const EdgeInsets.only(right: 8),
                     child: GestureDetector(
-                      onTap: () => setState(() => _filter = f),
+                      onTap: () => setState(() => _filter = filter),
                       child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 14,
+                          vertical: 6,
+                        ),
                         decoration: BoxDecoration(
-                          color: _filter == f ? Colors.white : Colors.white24,
+                          color:
+                              _filter == filter ? Colors.white : Colors.white24,
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Text(
-                          f == 'all' ? 'All (${_units.length})'
-                              : f == 'pending' ? 'Pending (${_units.length - done})'
-                              : 'Done ($done)',
+                          filter == 'all'
+                              ? 'All (${_units.length})'
+                              : filter == 'pending'
+                                  ? 'Pending (${_units.length - done})'
+                                  : 'Done ($done)',
                           style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w600,
-                            color: _filter == f ? const Color(0xFF1D4ED8) : Colors.white,
+                            color: _filter == filter
+                                ? const Color(0xFF1D4ED8)
+                                : Colors.white,
                           ),
                         ),
                       ),
@@ -103,7 +133,9 @@ class _UnitListScreenState extends State<UnitListScreen> {
               child: _filtered.isEmpty
                   ? Center(
                       child: Text(
-                        _filter == 'pending' ? 'All units on this floor are done!' : 'No units found.',
+                        _filter == 'pending'
+                            ? 'All units on this floor are done!'
+                            : 'No units found.',
                         style: const TextStyle(color: Colors.grey),
                       ),
                     )
@@ -135,17 +167,23 @@ class _UnitTile extends StatelessWidget {
 
   Color get _statusColor {
     switch (unit.readingStatus) {
-      case 'submitted': return Colors.green.shade600;
-      case 'flagged':   return Colors.orange.shade600;
-      default:          return Colors.grey.shade400;
+      case 'submitted':
+        return Colors.green.shade600;
+      case 'flagged':
+        return Colors.orange.shade600;
+      default:
+        return Colors.grey.shade400;
     }
   }
 
   IconData get _statusIcon {
     switch (unit.readingStatus) {
-      case 'submitted': return Icons.check_circle;
-      case 'flagged':   return Icons.warning_amber;
-      default:          return Icons.radio_button_unchecked;
+      case 'submitted':
+        return Icons.check_circle;
+      case 'flagged':
+        return Icons.warning_amber;
+      default:
+        return Icons.radio_button_unchecked;
     }
   }
 
@@ -158,7 +196,10 @@ class _UnitTile extends StatelessWidget {
       onTap: () => Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (_) => ReadingEntryScreen(unit: unit, billingCycleId: cycleId),
+          builder: (_) => ReadingEntryScreen(
+            unit: unit,
+            billingCycleId: cycleId,
+          ),
         ),
       ).then((_) => onSaved()),
       child: Container(
@@ -172,10 +213,8 @@ class _UnitTile extends StatelessWidget {
         ),
         child: Row(
           children: [
-            // Status dot
             Icon(_statusIcon, color: _statusColor, size: 22),
             const SizedBox(width: 12),
-            // Unit info
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -184,13 +223,20 @@ class _UnitTile extends StatelessWidget {
                     children: [
                       Text(
                         'Unit ${unit.unitNumber}',
-                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
                       ),
                       if (unit.meterNumber != null) ...[
                         const SizedBox(width: 8),
                         Text(
                           unit.meterNumber!,
-                          style: TextStyle(fontSize: 11, color: Colors.grey.shade500, fontFamily: 'monospace'),
+                          style: TextStyle(
+                            fontSize: 11,
+                            color: Colors.grey.shade500,
+                            fontFamily: 'monospace',
+                          ),
                         ),
                       ],
                     ],
@@ -198,7 +244,8 @@ class _UnitTile extends StatelessWidget {
                   if (unit.residentName != null)
                     Text(
                       unit.residentName!,
-                      style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
+                      style:
+                          TextStyle(fontSize: 12, color: Colors.grey.shade600),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -209,7 +256,6 @@ class _UnitTile extends StatelessWidget {
                 ],
               ),
             ),
-            // Action indicator
             Icon(
               isPending ? Icons.chevron_right : Icons.edit_outlined,
               color: Colors.grey.shade400,

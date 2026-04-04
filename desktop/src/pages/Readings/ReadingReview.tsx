@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { invoke } from '@tauri-apps/api/core';
 import { useNavigate, useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import { ArrowLeft, CheckCircle2, PencilLine, TriangleAlert } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, PencilLine, TriangleAlert, Upload } from 'lucide-react';
 import { DataTable, type Column } from '../../components/shared/DataTable';
 import { StatusBadge } from '../../components/shared/StatusBadge';
 import { cubicM, formatDate } from '../../utils/formatters';
@@ -12,6 +12,7 @@ interface ReadingRow {
   unit_id: number;
   unit_number: string;
   building_code: string;
+  building_name: string;
   floor_number: number;
   resident_name: string | null;
   meter_number: string | null;
@@ -22,7 +23,11 @@ interface ReadingRow {
   status: string;
   flag_reason: string | null;
   notes: string | null;
+  read_at: string | null;
   source: string;
+  submitted_by: string | null;
+  approved_by: string | null;
+  approved_at: string | null;
 }
 
 interface CycleInfo {
@@ -32,6 +37,27 @@ interface CycleInfo {
   status: string;
 }
 
+const REVIEW_FILTERS = [
+  { key: 'needs_review', label: 'Needs Review' },
+  { key: 'flagged', label: 'Flagged' },
+  { key: 'submitted', label: 'Submitted' },
+  { key: 'approved', label: 'Approved' },
+  { key: 'all', label: 'All' },
+] as const;
+
+type ReviewFilter = (typeof REVIEW_FILTERS)[number]['key'];
+
+function matchesReviewFilter(row: ReadingRow, filter: ReviewFilter) {
+  switch (filter) {
+    case 'needs_review':
+      return row.status === 'submitted' || row.status === 'flagged';
+    case 'all':
+      return true;
+    default:
+      return row.status === filter;
+  }
+}
+
 export function ReadingReview() {
   const navigate = useNavigate();
   const { cycleId } = useParams<{ cycleId: string }>();
@@ -39,13 +65,9 @@ export function ReadingReview() {
 
   const [cycle, setCycle] = useState<CycleInfo | null>(null);
   const [rows, setRows] = useState<ReadingRow[]>([]);
-  const [filter, setFilter] = useState('all');
+  const [filter, setFilter] = useState<ReviewFilter>('needs_review');
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
-  const [manualTarget, setManualTarget] = useState<ReadingRow | null>(null);
-  const [manualCurrent, setManualCurrent] = useState('');
-  const [manualNotes, setManualNotes] = useState('');
-  const [savingManual, setSavingManual] = useState(false);
 
   const load = async () => {
     setLoading(true);
@@ -54,7 +76,7 @@ export function ReadingReview() {
         invoke<CycleInfo[]>('list_billing_cycles'),
         invoke<ReadingRow[]>('list_readings_for_cycle', {
           cycleId: cycleIdNumber,
-          statusFilter: filter === 'all' ? null : filter,
+          statusFilter: null,
         }),
       ]);
 
@@ -72,20 +94,46 @@ export function ReadingReview() {
       return;
     }
     void load();
-  }, [cycleIdNumber, filter]);
+  }, [cycleIdNumber]);
+
+  const counts = useMemo(() => rows.reduce(
+    (acc, row) => {
+      acc.total += 1;
+      acc[row.status as keyof typeof acc] = (acc[row.status as keyof typeof acc] ?? 0) + 1;
+      return acc;
+    },
+    {
+      total: 0,
+      pending: 0,
+      submitted: 0,
+      flagged: 0,
+      approved: 0,
+      skipped: 0,
+    },
+  ), [rows]);
 
   const filteredRows = useMemo(() => {
     return rows.filter((row) => {
+      if (!matchesReviewFilter(row, filter)) {
+        return false;
+      }
+
+      if (!search) {
+        return true;
+      }
+
       const haystack = [
         row.building_code,
+        row.building_name,
         row.unit_number,
         row.resident_name ?? '',
         row.meter_number ?? '',
+        row.flag_reason ?? '',
       ].join(' ').toLowerCase();
 
-      return !search || haystack.includes(search.toLowerCase());
+      return haystack.includes(search.toLowerCase());
     });
-  }, [rows, search]);
+  }, [rows, filter, search]);
 
   const approve = async (row: ReadingRow) => {
     try {
@@ -111,46 +159,6 @@ export function ReadingReview() {
       await load();
     } catch (error: any) {
       toast.error(error.toString());
-    }
-  };
-
-  const openManualEntry = (row: ReadingRow) => {
-    setManualTarget(row);
-    setManualCurrent(row.current_reading?.toString() ?? '');
-    setManualNotes(row.notes ?? '');
-  };
-
-  const saveManualEntry = async () => {
-    if (!manualTarget) {
-      return;
-    }
-
-    const current = Number(manualCurrent);
-    if (!Number.isFinite(current)) {
-      toast.error('Enter a valid current reading.');
-      return;
-    }
-
-    setSavingManual(true);
-    try {
-      await invoke('manual_entry_reading', {
-        payload: {
-          unit_id: manualTarget.unit_id,
-          billing_cycle_id: manualTarget.billing_cycle_id,
-          previous_reading: manualTarget.previous_reading,
-          current_reading: current,
-          notes: manualNotes.trim() || null,
-        },
-      });
-      toast.success('Manual reading saved.');
-      setManualTarget(null);
-      setManualCurrent('');
-      setManualNotes('');
-      await load();
-    } catch (error: any) {
-      toast.error(error.toString());
-    } finally {
-      setSavingManual(false);
     }
   };
 
@@ -213,28 +221,40 @@ export function ReadingReview() {
     },
     {
       key: 'flag_reason',
-      header: 'Flag',
+      header: 'Review Note',
       render: (row) => (
-        <span className="text-xs text-orange-700">
-          {row.flag_reason ?? row.notes ?? '-'}
-        </span>
+        <div className="space-y-1">
+          <span className="text-xs text-orange-700">
+            {row.flag_reason ?? row.notes ?? '-'}
+          </span>
+          {row.read_at && (
+            <p className="text-[11px] text-gray-400">
+              {new Date(row.read_at).toLocaleString('en-PH', {
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+              })}
+            </p>
+          )}
+        </div>
       ),
     },
     {
       key: 'actions',
       header: '',
-      width: '220px',
+      width: '250px',
       render: (row) => (
         <div className="flex justify-end gap-2" onClick={(event) => event.stopPropagation()}>
           <button
             type="button"
-            onClick={() => openManualEntry(row)}
+            onClick={() => navigate(`/readings/manual/${cycleIdNumber}?focus=${row.id}`)}
             className="inline-flex items-center gap-1 rounded-lg border border-gray-300 px-2.5 py-1.5 text-xs text-gray-700 transition-colors hover:bg-gray-50"
           >
             <PencilLine size={12} />
-            Enter
+            Adjust
           </button>
-          {row.current_reading != null && row.status !== 'flagged' && (
+          {row.current_reading != null && row.status !== 'flagged' && row.status !== 'approved' && (
             <button
               type="button"
               onClick={() => flag(row)}
@@ -271,36 +291,86 @@ export function ReadingReview() {
             <ArrowLeft size={16} className="text-gray-500" />
           </button>
           <div>
-            <h2 className="text-sm font-semibold text-gray-900">Reading Review</h2>
+            <h2 className="text-base font-semibold text-gray-900">Review & Exceptions</h2>
             {cycle && (
               <p className="mt-1 text-sm text-gray-500">
-                Cycle #{cycle.id} - {formatDate(cycle.period_start)} to {formatDate(cycle.period_end)}
+                Cycle #{cycle.id} · {formatDate(cycle.period_start)} to {formatDate(cycle.period_end)}
               </p>
             )}
           </div>
         </div>
         <div className="flex flex-wrap gap-2">
+          <button
+            type="button"
+            onClick={() => navigate(`/readings/manual/${cycleIdNumber}`)}
+            className="rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-50"
+          >
+            Open Manual Entry
+          </button>
+          <button
+            type="button"
+            onClick={() => navigate('/readings/sync')}
+            className="inline-flex items-center gap-1.5 rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-50"
+          >
+            <Upload size={14} />
+            Mobile Sync
+          </button>
+        </div>
+      </div>
+
+      <div className="rounded-2xl border border-gray-200 bg-white p-5">
+        <h3 className="text-sm font-semibold text-gray-900">Review queue purpose</h3>
+        <p className="mt-2 text-sm leading-6 text-gray-600">
+          Manual encoding happens in the dedicated workspace. This screen is for the second pass:
+          check flagged or newly submitted readings, approve clean entries, and send questionable
+          rows back for correction.
+        </p>
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-4">
+        <div className="rounded-xl border border-gray-200 bg-white p-4">
+          <p className="text-xs uppercase tracking-wide text-gray-500">Needs Review</p>
+          <p className="mt-2 text-2xl font-semibold text-gray-900">{counts.submitted + counts.flagged}</p>
+        </div>
+        <div className="rounded-xl border border-gray-200 bg-white p-4">
+          <p className="text-xs uppercase tracking-wide text-gray-500">Submitted</p>
+          <p className="mt-2 text-2xl font-semibold text-blue-700">{counts.submitted}</p>
+        </div>
+        <div className="rounded-xl border border-gray-200 bg-white p-4">
+          <p className="text-xs uppercase tracking-wide text-gray-500">Flagged</p>
+          <p className="mt-2 text-2xl font-semibold text-orange-700">{counts.flagged}</p>
+        </div>
+        <div className="rounded-xl border border-gray-200 bg-white p-4">
+          <p className="text-xs uppercase tracking-wide text-gray-500">Approved</p>
+          <p className="mt-2 text-2xl font-semibold text-green-700">{counts.approved}</p>
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-gray-200 bg-white p-4">
+        <div className="flex flex-wrap gap-3">
           <input
             type="text"
             value={search}
             onChange={(event) => setSearch(event.target.value)}
-            placeholder="Search unit or resident..."
-            className="w-52 rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Search unit, resident, meter, or note..."
+            className="w-72 rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-          {['all', 'pending', 'submitted', 'flagged', 'approved'].map((status) => (
-            <button
-              key={status}
-              type="button"
-              onClick={() => setFilter(status)}
-              className={`rounded-full border px-3 py-1.5 text-xs capitalize transition-colors ${
-                filter === status
-                  ? 'border-blue-600 bg-blue-600 text-white'
-                  : 'border-gray-300 bg-white text-gray-600'
-              }`}
-            >
-              {status}
-            </button>
-          ))}
+          <div className="flex flex-wrap gap-2">
+            {REVIEW_FILTERS.map((status) => (
+              <button
+                key={status.key}
+                type="button"
+                onClick={() => setFilter(status.key)}
+                className={`rounded-full border px-3 py-1.5 text-xs transition-colors ${
+                  filter === status.key
+                    ? 'border-blue-600 bg-blue-600 text-white'
+                    : 'border-gray-300 bg-white text-gray-600 hover:bg-gray-50'
+                }`}
+              >
+                {status.label}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -309,62 +379,8 @@ export function ReadingReview() {
         data={filteredRows}
         rowKey={(row) => row.id}
         loading={loading}
-        emptyMessage="No readings match the selected filter."
+        emptyMessage="No readings match the selected review filter."
       />
-
-      {manualTarget && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
-          <div className="absolute inset-0 bg-black/30" onClick={() => setManualTarget(null)} />
-          <div className="relative w-full max-w-md rounded-xl border border-gray-200 bg-white p-6 shadow-xl">
-            <h3 className="text-sm font-semibold text-gray-900">
-              Manual Entry - {manualTarget.building_code}-{manualTarget.unit_number}
-            </h3>
-            <p className="mt-1 text-xs text-gray-500">
-              Previous reading: {manualTarget.previous_reading.toFixed(2)} cu.m
-            </p>
-            <div className="mt-4 space-y-3">
-              <div>
-                <label className="mb-1.5 block text-xs font-medium text-gray-600">Current Reading</label>
-                <input
-                  type="number"
-                  step="0.01"
-                  value={manualCurrent}
-                  onChange={(event) => setManualCurrent(event.target.value)}
-                  className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  autoFocus
-                />
-              </div>
-              <div>
-                <label className="mb-1.5 block text-xs font-medium text-gray-600">Notes</label>
-                <textarea
-                  value={manualNotes}
-                  onChange={(event) => setManualNotes(event.target.value)}
-                  rows={3}
-                  className="w-full resize-none rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="Optional review notes"
-                />
-              </div>
-            </div>
-            <div className="mt-5 flex justify-end gap-2">
-              <button
-                type="button"
-                onClick={() => setManualTarget(null)}
-                className="rounded-lg border border-gray-300 px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-50"
-              >
-                Cancel
-              </button>
-              <button
-                type="button"
-                onClick={() => void saveManualEntry()}
-                disabled={savingManual}
-                className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700 disabled:opacity-60"
-              >
-                {savingManual ? 'Saving...' : 'Save Reading'}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

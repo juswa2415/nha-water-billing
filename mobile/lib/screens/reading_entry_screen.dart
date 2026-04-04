@@ -58,7 +58,11 @@ class _ReadingEntryScreenState extends State<ReadingEntryScreen> {
   void _validate(String val) {
     final current = double.tryParse(val);
     if (current == null) {
-      setState(() { _currentReading = null; _error = null; _warning = null; });
+      setState(() {
+        _currentReading = null;
+        _error = null;
+        _warning = null;
+      });
       return;
     }
 
@@ -68,8 +72,9 @@ class _ReadingEntryScreenState extends State<ReadingEntryScreen> {
       _currentReading = current;
 
       if (current < widget.unit.previousReading) {
-        _error = 'Current (${current.toStringAsFixed(2)}) is below previous (${widget.unit.previousReading.toStringAsFixed(2)}).';
-        _warning = null;
+        _error = null;
+        _warning =
+            'Current (${current.toStringAsFixed(2)}) is below previous (${widget.unit.previousReading.toStringAsFixed(2)}). It will be saved and flagged for review.';
         return;
       }
       _error = null;
@@ -121,7 +126,8 @@ class _ReadingEntryScreenState extends State<ReadingEntryScreen> {
       flagReason = 'CURRENT_BELOW_PREVIOUS';
     } else if (isSpike) {
       status = 'flagged';
-      flagReason = 'ABNORMAL_SPIKE: ${consumption.toStringAsFixed(2)} cu.m vs avg ${avg.toStringAsFixed(2)}';
+      flagReason =
+          'ABNORMAL_SPIKE: ${consumption.toStringAsFixed(2)} cu.m vs avg ${avg.toStringAsFixed(2)}';
     } else {
       status = 'submitted';
       flagReason = null;
@@ -150,7 +156,9 @@ class _ReadingEntryScreenState extends State<ReadingEntryScreen> {
                 ? 'Saved & flagged for review.'
                 : 'Reading saved: ${consumption.toStringAsFixed(2)} cu.m',
           ),
-          backgroundColor: status == 'flagged' ? Colors.orange.shade700 : Colors.green.shade700,
+          backgroundColor: status == 'flagged'
+              ? Colors.orange.shade700
+              : Colors.green.shade700,
           duration: const Duration(seconds: 2),
         ),
       );
@@ -184,7 +192,8 @@ class _ReadingEntryScreenState extends State<ReadingEntryScreen> {
                     alignment: Alignment.centerLeft,
                     child: Text(
                       widget.unit.residentName!,
-                      style: const TextStyle(color: Colors.white70, fontSize: 13),
+                      style:
+                          const TextStyle(color: Colors.white70, fontSize: 13),
                     ),
                   ),
                 ),
@@ -212,11 +221,14 @@ class _ReadingEntryScreenState extends State<ReadingEntryScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Previous Reading', style: TextStyle(fontSize: 11, color: Colors.grey.shade500)),
+                          Text('Previous Reading',
+                              style: TextStyle(
+                                  fontSize: 11, color: Colors.grey.shade500)),
                           const SizedBox(height: 2),
                           Text(
                             '${widget.unit.previousReading.toStringAsFixed(2)} cu.m',
-                            style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                            style: const TextStyle(
+                                fontSize: 22, fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
@@ -225,9 +237,13 @@ class _ReadingEntryScreenState extends State<ReadingEntryScreen> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          Text('Meter No.', style: TextStyle(fontSize: 11, color: Colors.grey.shade500)),
+                          Text('Meter No.',
+                              style: TextStyle(
+                                  fontSize: 11, color: Colors.grey.shade500)),
                           const SizedBox(height: 2),
-                          Text(widget.unit.meterNumber!, style: const TextStyle(fontFamily: 'monospace', fontSize: 13)),
+                          Text(widget.unit.meterNumber!,
+                              style: const TextStyle(
+                                  fontFamily: 'monospace', fontSize: 13)),
                         ],
                       ),
                   ],
@@ -238,30 +254,41 @@ class _ReadingEntryScreenState extends State<ReadingEntryScreen> {
               // Current reading input
               Text(
                 'Current Reading (cu.m)',
-                style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: Colors.grey.shade700),
+                style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.grey.shade700),
               ),
               const SizedBox(height: 8),
               TextField(
                 controller: _ctrl,
                 focusNode: _focusNode,
                 autofocus: true,
-                keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'^\d*\.?\d*'))],
-                style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                keyboardType:
+                    const TextInputType.numberWithOptions(decimal: true),
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(RegExp(r'^\d*\.?\d*'))
+                ],
+                style:
+                    const TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                 decoration: InputDecoration(
                   hintText: '0.00',
-                  hintStyle: TextStyle(fontSize: 28, color: Colors.grey.shade300),
+                  hintStyle:
+                      TextStyle(fontSize: 28, color: Colors.grey.shade300),
                   suffixText: 'cu.m',
-                  suffixStyle: TextStyle(fontSize: 14, color: Colors.grey.shade500),
+                  suffixStyle:
+                      TextStyle(fontSize: 14, color: Colors.grey.shade500),
                   errorText: _error,
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12)),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: BorderSide(color: Colors.grey.shade300),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
-                    borderSide: const BorderSide(color: Color(0xFF1D4ED8), width: 2),
+                    borderSide:
+                        const BorderSide(color: Color(0xFF1D4ED8), width: 2),
                   ),
                   errorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
@@ -275,7 +302,8 @@ class _ReadingEntryScreenState extends State<ReadingEntryScreen> {
               // Consumption display
               if (consumption != null && _error == null)
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
                   decoration: BoxDecoration(
                     color: consumption < 0
                         ? Colors.red.shade50
@@ -284,7 +312,9 @@ class _ReadingEntryScreenState extends State<ReadingEntryScreen> {
                             : Colors.blue.shade50,
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(
-                      color: consumption < 0 ? Colors.red.shade200 : Colors.blue.shade200,
+                      color: consumption < 0
+                          ? Colors.red.shade200
+                          : Colors.blue.shade200,
                     ),
                   ),
                   child: Row(
@@ -327,12 +357,14 @@ class _ReadingEntryScreenState extends State<ReadingEntryScreen> {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Icon(Icons.warning_amber, color: Colors.orange.shade700, size: 18),
+                      Icon(Icons.warning_amber,
+                          color: Colors.orange.shade700, size: 18),
                       const SizedBox(width: 8),
                       Expanded(
                         child: Text(
                           _warning!,
-                          style: TextStyle(fontSize: 13, color: Colors.orange.shade900),
+                          style: TextStyle(
+                              fontSize: 13, color: Colors.orange.shade900),
                         ),
                       ),
                     ],
@@ -349,7 +381,8 @@ class _ReadingEntryScreenState extends State<ReadingEntryScreen> {
                 decoration: InputDecoration(
                   labelText: 'Notes (optional)',
                   hintText: 'e.g. Meter cover broken, cannot read clearly',
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12)),
                 ),
               ),
               const SizedBox(height: 12),
@@ -362,7 +395,9 @@ class _ReadingEntryScreenState extends State<ReadingEntryScreen> {
                   decoration: BoxDecoration(
                     color: Colors.grey.shade50,
                     border: Border.all(
-                      color: _photoPath != null ? Colors.blue.shade300 : Colors.grey.shade300,
+                      color: _photoPath != null
+                          ? Colors.blue.shade300
+                          : Colors.grey.shade300,
                       style: BorderStyle.solid,
                     ),
                     borderRadius: BorderRadius.circular(12),
@@ -375,25 +410,30 @@ class _ReadingEntryScreenState extends State<ReadingEntryScreen> {
                             children: [
                               Image.file(File(_photoPath!), fit: BoxFit.cover),
                               Positioned(
-                                top: 8, right: 8,
+                                top: 8,
+                                right: 8,
                                 child: GestureDetector(
-                                  onTap: () => setState(() => _photoPath = null),
+                                  onTap: () =>
+                                      setState(() => _photoPath = null),
                                   child: Container(
                                     padding: const EdgeInsets.all(4),
                                     decoration: BoxDecoration(
                                       color: Colors.black54,
                                       borderRadius: BorderRadius.circular(16),
                                     ),
-                                    child: const Icon(Icons.close, color: Colors.white, size: 16),
+                                    child: const Icon(Icons.close,
+                                        color: Colors.white, size: 16),
                                   ),
                                 ),
                               ),
                               Positioned(
-                                bottom: 8, right: 8,
+                                bottom: 8,
+                                right: 8,
                                 child: GestureDetector(
                                   onTap: _pickPhoto,
                                   child: Container(
-                                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10, vertical: 6),
                                     decoration: BoxDecoration(
                                       color: Colors.black54,
                                       borderRadius: BorderRadius.circular(8),
@@ -401,9 +441,13 @@ class _ReadingEntryScreenState extends State<ReadingEntryScreen> {
                                     child: const Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
-                                        Icon(Icons.camera_alt, color: Colors.white, size: 14),
+                                        Icon(Icons.camera_alt,
+                                            color: Colors.white, size: 14),
                                         SizedBox(width: 4),
-                                        Text('Retake', style: TextStyle(color: Colors.white, fontSize: 12)),
+                                        Text('Retake',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 12)),
                                       ],
                                     ),
                                   ),
@@ -415,11 +459,13 @@ class _ReadingEntryScreenState extends State<ReadingEntryScreen> {
                       : Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.camera_alt_outlined, color: Colors.grey.shade400, size: 20),
+                            Icon(Icons.camera_alt_outlined,
+                                color: Colors.grey.shade400, size: 20),
                             const SizedBox(width: 8),
                             Text(
                               'Take meter photo (optional)',
-                              style: TextStyle(color: Colors.grey.shade500, fontSize: 13),
+                              style: TextStyle(
+                                  color: Colors.grey.shade500, fontSize: 13),
                             ),
                           ],
                         ),
@@ -429,17 +475,28 @@ class _ReadingEntryScreenState extends State<ReadingEntryScreen> {
 
               // Save button
               ElevatedButton.icon(
-                onPressed: (_currentReading == null || _error != null || _saving) ? null : _save,
+                onPressed:
+                    (_currentReading == null || _error != null || _saving)
+                        ? null
+                        : _save,
                 icon: _saving
-                    ? const SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white))
+                    ? const SizedBox(
+                        width: 18,
+                        height: 18,
+                        child: CircularProgressIndicator(
+                            strokeWidth: 2, color: Colors.white))
                     : Icon(_warning != null ? Icons.flag : Icons.save),
                 label: Text(
-                  _saving ? 'Saving…'
-                      : _warning != null ? 'Save & Flag for Review'
-                      : 'Save Reading',
+                  _saving
+                      ? 'Saving…'
+                      : _warning != null
+                          ? 'Save & Flag for Review'
+                          : 'Save Reading',
                 ),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: _warning != null ? Colors.orange.shade700 : const Color(0xFF1D4ED8),
+                  backgroundColor: _warning != null
+                      ? Colors.orange.shade700
+                      : const Color(0xFF1D4ED8),
                   padding: const EdgeInsets.symmetric(vertical: 16),
                 ),
               ),
@@ -448,7 +505,8 @@ class _ReadingEntryScreenState extends State<ReadingEntryScreen> {
               const SizedBox(height: 10),
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: const Text('Skip this unit', style: TextStyle(color: Colors.grey)),
+                child: const Text('Skip this unit',
+                    style: TextStyle(color: Colors.grey)),
               ),
             ],
           ),

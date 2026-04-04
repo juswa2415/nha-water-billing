@@ -4,7 +4,7 @@ import { useAuthStore } from '../../store/authStore';
 import {
   LayoutDashboard, Building2, Gauge, FileText, CreditCard,
   BarChart3, Settings, ChevronDown, ChevronRight,
-  Users, Database, Percent, TrendingDown, AlertCircle, ListChecks,
+  Users, Database, Percent, TrendingDown, AlertCircle,
 } from 'lucide-react';
 import { useState } from 'react';
 import clsx from 'clsx';
@@ -34,13 +34,7 @@ const NAV: NavItem[] = [
       { label: 'Bulk Import', to: '/units/import', icon: <Database size={14} />, roles: ['admin'] },
     ],
   },
-  {
-    label: 'Readings', icon: <Gauge size={16} />,
-    children: [
-      { label: 'Review Queue', to: '/readings', icon: <ListChecks size={14} /> },
-      { label: 'Sync from Mobile', to: '/readings/sync', icon: <Database size={14} /> },
-    ],
-  },
+  { label: 'Readings', to: '/readings', icon: <Gauge size={16} />, roles: ['admin', 'billing_staff'] },
   {
     label: 'Billing', icon: <FileText size={16} />,
     roles: ['admin', 'billing_staff'],

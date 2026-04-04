@@ -83,14 +83,16 @@ class DatabaseService {
       )
     ''');
 
-    await db.execute('CREATE INDEX idx_units_building ON units(building_code, floor_number)');
+    await db.execute(
+        'CREATE INDEX idx_units_building ON units(building_code, floor_number)');
     await db.execute('CREATE INDEX idx_units_cycle ON units(billing_cycle_id)');
     await db.execute('CREATE INDEX idx_readings_unit ON readings(unit_id)');
   }
 
   // ── Session ─────────────────────────────────────────────────────
 
-  Future<void> saveSession(String username, String fullName, String role) async {
+  Future<void> saveSession(
+      String username, String fullName, String role) async {
     final d = await db;
     await d.delete('session');
     await d.insert('session', {
@@ -124,29 +126,37 @@ class DatabaseService {
 
     await d.transaction((txn) async {
       // Upsert billing cycle
-      await txn.insert('billing_cycles', {
-        'id': cycleId,
-        'period_start': periodStart,
-        'period_end': periodEnd,
-        'exported_at': exportedAt,
-      }, conflictAlgorithm: ConflictAlgorithm.replace);
+      await txn.insert(
+          'billing_cycles',
+          {
+            'id': cycleId,
+            'period_start': periodStart,
+            'period_end': periodEnd,
+            'exported_at': exportedAt,
+          },
+          conflictAlgorithm: ConflictAlgorithm.replace);
 
       // Clear old units for this cycle
-      await txn.delete('units', where: 'billing_cycle_id = ?', whereArgs: [cycleId]);
+      await txn
+          .delete('units', where: 'billing_cycle_id = ?', whereArgs: [cycleId]);
 
       // Insert units
       for (final u in units) {
-        await txn.insert('units', {
-          'id': u['unit_id'],
-          'billing_cycle_id': cycleId,
-          'unit_number': u['unit_number'],
-          'building_code': u['building_code'],
-          'floor_number': u['floor_number'],
-          'meter_number': u['meter_number'],
-          'resident_name': u['resident_name'],
-          'previous_reading': u['previous_reading'],
-          'reading_status': u['reading_status'] ?? 'pending',
-        }, conflictAlgorithm: ConflictAlgorithm.replace);
+        await txn.insert(
+            'units',
+            {
+              'id': u['unit_id'],
+              'billing_cycle_id': cycleId,
+              'unit_number': u['unit_number'],
+              'building_code': u['building_code'],
+              'floor_number': u['floor_number'],
+              'meter_number': u['meter_number'],
+              'resident_name': u['resident_name'],
+              'previous_reading': u['previous_reading'],
+              'reading_status': u['reading_status'] ?? 'pending',
+              'avg_consumption': u['avg_consumption'] ?? 0,
+            },
+            conflictAlgorithm: ConflictAlgorithm.replace);
       }
     });
 
@@ -173,26 +183,136 @@ class DatabaseService {
     return rows.map((r) => r['floor_number'] as int).toList();
   }
 
-  Future<List<Unit>> getUnitsForFloor(int cycleId, String buildingCode, int floor) async {
+  Future<List<Unit>> getUnitsForFloor(
+      int cycleId, String buildingCode, int floor) async {
     final d = await db;
-    final rows = await d.rawQuery(
-      '''SELECT u.*,
-         COALESCE(r.status, u.reading_status) as reading_status,
-         0.0 as avg_consumption
-         FROM units u
-         LEFT JOIN readings r ON r.unit_id = u.id AND r.billing_cycle_id = ?
-         WHERE u.billing_cycle_id = ? AND u.building_code = ? AND u.floor_number = ?
-         ORDER BY u.unit_number''',
-      [cycleId, cycleId, buildingCode, floor],
+    final rows = await d.query(
+      'units',
+      where: 'billing_cycle_id = ? AND building_code = ? AND floor_number = ?',
+      whereArgs: [cycleId, buildingCode, floor],
+      orderBy: 'unit_number',
     );
     return rows.map(Unit.fromDb).toList();
   }
 
   Future<int> getActiveCycleId() async {
     final d = await db;
-    final rows = await d.rawQuery('SELECT id FROM billing_cycles ORDER BY exported_at DESC LIMIT 1');
+    final rows = await d.rawQuery(
+        'SELECT id FROM billing_cycles ORDER BY exported_at DESC LIMIT 1');
     if (rows.isEmpty) return -1;
     return rows.first['id'] as int;
+  }
+
+  Future<List<Map<String, dynamic>>> getStoredCycles() async {
+    final d = await db;
+    final rows = await d.rawQuery(
+      'SELECT id, period_start, period_end, exported_at '
+      'FROM billing_cycles ORDER BY exported_at DESC',
+    );
+    return rows
+        .map(
+          (row) => {
+            'id': row['id'] as int,
+            'period_start': row['period_start'] as String,
+            'period_end': row['period_end'] as String,
+            'exported_at': row['exported_at'] as String,
+          },
+        )
+        .toList();
+  }
+
+  Future<Map<String, int>> getCycleStatusCounts(int cycleId) async {
+    final d = await db;
+    final rows = await d.rawQuery(
+      '''
+      SELECT
+        COUNT(*) AS total,
+        SUM(CASE WHEN reading_status = 'pending' THEN 1 ELSE 0 END) AS pending,
+        SUM(CASE WHEN reading_status = 'flagged' THEN 1 ELSE 0 END) AS flagged,
+        SUM(CASE WHEN reading_status IN ('submitted', 'flagged') THEN 1 ELSE 0 END) AS entered
+      FROM units
+      WHERE billing_cycle_id = ?
+      ''',
+      [cycleId],
+    );
+    final row = rows.first;
+    return {
+      'total': (row['total'] as num?)?.toInt() ?? 0,
+      'pending': (row['pending'] as num?)?.toInt() ?? 0,
+      'flagged': (row['flagged'] as num?)?.toInt() ?? 0,
+      'entered': (row['entered'] as num?)?.toInt() ?? 0,
+    };
+  }
+
+  Future<Map<String, dynamic>?> getLatestCycleSummary() async {
+    final d = await db;
+    final rows = await d.rawQuery(
+      'SELECT id, period_start, period_end, exported_at '
+      'FROM billing_cycles ORDER BY exported_at DESC LIMIT 1',
+    );
+    if (rows.isEmpty) return null;
+
+    final cycle = rows.first;
+    final cycleId = cycle['id'] as int;
+    final stats = await getCycleStatusCounts(cycleId);
+    final buildingCount = Sqflite.firstIntValue(
+          await d.rawQuery(
+            'SELECT COUNT(DISTINCT building_code) FROM units WHERE billing_cycle_id = ?',
+            [cycleId],
+          ),
+        ) ??
+        0;
+
+    return {
+      'id': cycleId,
+      'period_start': cycle['period_start'] as String,
+      'period_end': cycle['period_end'] as String,
+      'exported_at': cycle['exported_at'] as String,
+      'building_count': buildingCount,
+      ...stats,
+    };
+  }
+
+  Future<List<Map<String, dynamic>>> getBuildingSummaries(int cycleId) async {
+    final d = await db;
+    final rows = await d.rawQuery(
+      '''
+      SELECT
+        building_code,
+        COUNT(*) AS total,
+        SUM(CASE WHEN reading_status = 'pending' THEN 1 ELSE 0 END) AS pending,
+        SUM(CASE WHEN reading_status = 'flagged' THEN 1 ELSE 0 END) AS flagged,
+        SUM(CASE WHEN reading_status IN ('submitted', 'flagged') THEN 1 ELSE 0 END) AS entered
+      FROM units
+      WHERE billing_cycle_id = ?
+      GROUP BY building_code
+      ORDER BY building_code
+      ''',
+      [cycleId],
+    );
+
+    return rows
+        .map(
+          (row) => {
+            'building_code': row['building_code'] as String,
+            'total': (row['total'] as num?)?.toInt() ?? 0,
+            'pending': (row['pending'] as num?)?.toInt() ?? 0,
+            'flagged': (row['flagged'] as num?)?.toInt() ?? 0,
+            'entered': (row['entered'] as num?)?.toInt() ?? 0,
+          },
+        )
+        .toList();
+  }
+
+  Future<int> getUnsyncedCount(int cycleId) async {
+    final d = await db;
+    return Sqflite.firstIntValue(
+          await d.rawQuery(
+            'SELECT COUNT(*) FROM readings WHERE billing_cycle_id = ? AND synced = 0',
+            [cycleId],
+          ),
+        ) ??
+        0;
   }
 
   // ── Readings ─────────────────────────────────────────────────────
@@ -259,9 +379,14 @@ class DatabaseService {
   // Stats for header display
   Future<Map<String, int>> getCycleProgress(int cycleId) async {
     final d = await db;
-    final total = Sqflite.firstIntValue(await d.rawQuery('SELECT COUNT(*) FROM units WHERE billing_cycle_id = ?', [cycleId])) ?? 0;
+    final total = Sqflite.firstIntValue(await d.rawQuery(
+            'SELECT COUNT(*) FROM units WHERE billing_cycle_id = ?',
+            [cycleId])) ??
+        0;
     final done = Sqflite.firstIntValue(await d.rawQuery(
-      "SELECT COUNT(*) FROM readings WHERE billing_cycle_id = ? AND status IN ('submitted','flagged')", [cycleId])) ?? 0;
+            "SELECT COUNT(*) FROM readings WHERE billing_cycle_id = ? AND status IN ('submitted','flagged')",
+            [cycleId])) ??
+        0;
     return {'total': total, 'done': done};
   }
 }
