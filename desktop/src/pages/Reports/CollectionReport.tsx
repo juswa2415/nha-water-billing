@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { invoke } from '@tauri-apps/api/core';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import { ChevronDown, Receipt } from 'lucide-react';
+import { ArrowLeft, ChevronDown, Receipt } from 'lucide-react';
 import { DataTable, type Column } from '../../components/shared/DataTable';
+import { PaginationBar } from '../../components/shared/PaginationBar';
 import { formatDate, php } from '../../utils/formatters';
 
 interface CollRow {
@@ -30,6 +31,8 @@ export function CollectionReport() {
   const [cycleId, setCycleId] = useState<number | null>(null);
   const [data, setData] = useState<CollRow[]>([]);
   const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(15);
 
   useEffect(() => {
     let cancelled = false;
@@ -42,6 +45,7 @@ export function CollectionReport() {
         if (rows.length > 0) {
           setCycleId(rows[0].id);
         }
+        setPage(1);
       })
       .catch((error) => {
         if (!cancelled) {
@@ -60,6 +64,7 @@ export function CollectionReport() {
 
     let cancelled = false;
     setLoading(true);
+    setPage(1);
     invoke<CollRow[]>('collection_summary', { cycleId })
       .then((rows) => {
         if (!cancelled) {
@@ -83,6 +88,10 @@ export function CollectionReport() {
   }, [cycleId]);
 
   const total = data.reduce((sum, row) => sum + row.amount_paid, 0);
+  const pagedData = useMemo(() => {
+    const startIndex = (page - 1) * pageSize;
+    return data.slice(startIndex, startIndex + pageSize);
+  }, [data, page, pageSize]);
 
   const columns: Column<CollRow>[] = [
     {
@@ -154,6 +163,21 @@ export function CollectionReport() {
 
   return (
     <div className="space-y-4">
+      <div className="flex items-center gap-3">
+        <button
+          onClick={() => navigate(-1)}
+          className="rounded-lg p-1.5 transition-colors hover:bg-gray-100"
+        >
+          <ArrowLeft size={16} className="text-gray-500" />
+        </button>
+        <div>
+          <h2 className="text-lg font-semibold text-gray-900">Collection Report</h2>
+          <p className="text-sm text-gray-500">
+            Receipt-level list of posted collections for the selected cycle.
+          </p>
+        </div>
+      </div>
+
       <div className="rounded-xl border border-blue-200 bg-blue-50 p-4">
         <p className="text-sm font-semibold text-blue-900">Receipt log</p>
         <p className="mt-2 text-sm text-blue-900">
@@ -190,12 +214,25 @@ export function CollectionReport() {
 
       <DataTable
         columns={columns}
-        data={data}
+        data={pagedData}
         rowKey={(row) => row.payment_id}
         onRowClick={(row) => navigate(`/payments/receipt/${row.payment_id}`)}
         loading={loading}
         emptyMessage="No payments recorded for this cycle."
       />
+
+      {!loading && data.length > 0 && (
+        <PaginationBar
+          currentPage={page}
+          pageSize={pageSize}
+          totalItems={data.length}
+          onPageChange={setPage}
+          onPageSizeChange={(nextPageSize) => {
+            setPageSize(nextPageSize);
+            setPage(1);
+          }}
+        />
+      )}
     </div>
   );
 }

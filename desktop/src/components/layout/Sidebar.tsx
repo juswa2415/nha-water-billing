@@ -40,13 +40,14 @@ const NAV: NavItem[] = [
     roles: ['admin', 'billing_staff'],
     children: [
       { label: 'Billing Cycles', to: '/billing', icon: <FileText size={14} /> },
+      { label: 'Service Cases', to: '/billing/service-cases', icon: <AlertCircle size={14} /> },
     ],
   },
   {
     label: 'Payments', icon: <CreditCard size={16} />,
     roles: ['admin', 'cashier', 'billing_staff'],
     children: [
-      { label: 'Unpaid Accounts', to: '/reports/unpaid', icon: <CreditCard size={14} /> },
+      { label: 'Payment Queue', to: '/payments/queue', icon: <CreditCard size={14} /> },
       { label: 'Receipt Log', to: '/reports/collection', icon: <FileText size={14} /> },
       { label: 'Void Payment', to: '/payments/void', icon: <AlertCircle size={14} />, roles: ['admin'] },
     ],

@@ -1,7 +1,11 @@
 import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-import { useAuthStore, type UserRole } from './store/authStore';
+import {
+  getDefaultRouteForRole,
+  useAuthStore,
+  type UserRole,
+} from './store/authStore';
 import { AppLayout } from './components/layout/AppLayout';
 import { LoginPage } from './pages/LoginPage';
 import { Dashboard } from './pages/Dashboard';
@@ -15,6 +19,7 @@ import { SyncImport } from './pages/Readings/SyncImport';
 import { BillingCycleList } from './pages/Billing/BillingCycleList';
 import { BillGenerate } from './pages/Billing/BillGenerate';
 import { BillPreview } from './pages/Billing/BillPreview';
+import { ServiceCases } from './pages/Billing/ServiceCases';
 import { PaymentEntry } from './pages/Payments/PaymentEntry';
 import { ReceiptView } from './pages/Payments/ReceiptView';
 import { VoidPayment } from './pages/Payments/VoidPayment';
@@ -53,8 +58,20 @@ function RequireRole({
   const { user, loading, hasRole } = useAuthStore();
   if (loading) return <LoadingScreen />;
   if (!user) return <Navigate to="/login" replace />;
-  if (!hasRole(...roles)) return <Navigate to="/dashboard" replace />;
+  if (!hasRole(...roles)) {
+    return <Navigate to={getDefaultRouteForRole(user.role)} replace />;
+  }
   return <>{children}</>;
+}
+
+function RoleHomeRedirect() {
+  const { user, loading } = useAuthStore();
+
+  if (loading) {
+    return <LoadingScreen />;
+  }
+
+  return <Navigate to={getDefaultRouteForRole(user?.role)} replace />;
 }
 
 export default function App() {
@@ -77,7 +94,7 @@ export default function App() {
             </RequireAuth>
           }
         >
-          <Route index element={<Navigate to="/dashboard" replace />} />
+          <Route index element={<RoleHomeRedirect />} />
           <Route path="dashboard" element={<Dashboard />} />
 
           <Route path="units" element={<UnitList />} />
@@ -134,7 +151,23 @@ export default function App() {
           <Route path="billing" element={<BillingCycleList />} />
           <Route path="billing/:cycleId/generate" element={<BillGenerate />} />
           <Route path="billing/bill/:billId" element={<BillPreview />} />
+          <Route
+            path="billing/service-cases"
+            element={
+              <RequireRole roles={['admin', 'billing_staff']}>
+                <ServiceCases />
+              </RequireRole>
+            }
+          />
 
+          <Route
+            path="payments/queue"
+            element={
+              <RequireRole roles={['admin', 'cashier', 'billing_staff']}>
+                <UnpaidAccounts />
+              </RequireRole>
+            }
+          />
           <Route
             path="payments/new/:billId"
             element={
@@ -157,8 +190,22 @@ export default function App() {
 
           <Route path="reports/billing" element={<BillingSummary />} />
           <Route path="reports/collection" element={<CollectionReport />} />
-          <Route path="reports/unpaid" element={<UnpaidAccounts />} />
-          <Route path="reports/aging" element={<AgingReport />} />
+          <Route
+            path="reports/unpaid"
+            element={
+              <RequireRole roles={['admin', 'cashier', 'billing_staff']}>
+                <UnpaidAccounts />
+              </RequireRole>
+            }
+          />
+          <Route
+            path="reports/aging"
+            element={
+              <RequireRole roles={['admin', 'cashier', 'billing_staff']}>
+                <AgingReport />
+              </RequireRole>
+            }
+          />
           <Route
             path="reports/visuals"
             element={

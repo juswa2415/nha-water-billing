@@ -11,10 +11,21 @@ export interface CurrentUser {
   role: UserRole;
 }
 
+export function getDefaultRouteForRole(role: UserRole | null | undefined) {
+  if (role === 'cashier') {
+    return '/payments/queue';
+  }
+
+  return '/dashboard';
+}
+
 interface AuthState {
   user: CurrentUser | null;
   loading: boolean;
-  login: (username: string, password: string) => Promise<{ success: boolean; error?: string }>;
+  login: (
+    username: string,
+    password: string,
+  ) => Promise<{ success: boolean; error?: string; user?: CurrentUser }>;
   logout: () => Promise<void>;
   hydrate: () => Promise<void>;
   hasRole: (...roles: UserRole[]) => boolean;
@@ -42,7 +53,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
 
     if (result.success && result.user) {
       set({ user: result.user });
-      return { success: true };
+      return { success: true, user: result.user };
     }
     return { success: false, error: result.error ?? 'Login failed.' };
   },

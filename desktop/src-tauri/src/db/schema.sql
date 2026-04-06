@@ -59,6 +59,43 @@ CREATE TABLE accounts (
     registered_at   TEXT NOT NULL DEFAULT (datetime('now'))
 );
 
+CREATE TABLE unit_documents (
+    id              INTEGER PRIMARY KEY AUTOINCREMENT,
+    unit_id         INTEGER NOT NULL REFERENCES units(id),
+    document_type   TEXT NOT NULL,
+    original_name   TEXT NOT NULL,
+    stored_path     TEXT NOT NULL,
+    notes           TEXT,
+    uploaded_by     INTEGER REFERENCES users(id),
+    uploaded_at     TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+CREATE TABLE service_actions (
+    id              INTEGER PRIMARY KEY AUTOINCREMENT,
+    unit_id         INTEGER NOT NULL REFERENCES units(id),
+    account_id      INTEGER REFERENCES accounts(id),
+    action_type     TEXT NOT NULL CHECK(action_type IN ('disconnection','reconnection')),
+    action_date     TEXT NOT NULL,
+    effective_date  TEXT,
+    outstanding_balance REAL NOT NULL DEFAULT 0,
+    unpaid_periods  INTEGER NOT NULL DEFAULT 0,
+    reason          TEXT NOT NULL,
+    notes           TEXT,
+    recorded_by     INTEGER REFERENCES users(id),
+    created_at      TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+CREATE TABLE service_action_documents (
+    id              INTEGER PRIMARY KEY AUTOINCREMENT,
+    service_action_id INTEGER NOT NULL REFERENCES service_actions(id),
+    document_type   TEXT NOT NULL,
+    original_name   TEXT NOT NULL,
+    stored_path     TEXT NOT NULL,
+    notes           TEXT,
+    uploaded_by     INTEGER REFERENCES users(id),
+    uploaded_at     TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
 -- Building Sub-meter Readings (per billing cycle)
 CREATE TABLE bldg_sub_readings (
     id              INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -143,6 +180,8 @@ CREATE TABLE payments (
     amount_paid     REAL NOT NULL,
     remaining_balance REAL NOT NULL DEFAULT 0,
     receipt_number  TEXT NOT NULL UNIQUE,    -- e.g. "0002164"
+    receipt_group_number TEXT,
+    account_balance_after REAL NOT NULL DEFAULT 0,
     payment_date    TEXT NOT NULL DEFAULT (date('now')),
     period_start    TEXT,
     period_end      TEXT,
@@ -181,6 +220,10 @@ CREATE TABLE system_settings (
 -- ================================================================
 CREATE INDEX idx_units_status ON units(status);
 CREATE INDEX idx_units_floor ON units(floor_id);
+CREATE INDEX idx_unit_documents_unit ON unit_documents(unit_id);
+CREATE INDEX idx_service_actions_unit ON service_actions(unit_id);
+CREATE INDEX idx_service_actions_account ON service_actions(account_id);
+CREATE INDEX idx_service_action_documents_action ON service_action_documents(service_action_id);
 CREATE INDEX idx_meter_readings_cycle ON meter_readings(billing_cycle_id);
 CREATE INDEX idx_meter_readings_unit ON meter_readings(unit_id);
 CREATE INDEX idx_meter_readings_status ON meter_readings(status);
@@ -189,6 +232,7 @@ CREATE INDEX idx_bills_account ON bills(account_id);
 CREATE INDEX idx_bills_status ON bills(status);
 CREATE INDEX idx_payments_bill ON payments(bill_id);
 CREATE INDEX idx_payments_receipt ON payments(receipt_number);
+CREATE INDEX idx_payments_receipt_group ON payments(receipt_group_number);
 CREATE INDEX idx_audit_logs_user ON audit_logs(user_id);
 CREATE INDEX idx_audit_logs_module ON audit_logs(module);
 
@@ -203,4 +247,5 @@ INSERT INTO system_settings (key, value, description) VALUES
   ('receipt_prefix', '', 'Prefix for receipt numbers'),
   ('receipt_next_number', '1', 'Next receipt sequential number'),
   ('disconnection_notice_days', '7', 'Days after due date before disconnection notice'),
+  ('disconnection_trigger_unpaid_bills', '2', 'Unpaid billing periods allowed before actual disconnection eligibility'),
   ('penalty_rate', '0', 'Penalty rate for late payment');

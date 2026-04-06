@@ -2,11 +2,18 @@ import { useEffect, useMemo, useState } from 'react';
 import { invoke } from '@tauri-apps/api/core';
 import { useNavigate, useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import { ArrowLeft, Droplets, FileText, Receipt, X, Zap } from 'lucide-react';
+import { ArrowLeft, Droplets, FileText, Printer, Receipt, Trash2, X, Zap } from 'lucide-react';
 import { ConfirmDialog } from '../../components/shared/ConfirmDialog';
 import { DataTable, type Column } from '../../components/shared/DataTable';
 import { StatusBadge } from '../../components/shared/StatusBadge';
 import { cubicM, php } from '../../utils/formatters';
+import { useAuthStore } from '../../store/authStore';
+import { printHtmlDocument } from '../../services/printService';
+import {
+  getBillPrintStyles,
+  renderBillPrintHtml,
+  type PrintableBill,
+} from './billPrintTemplate';
 
 interface BillRow {
   id: number;
@@ -102,11 +109,15 @@ const CYCLE_STAGE_META: Record<string, { label: string; help: string }> = {
 export function BillGenerate() {
   const { cycleId } = useParams<{ cycleId: string }>();
   const navigate = useNavigate();
+  const { hasRole } = useAuthStore();
   const [bills, setBills] = useState<BillRow[]>([]);
   const [cycle, setCycle] = useState<CycleRow | null>(null);
   const [loading, setLoading] = useState(true);
   const [generating, setGenerating] = useState(false);
+  const [printing, setPrinting] = useState(false);
+  const [deleting, setDeleting] = useState(false);
   const [confirmGen, setConfirmGen] = useState(false);
+  const [confirmDelete, setConfirmDelete] = useState(false);
   const [result, setResult] = useState<GenResult | null>(null);
   const [statusFilter, setStatusFilter] =
     useState<(typeof BILL_FILTERS)[number]['value']>('all');
@@ -182,6 +193,52 @@ export function BillGenerate() {
       toast.error(String(error));
     } finally {
       setGenerating(false);
+    }
+  };
+
+  const handleBatchPrint = async () => {
+    if (filteredBills.length === 0) {
+      toast.error('There are no bills in the current view to print.');
+      return;
+    }
+
+    setPrinting(true);
+    try {
+      const printableBills = await Promise.all(
+        filteredBills.map((bill) =>
+          invoke<PrintableBill>('get_bill', {
+            billId: bill.id,
+          }),
+        ),
+      );
+
+      printHtmlDocument({
+        title: `NHA Water Bills - Cycle ${cycleId}`,
+        html: renderBillPrintHtml(printableBills),
+        styles: getBillPrintStyles(),
+      });
+    } catch (error) {
+      toast.error(String(error));
+    } finally {
+      setPrinting(false);
+    }
+  };
+
+  const deleteCycle = async () => {
+    if (!cycleId) {
+      return;
+    }
+
+    setDeleting(true);
+    try {
+      await invoke('delete_billing_cycle', { cycleId: Number(cycleId) });
+      toast.success('Billing cycle deleted.');
+      navigate('/billing');
+    } catch (error) {
+      toast.error(String(error));
+    } finally {
+      setDeleting(false);
+      setConfirmDelete(false);
     }
   };
 
@@ -462,6 +519,16 @@ export function BillGenerate() {
               {filter.label}
             </button>
           ))}
+          {filteredBills.length > 0 && (
+            <button
+              onClick={() => void handleBatchPrint()}
+              disabled={printing}
+              className="flex items-center gap-1.5 rounded-lg border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-medium text-blue-700 transition-colors hover:bg-blue-100 disabled:opacity-60"
+            >
+              <Printer size={14} />
+              {printing ? 'Preparing print...' : 'Batch Print Bills'}
+            </button>
+          )}
           <button
             onClick={() => void openLossInputs()}
             className="flex items-center gap-1.5 rounded-lg border border-cyan-200 bg-cyan-50 px-4 py-2 text-sm font-medium text-cyan-700 transition-colors hover:bg-cyan-100"
@@ -469,6 +536,16 @@ export function BillGenerate() {
             <Droplets size={14} />
             Loss Inputs
           </button>
+          {hasRole('admin') && (
+            <button
+              onClick={() => setConfirmDelete(true)}
+              disabled={deleting}
+              className="flex items-center gap-1.5 rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-sm font-medium text-red-700 transition-colors hover:bg-red-100 disabled:opacity-60"
+            >
+              <Trash2 size={14} />
+              Delete Cycle
+            </button>
+          )}
           <button
             onClick={() => setConfirmGen(true)}
             disabled={generating || !canGenerate}
@@ -498,7 +575,8 @@ export function BillGenerate() {
 
       <div className="rounded-xl border border-gray-200 bg-white px-4 py-3 text-xs text-gray-500">
         This table shows all bills inside the selected cycle. It includes open, partially paid,
-        and settled accounts, not just unpaid ones.
+        and settled accounts, not just unpaid ones. Billing owns bill generation, batch printing,
+        and closure. Payments are posted only from Payment Queue.
       </div>
 
       {result && (
@@ -567,6 +645,16 @@ export function BillGenerate() {
         confirmLabel="Continue"
         onConfirm={generate}
         onCancel={() => setConfirmGen(false)}
+      />
+
+      <ConfirmDialog
+        open={confirmDelete}
+        title="Delete this billing cycle?"
+        message="Only the latest cycle can be deleted. This removes the cycle, its readings, bills, and any payments posted inside it. Use this carefully during development or only with proper admin verification."
+        confirmLabel={deleting ? 'Deleting...' : 'Delete cycle'}
+        danger
+        onConfirm={deleteCycle}
+        onCancel={() => setConfirmDelete(false)}
       />
 
       {showLossInputs && (

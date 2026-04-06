@@ -7,6 +7,11 @@ import { useAuthStore } from '../../store/authStore';
 import { printHtmlDocument } from '../../services/printService';
 import { billPeriod, cubicM, formatDate, php } from '../../utils/formatters';
 import { StatusBadge } from '../../components/shared/StatusBadge';
+import {
+  getBillPrintStyles,
+  renderBillPrintHtml,
+  type PrintableBill,
+} from './billPrintTemplate';
 
 interface BillRow {
   id: number;
@@ -37,6 +42,11 @@ interface BillRow {
   latest_payment_id: number | null;
   latest_receipt_number: string | null;
   latest_payment_date: string | null;
+  disconnection_notice: string;
+  disconnection_effective_date: string | null;
+  disconnection_trigger_unpaid_bills: number;
+  unpaid_periods: number;
+  is_subject_for_disconnection: boolean;
 }
 
 interface PaymentRow {
@@ -103,8 +113,7 @@ export function BillPreview() {
   }, [billId]);
 
   const handlePrint = () => {
-    const content = printRef.current?.innerHTML;
-    if (!content) {
+    if (!bill) {
       toast.error('Bill preview is not ready.');
       return;
     }
@@ -112,16 +121,8 @@ export function BillPreview() {
     try {
       printHtmlDocument({
         title: 'NHA Water Bill',
-        html: content,
-        styles: `
-          * { box-sizing: border-box; margin: 0; padding: 0; }
-          body { font-family: Arial, sans-serif; font-size: 10pt; color: #000; background: #fff; }
-          .bill-page { width: 21cm; min-height: 14cm; padding: 1cm; margin: 0 auto; }
-          @media print {
-            body { margin: 0; }
-            .bill-page { width: 100%; padding: 0.8cm; }
-          }
-        `,
+        html: renderBillPrintHtml([bill as PrintableBill]),
+        styles: getBillPrintStyles(),
       });
     } catch (error) {
       toast.error(String(error));
@@ -136,7 +137,7 @@ export function BillPreview() {
     return <div className="p-8 text-sm text-red-500">Bill not found.</div>;
   }
 
-  const canRecordPayment =
+  const canOpenPaymentQueue =
     hasRole('admin', 'cashier') && bill.remaining_balance > 0 && bill.status !== 'locked';
 
   return (
@@ -164,13 +165,20 @@ export function BillPreview() {
               Receipt #{bill.latest_receipt_number}
             </button>
           )}
-          {canRecordPayment && (
+          {canOpenPaymentQueue && (
             <button
-              onClick={() => navigate(`/payments/new/${bill.id}`)}
-              className="flex items-center gap-1.5 rounded-lg bg-green-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-green-700"
+              onClick={() =>
+                navigate('/payments/queue', {
+                  state: {
+                    preselectCycleId: bill.billing_cycle_id,
+                    prefillQuery: bill.account_number,
+                  },
+                })
+              }
+              className="flex items-center gap-1.5 rounded-lg border border-green-200 bg-green-50 px-4 py-2 text-sm font-medium text-green-700 transition-colors hover:bg-green-100"
             >
               <CreditCard size={14} />
-              Record Payment
+              Open Payment Queue
             </button>
           )}
           <button
@@ -193,11 +201,15 @@ export function BillPreview() {
         </div>
         <p className="mt-2 text-sm text-blue-900">
           This page is the bill or statement of account. The actual payment receipt only
-          exists after a payment is posted. Use the payment history below to reopen past
-          receipts.
+          exists after a payment is posted. Payments are posted only from Payment Queue.
+          Use the payment history below to reopen past receipts. Printed disconnection text on
+          the bill stays policy-based and does not replace the Service Cases workflow.
         </p>
         <p className="mt-2 text-xs text-blue-800">
           Total collected: {php(bill.total_paid)}. Remaining balance: {php(bill.remaining_balance)}.
+        </p>
+        <p className="mt-2 text-xs text-blue-800">
+          {bill.disconnection_notice}
         </p>
       </div>
 
@@ -407,16 +419,7 @@ export function BillPreview() {
                 >
                   <strong>Notice of Disconnection:</strong>
                   <br />
-                  If your bill is still unpaid, disconnection may happen after{' '}
-                  <strong>
-                    {bill.due_date
-                      ? formatDate(
-                          new Date(
-                            new Date(bill.due_date).getTime() + 7 * 24 * 60 * 60 * 1000,
-                          ).toISOString(),
-                        )
-                      : '-'}
-                  </strong>
+                  {bill.disconnection_notice}
                 </div>
               </div>
 

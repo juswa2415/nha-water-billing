@@ -24,15 +24,12 @@ pub async fn billing_summary(
     require_role(&["admin", "billing_staff", "cashier"])?;
     let pool = state.db.lock().await;
 
-    let rows = sqlx::query(
+    let base_rows = sqlx::query(
         "SELECT bldg.code AS building_code,
                 COUNT(b.id) AS total_bills,
                 COALESCE(CAST(SUM(b.total_amount_due) AS REAL), 0.0) AS total_amount_due,
                 COALESCE(CAST(SUM(COALESCE(p.total_paid, 0.0)) AS REAL), 0.0) AS total_collected,
-                COALESCE(CAST(SUM(MAX(b.total_amount_due - COALESCE(p.total_paid, 0.0), 0.0)) AS REAL), 0.0) AS total_outstanding,
-                SUM(CASE WHEN COALESCE(p.total_paid, 0.0) >= b.total_amount_due AND COALESCE(p.total_paid, 0.0) > 0 THEN 1 ELSE 0 END) AS fully_paid,
-                SUM(CASE WHEN COALESCE(p.total_paid, 0.0) > 0 AND COALESCE(p.total_paid, 0.0) < b.total_amount_due THEN 1 ELSE 0 END) AS partially_paid,
-                SUM(CASE WHEN COALESCE(p.total_paid, 0.0) = 0 THEN 1 ELSE 0 END) AS unpaid
+                COALESCE(CAST(SUM(MAX(b.total_amount_due - COALESCE(p.total_paid, 0.0), 0.0)) AS REAL), 0.0) AS total_outstanding
          FROM bills b
          JOIN accounts a ON a.id = b.account_id
          JOIN units u ON u.id = a.unit_id
@@ -53,17 +50,109 @@ pub async fn billing_summary(
     .await
     .map_err(|e| e.to_string())?;
 
-    Ok(rows
+    let status_rows = sqlx::query(
+        "SELECT b.account_id,
+                b.billing_cycle_id,
+                b.total_for_month,
+                bldg.code AS building_code,
+                bc.period_start
+         FROM bills b
+         JOIN billing_cycles bc ON bc.id = b.billing_cycle_id
+         JOIN accounts a ON a.id = b.account_id
+         JOIN units u ON u.id = a.unit_id
+         JOIN floors f ON f.id = u.floor_id
+         JOIN buildings bldg ON bldg.id = f.building_id
+         WHERE b.account_id IN (
+            SELECT account_id FROM bills WHERE billing_cycle_id = ?
+         )
+         ORDER BY b.account_id, bc.period_start ASC, b.id ASC"
+    )
+    .bind(cycle_id)
+    .fetch_all(&*pool)
+    .await
+    .map_err(|e| e.to_string())?;
+
+    let payment_rows = sqlx::query(
+        "SELECT b.account_id,
+                COALESCE(CAST(SUM(p.amount_paid) AS REAL), 0.0) AS total_paid
+         FROM bills b
+         LEFT JOIN payments p ON p.bill_id = b.id AND p.is_void = 0
+         WHERE b.account_id IN (
+            SELECT account_id FROM bills WHERE billing_cycle_id = ?
+         )
+         GROUP BY b.account_id"
+    )
+    .bind(cycle_id)
+    .fetch_all(&*pool)
+    .await
+    .map_err(|e| e.to_string())?;
+
+    let mut total_paid_by_account = std::collections::HashMap::new();
+    for row in payment_rows {
+        total_paid_by_account.insert(row.get::<i64, _>("account_id"), row.get::<f64, _>("total_paid"));
+    }
+
+    let mut status_counts: std::collections::HashMap<String, (i64, i64, i64)> =
+        std::collections::HashMap::new();
+    let mut current_account: Option<i64> = None;
+    let mut remaining_credit = 0.0;
+    let mut total_paid_for_account = 0.0;
+
+    for row in status_rows {
+        let account_id: i64 = row.get("account_id");
+        if current_account != Some(account_id) {
+            current_account = Some(account_id);
+            total_paid_for_account = *total_paid_by_account.get(&account_id).unwrap_or(&0.0);
+            remaining_credit = total_paid_for_account;
+        }
+
+        let total_for_month: f64 = row.get("total_for_month");
+        let effective_open = if remaining_credit >= total_for_month {
+            remaining_credit -= total_for_month;
+            0.0
+        } else {
+            let open = total_for_month - remaining_credit;
+            remaining_credit = 0.0;
+            open
+        };
+
+        let bill_cycle_id: i64 = row.get("billing_cycle_id");
+        if bill_cycle_id != cycle_id {
+            continue;
+        }
+
+        let entry = status_counts
+            .entry(row.get::<String, _>("building_code"))
+            .or_insert((0, 0, 0));
+
+        if total_paid_for_account <= 0.0 {
+            entry.2 += 1;
+        } else if effective_open <= 0.0 {
+            entry.0 += 1;
+        } else {
+            entry.1 += 1;
+        }
+    }
+
+    Ok(base_rows
         .iter()
-        .map(|r| BillingSummaryRow {
-            building_code: r.get("building_code"),
-            total_bills: r.get("total_bills"),
-            total_amount_due: r.get("total_amount_due"),
-            total_collected: r.get("total_collected"),
-            total_outstanding: r.get("total_outstanding"),
-            fully_paid: r.get("fully_paid"),
-            partially_paid: r.get("partially_paid"),
-            unpaid: r.get("unpaid"),
+        .map(|r| {
+            let building_code: String = r.get("building_code");
+            let (fully_paid, partially_paid, unpaid) = status_counts
+                .get(&building_code)
+                .copied()
+                .unwrap_or((0, 0, 0));
+
+            BillingSummaryRow {
+                building_code,
+                total_bills: r.get("total_bills"),
+                total_amount_due: r.get("total_amount_due"),
+                total_collected: r.get("total_collected"),
+                total_outstanding: r.get("total_outstanding"),
+                fully_paid,
+                partially_paid,
+                unpaid,
+            }
         })
         .collect())
 }
@@ -90,8 +179,15 @@ pub async fn collection_summary(
     let pool = state.db.lock().await;
 
     let rows = sqlx::query(
-        "SELECT p.id AS payment_id, p.payment_date, p.receipt_number, u.unit_number, bldg.code AS building_code,
-                a.resident_name, p.amount_paid, cash.full_name AS received_by, p.payment_method
+        "SELECT MIN(p.id) AS payment_id,
+                MAX(p.payment_date) AS payment_date,
+                COALESCE(NULLIF(p.receipt_group_number, ''), p.receipt_number) AS receipt_number,
+                MAX(u.unit_number) AS unit_number,
+                MAX(bldg.code) AS building_code,
+                MAX(a.resident_name) AS resident_name,
+                COALESCE(CAST(SUM(p.amount_paid) AS REAL), 0.0) AS amount_paid,
+                MAX(cash.full_name) AS received_by,
+                MAX(p.payment_method) AS payment_method
          FROM payments p
          JOIN bills b ON b.id = p.bill_id
          JOIN accounts a ON a.id = b.account_id
@@ -100,7 +196,8 @@ pub async fn collection_summary(
          JOIN buildings bldg ON bldg.id = f.building_id
          JOIN users cash ON cash.id = p.received_by
          WHERE b.billing_cycle_id = ? AND p.is_void = 0
-         ORDER BY p.payment_date DESC, p.receipt_number DESC"
+         GROUP BY COALESCE(NULLIF(p.receipt_group_number, ''), p.receipt_number)
+         ORDER BY MAX(p.payment_date) DESC, COALESCE(NULLIF(p.receipt_group_number, ''), p.receipt_number) DESC"
     )
     .bind(cycle_id)
     .fetch_all(&*pool)
@@ -143,44 +240,102 @@ pub async fn unpaid_accounts(
     require_role(&["admin", "billing_staff", "cashier"])?;
     let pool = state.db.lock().await;
 
-    let rows = sqlx::query(
-        "SELECT b.id AS bill_id, u.unit_number, bldg.code AS building_code, a.resident_name,
-                a.account_number, b.total_amount_due,
-                MAX(b.total_amount_due - COALESCE(p.total_paid, 0.0), 0.0) AS outstanding_balance,
-                b.due_date
+    let bill_rows = sqlx::query(
+        "SELECT b.id AS bill_id,
+                b.account_id,
+                b.billing_cycle_id,
+                b.total_for_month,
+                b.total_amount_due,
+                b.due_date,
+                bc.period_start,
+                a.account_number,
+                a.resident_name,
+                u.unit_number,
+                bldg.code AS building_code
          FROM bills b
+         JOIN billing_cycles bc ON bc.id = b.billing_cycle_id
          JOIN accounts a ON a.id = b.account_id
          JOIN units u ON u.id = a.unit_id
          JOIN floors f ON f.id = u.floor_id
          JOIN buildings bldg ON bldg.id = f.building_id
-         LEFT JOIN (
-            SELECT bill_id, COALESCE(CAST(SUM(amount_paid) AS REAL), 0.0) AS total_paid
-            FROM payments
-            WHERE is_void = 0
-            GROUP BY bill_id
-         ) p ON p.bill_id = b.id
-         WHERE b.billing_cycle_id = ?
-           AND MAX(b.total_amount_due - COALESCE(p.total_paid, 0.0), 0.0) > 0
-         ORDER BY outstanding_balance DESC, bldg.code, u.unit_number"
+         WHERE b.account_id IN (
+            SELECT account_id FROM bills WHERE billing_cycle_id = ?
+         )
+         ORDER BY b.account_id, bc.period_start ASC, b.id ASC"
     )
     .bind(cycle_id)
     .fetch_all(&*pool)
     .await
     .map_err(|e| e.to_string())?;
 
-    Ok(rows
-        .iter()
-        .map(|r| UnpaidAccountRow {
-            bill_id: r.get("bill_id"),
-            unit_number: r.get("unit_number"),
-            building_code: r.get("building_code"),
-            resident_name: r.get("resident_name"),
-            account_number: r.get("account_number"),
-            total_amount_due: r.get("total_amount_due"),
-            outstanding_balance: r.get("outstanding_balance"),
-            due_date: r.get("due_date"),
-        })
-        .collect())
+    let payment_rows = sqlx::query(
+        "SELECT b.account_id,
+                COALESCE(CAST(SUM(p.amount_paid) AS REAL), 0.0) AS total_paid
+         FROM bills b
+         LEFT JOIN payments p ON p.bill_id = b.id AND p.is_void = 0
+         WHERE b.account_id IN (
+            SELECT account_id FROM bills WHERE billing_cycle_id = ?
+         )
+         GROUP BY b.account_id"
+    )
+    .bind(cycle_id)
+    .fetch_all(&*pool)
+    .await
+    .map_err(|e| e.to_string())?;
+
+    let mut total_paid_by_account = std::collections::HashMap::new();
+    for row in payment_rows {
+        total_paid_by_account.insert(row.get::<i64, _>("account_id"), row.get::<f64, _>("total_paid"));
+    }
+
+    let mut current_account: Option<i64> = None;
+    let mut remaining_credit = 0.0;
+    let mut results = Vec::new();
+
+    for row in bill_rows {
+        let account_id: i64 = row.get("account_id");
+        if current_account != Some(account_id) {
+            current_account = Some(account_id);
+            remaining_credit = *total_paid_by_account.get(&account_id).unwrap_or(&0.0);
+        }
+
+        let total_for_month: f64 = row.get("total_for_month");
+        let effective_open_balance = if remaining_credit >= total_for_month {
+            remaining_credit -= total_for_month;
+            0.0
+        } else {
+            let open = total_for_month - remaining_credit;
+            remaining_credit = 0.0;
+            open
+        };
+
+        let bill_cycle_id: i64 = row.get("billing_cycle_id");
+        if bill_cycle_id != cycle_id || effective_open_balance <= 0.0 {
+            continue;
+        }
+
+        results.push(UnpaidAccountRow {
+            bill_id: row.get("bill_id"),
+            unit_number: row.get("unit_number"),
+            building_code: row.get("building_code"),
+            resident_name: row.get("resident_name"),
+            account_number: row.get("account_number"),
+            total_amount_due: row.get("total_amount_due"),
+            outstanding_balance: effective_open_balance,
+            due_date: row.get("due_date"),
+        });
+    }
+
+    results.sort_by(|left, right| {
+        right
+            .outstanding_balance
+            .partial_cmp(&left.outstanding_balance)
+            .unwrap_or(std::cmp::Ordering::Equal)
+            .then_with(|| left.building_code.cmp(&right.building_code))
+            .then_with(|| left.unit_number.cmp(&right.unit_number))
+    });
+
+    Ok(results)
 }
 
 #[derive(Debug, Serialize)]

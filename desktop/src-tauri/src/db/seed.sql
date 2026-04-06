@@ -9,6 +9,7 @@ INSERT INTO system_settings (key, value, description) VALUES
   ('receipt_prefix',            '',                             'Prefix prepended to all receipt numbers'),
   ('receipt_next_number',       '1',                            'Next sequential receipt number'),
   ('disconnection_notice_days', '7',                            'Grace days after due date before disconnection'),
+  ('disconnection_trigger_unpaid_bills', '2',                   'Unpaid billing periods allowed before actual disconnection eligibility'),
   ('penalty_rate',              '0',                            'Penalty rate % for late payment'),
   ('abnormal_spike_multiplier', '3',                            'Flag reading if consumption exceeds avg x N'),
   ('cashier_name_1',            'CRISTINA ALACEDA',             'Primary cashier name shown on bills'),

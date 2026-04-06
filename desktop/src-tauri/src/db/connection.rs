@@ -22,6 +22,117 @@ pub async fn run_migrations(pool: &SqlitePool) -> Result<()> {
             .await?;
     }
 
+    sqlx::query(
+        "CREATE TABLE IF NOT EXISTS unit_documents (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            unit_id INTEGER NOT NULL REFERENCES units(id),
+            document_type TEXT NOT NULL,
+            original_name TEXT NOT NULL,
+            stored_path TEXT NOT NULL,
+            notes TEXT,
+            uploaded_by INTEGER REFERENCES users(id),
+            uploaded_at TEXT NOT NULL DEFAULT (datetime('now'))
+        )"
+    )
+    .execute(pool)
+    .await?;
+
+    sqlx::query("CREATE INDEX IF NOT EXISTS idx_unit_documents_unit ON unit_documents(unit_id)")
+        .execute(pool)
+        .await?;
+
+    sqlx::query(
+        "CREATE TABLE IF NOT EXISTS service_actions (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            unit_id INTEGER NOT NULL REFERENCES units(id),
+            account_id INTEGER REFERENCES accounts(id),
+            action_type TEXT NOT NULL CHECK(action_type IN ('disconnection','reconnection')),
+            action_date TEXT NOT NULL,
+            effective_date TEXT,
+            outstanding_balance REAL NOT NULL DEFAULT 0,
+            unpaid_periods INTEGER NOT NULL DEFAULT 0,
+            reason TEXT NOT NULL,
+            notes TEXT,
+            recorded_by INTEGER REFERENCES users(id),
+            created_at TEXT NOT NULL DEFAULT (datetime('now'))
+        )"
+    )
+    .execute(pool)
+    .await?;
+
+    sqlx::query(
+        "CREATE TABLE IF NOT EXISTS service_action_documents (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            service_action_id INTEGER NOT NULL REFERENCES service_actions(id),
+            document_type TEXT NOT NULL,
+            original_name TEXT NOT NULL,
+            stored_path TEXT NOT NULL,
+            notes TEXT,
+            uploaded_by INTEGER REFERENCES users(id),
+            uploaded_at TEXT NOT NULL DEFAULT (datetime('now'))
+        )"
+    )
+    .execute(pool)
+    .await?;
+
+    sqlx::query("CREATE INDEX IF NOT EXISTS idx_service_actions_unit ON service_actions(unit_id)")
+        .execute(pool)
+        .await?;
+
+    sqlx::query(
+        "CREATE INDEX IF NOT EXISTS idx_service_actions_account ON service_actions(account_id)",
+    )
+    .execute(pool)
+    .await?;
+
+    sqlx::query(
+        "CREATE INDEX IF NOT EXISTS idx_service_action_documents_action ON service_action_documents(service_action_id)",
+    )
+    .execute(pool)
+    .await?;
+
+    let payment_columns: Vec<String> = sqlx::query_scalar("SELECT name FROM pragma_table_info('payments')")
+        .fetch_all(pool)
+        .await
+        .unwrap_or_default();
+
+    if !payment_columns.iter().any(|column| column == "receipt_group_number") {
+        sqlx::query("ALTER TABLE payments ADD COLUMN receipt_group_number TEXT")
+            .execute(pool)
+            .await?;
+
+        sqlx::query(
+            "UPDATE payments
+             SET receipt_group_number = receipt_number
+             WHERE receipt_group_number IS NULL OR receipt_group_number = ''",
+        )
+        .execute(pool)
+        .await?;
+    }
+
+    if !payment_columns.iter().any(|column| column == "account_balance_after") {
+        sqlx::query(
+            "ALTER TABLE payments
+             ADD COLUMN account_balance_after REAL NOT NULL DEFAULT 0",
+        )
+        .execute(pool)
+        .await?;
+
+        sqlx::query(
+            "UPDATE payments
+             SET account_balance_after = remaining_balance
+             WHERE account_balance_after = 0",
+        )
+        .execute(pool)
+        .await?;
+    }
+
+    sqlx::query(
+        "CREATE INDEX IF NOT EXISTS idx_payments_receipt_group ON payments(receipt_group_number)",
+    )
+    .execute(pool)
+    .await?;
+
     let count: i64 = sqlx::query_scalar("SELECT COUNT(*) FROM system_settings")
         .fetch_one(pool)
         .await
@@ -32,6 +143,31 @@ pub async fn run_migrations(pool: &SqlitePool) -> Result<()> {
             .execute(pool)
             .await?;
     }
+
+    sqlx::query(
+        "INSERT INTO system_settings (key, value, description)
+         VALUES ('disconnection_trigger_unpaid_bills', '2', 'Unpaid billing periods allowed before actual disconnection eligibility')
+         ON CONFLICT(key) DO NOTHING",
+    )
+    .execute(pool)
+    .await?;
+
+    sqlx::query(
+        "UPDATE bills
+         SET due_date = (
+            SELECT date(bc.period_end, 'start of month', '+1 month', '-1 day')
+            FROM billing_cycles bc
+            WHERE bc.id = bills.billing_cycle_id
+         )
+         WHERE due_date IS NULL
+            OR due_date = (
+                SELECT bc.period_end
+                FROM billing_cycles bc
+                WHERE bc.id = bills.billing_cycle_id
+            )",
+    )
+    .execute(pool)
+    .await?;
 
     Ok(())
 }

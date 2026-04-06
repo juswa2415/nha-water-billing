@@ -1,8 +1,8 @@
 // src-tauri/src/commands/billing.rs
 
 use crate::commands::auth::require_role;
-use crate::db::connection::{AppState, audit_log};
-use chrono::{Duration, Months, NaiveDate};
+use crate::db::connection::{AppState, audit_log, get_setting};
+use chrono::{Datelike, Duration, Local, Months, NaiveDate};
 use serde::{Deserialize, Serialize};
 use sqlx::Row;
 use tauri::State;
@@ -89,6 +89,224 @@ fn expected_cycle_end(period_start: NaiveDate) -> Result<NaiveDate, String> {
         .checked_add_months(Months::new(1))
         .and_then(|next_month| next_month.checked_sub_signed(Duration::days(1)))
         .ok_or_else(|| "Could not compute the billing period end.".to_string())
+}
+
+fn compute_bill_due_date(period_end: NaiveDate) -> Result<NaiveDate, String> {
+    period_end
+        .with_day(1)
+        .ok_or_else(|| "Could not normalize the billing month.".to_string())?
+        .checked_add_months(Months::new(1))
+        .and_then(|next_month| next_month.checked_sub_signed(Duration::days(1)))
+        .ok_or_else(|| "Could not compute the bill due date.".to_string())
+}
+
+fn normalize_due_date(
+    period_end: &str,
+    stored_due_date: Option<String>,
+) -> Result<String, String> {
+    let period_end_date = parse_cycle_date(period_end, "Bill period end")?;
+    let computed_due_date = compute_bill_due_date(period_end_date)?
+        .format("%Y-%m-%d")
+        .to_string();
+
+    match stored_due_date {
+        Some(value) if value != period_end => Ok(value),
+        _ => Ok(computed_due_date),
+    }
+}
+
+async fn recompute_account_outstanding_balance(
+    pool: &sqlx::SqlitePool,
+    account_id: i64,
+) -> Result<f64, String> {
+    let total_new_charges: f64 = sqlx::query_scalar(
+        "SELECT COALESCE(CAST(SUM(total_amount_due - previous_balance) AS REAL), 0.0)
+         FROM bills
+         WHERE account_id = ?",
+    )
+    .bind(account_id)
+    .fetch_one(pool)
+    .await
+    .map_err(|e| e.to_string())?;
+
+    let total_payments: f64 = sqlx::query_scalar(
+        "SELECT COALESCE(CAST(SUM(p.amount_paid) AS REAL), 0.0)
+         FROM payments p
+         JOIN bills b ON b.id = p.bill_id
+         WHERE b.account_id = ? AND p.is_void = 0",
+    )
+    .bind(account_id)
+    .fetch_one(pool)
+    .await
+    .map_err(|e| e.to_string())?;
+
+    let new_balance = round2(total_new_charges - total_payments);
+
+    sqlx::query("UPDATE accounts SET outstanding_balance = ? WHERE id = ?")
+        .bind(new_balance)
+        .bind(account_id)
+        .execute(pool)
+        .await
+        .map_err(|e| e.to_string())?;
+
+    Ok(new_balance)
+}
+
+#[derive(Debug)]
+pub(crate) struct DisconnectionPolicyInfo {
+    pub(crate) unpaid_periods: i64,
+    pub(crate) trigger_unpaid_bills: i64,
+    pub(crate) effective_date: Option<String>,
+    pub(crate) notice: String,
+    pub(crate) is_eligible: bool,
+}
+
+pub(crate) async fn build_disconnection_policy(
+    pool: &sqlx::SqlitePool,
+    account_id: i64,
+) -> Result<DisconnectionPolicyInfo, String> {
+    let grace_days: i64 = get_setting(pool, "disconnection_notice_days")
+        .await
+        .unwrap_or_else(|_| "7".to_string())
+        .parse()
+        .unwrap_or(7)
+        .max(0);
+    let trigger_unpaid_bills: i64 = get_setting(pool, "disconnection_trigger_unpaid_bills")
+        .await
+        .unwrap_or_else(|_| "2".to_string())
+        .parse()
+        .unwrap_or(2)
+        .max(1);
+
+    let bill_rows = sqlx::query(
+        "SELECT b.id,
+                b.total_for_month,
+                b.due_date,
+                bc.period_end
+         FROM bills b
+         JOIN billing_cycles bc ON bc.id = b.billing_cycle_id
+         WHERE b.account_id = ?
+         ORDER BY bc.period_start ASC, b.id ASC",
+    )
+    .bind(account_id)
+    .fetch_all(pool)
+    .await
+    .map_err(|e| e.to_string())?;
+
+    let total_paid_before: f64 = sqlx::query_scalar(
+        "SELECT COALESCE(CAST(SUM(p.amount_paid) AS REAL), 0.0)
+         FROM payments p
+         JOIN bills b ON b.id = p.bill_id
+         WHERE b.account_id = ? AND p.is_void = 0",
+    )
+    .bind(account_id)
+    .fetch_one(pool)
+    .await
+    .map_err(|e| e.to_string())?;
+
+    let mut remaining_credit_before = round2(total_paid_before.max(0.0));
+    let mut open_due_dates: Vec<String> = Vec::new();
+
+    for row in bill_rows {
+        let total_for_month: f64 = row.get("total_for_month");
+        let effective_open_balance = if remaining_credit_before >= total_for_month {
+            remaining_credit_before = round2(remaining_credit_before - total_for_month);
+            0.0
+        } else {
+            let open = round2(total_for_month - remaining_credit_before);
+            remaining_credit_before = 0.0;
+            open
+        };
+
+        if effective_open_balance <= 0.0 {
+            continue;
+        }
+
+        open_due_dates.push(normalize_due_date(
+            &row.get::<String, _>("period_end"),
+            row.get("due_date"),
+        )?);
+    }
+
+    let unpaid_periods = open_due_dates.len() as i64;
+    if unpaid_periods == 0 {
+        return Ok(DisconnectionPolicyInfo {
+            unpaid_periods,
+            trigger_unpaid_bills,
+            effective_date: None,
+            notice: "Account is fully settled. No disconnection notice applies.".to_string(),
+            is_eligible: false,
+        });
+    }
+
+    if unpaid_periods < trigger_unpaid_bills {
+        return Ok(DisconnectionPolicyInfo {
+            unpaid_periods,
+            trigger_unpaid_bills,
+            effective_date: None,
+            notice: format!(
+                "Actual disconnection applies only after {} unpaid billing period(s). This account currently has {} unpaid billing period(s).",
+                trigger_unpaid_bills, unpaid_periods
+            ),
+            is_eligible: false,
+        });
+    }
+
+    let trigger_index = (trigger_unpaid_bills - 1) as usize;
+    let trigger_due_date = parse_cycle_date(
+        open_due_dates
+            .get(trigger_index)
+            .ok_or_else(|| "Could not determine the disconnection trigger bill.".to_string())?,
+        "Disconnection trigger due date",
+    )?;
+    let effective_date = trigger_due_date
+        .checked_add_signed(Duration::days(grace_days))
+        .ok_or_else(|| "Could not compute the disconnection date.".to_string())?;
+    let effective_date_string = effective_date.format("%Y-%m-%d").to_string();
+    let today = Local::now().date_naive();
+    let is_eligible = today >= effective_date;
+
+    let notice = if is_eligible {
+        format!(
+            "Subject for disconnection starting {} because {} unpaid billing period(s) are already beyond the grace period.",
+            effective_date_string, trigger_unpaid_bills
+        )
+    } else {
+        format!(
+            "If still unpaid, this account becomes eligible for disconnection on {} because it has reached {} unpaid billing period(s).",
+            effective_date_string, trigger_unpaid_bills
+        )
+    };
+
+    Ok(DisconnectionPolicyInfo {
+        unpaid_periods,
+        trigger_unpaid_bills,
+        effective_date: Some(effective_date_string),
+        notice,
+        is_eligible,
+    })
+}
+
+pub(crate) async fn build_uniform_bill_notice(
+    pool: &sqlx::SqlitePool,
+) -> Result<String, String> {
+    let grace_days: i64 = get_setting(pool, "disconnection_notice_days")
+        .await
+        .unwrap_or_else(|_| "7".to_string())
+        .parse()
+        .unwrap_or(7)
+        .max(0);
+    let trigger_unpaid_bills: i64 = get_setting(pool, "disconnection_trigger_unpaid_bills")
+        .await
+        .unwrap_or_else(|_| "2".to_string())
+        .parse()
+        .unwrap_or(2)
+        .max(1);
+
+    Ok(format!(
+        "If the account remains unpaid for {} billing period(s) and is still unsettled {} day(s) after the due date of the triggering bill, the water service may be subject to disconnection in accordance with NHA policy.",
+        trigger_unpaid_bills, grace_days
+    ))
 }
 
 #[tauri::command]
@@ -310,6 +528,114 @@ pub async fn set_bldg_sub_reading(
     Ok(())
 }
 
+#[tauri::command]
+pub async fn delete_billing_cycle(
+    cycle_id: i64,
+    state: State<'_, AppState>,
+) -> Result<(), String> {
+    let caller = require_role(&["admin"])?;
+    let pool = state.db.lock().await;
+
+    let latest_cycle_id: Option<i64> = sqlx::query_scalar(
+        "SELECT id
+         FROM billing_cycles
+         ORDER BY period_start DESC
+         LIMIT 1",
+    )
+    .fetch_optional(&*pool)
+    .await
+    .map_err(|e| e.to_string())?;
+
+    if latest_cycle_id != Some(cycle_id) {
+        return Err(
+            "Only the latest billing cycle can be deleted. This keeps later balances and readings consistent.".to_string(),
+        );
+    }
+
+    let cycle_row = sqlx::query(
+        "SELECT period_start, period_end, status
+         FROM billing_cycles
+         WHERE id = ?",
+    )
+    .bind(cycle_id)
+    .fetch_optional(&*pool)
+    .await
+    .map_err(|e| e.to_string())?
+    .ok_or_else(|| "Billing cycle not found.".to_string())?;
+
+    let affected_account_rows = sqlx::query(
+        "SELECT DISTINCT account_id
+         FROM bills
+         WHERE billing_cycle_id = ?",
+    )
+    .bind(cycle_id)
+    .fetch_all(&*pool)
+    .await
+    .map_err(|e| e.to_string())?;
+
+    let affected_account_ids: Vec<i64> = affected_account_rows
+        .iter()
+        .map(|row| row.get("account_id"))
+        .collect();
+
+    sqlx::query(
+        "DELETE FROM payments
+         WHERE bill_id IN (
+            SELECT id FROM bills WHERE billing_cycle_id = ?
+         )",
+    )
+    .bind(cycle_id)
+    .execute(&*pool)
+    .await
+    .map_err(|e| e.to_string())?;
+
+    sqlx::query("DELETE FROM bills WHERE billing_cycle_id = ?")
+        .bind(cycle_id)
+        .execute(&*pool)
+        .await
+        .map_err(|e| e.to_string())?;
+
+    sqlx::query("DELETE FROM meter_readings WHERE billing_cycle_id = ?")
+        .bind(cycle_id)
+        .execute(&*pool)
+        .await
+        .map_err(|e| e.to_string())?;
+
+    sqlx::query("DELETE FROM bldg_sub_readings WHERE billing_cycle_id = ?")
+        .bind(cycle_id)
+        .execute(&*pool)
+        .await
+        .map_err(|e| e.to_string())?;
+
+    sqlx::query("DELETE FROM billing_cycles WHERE id = ?")
+        .bind(cycle_id)
+        .execute(&*pool)
+        .await
+        .map_err(|e| e.to_string())?;
+
+    for account_id in affected_account_ids {
+        recompute_account_outstanding_balance(&pool, account_id).await?;
+    }
+
+    audit_log(
+        &pool,
+        caller.id,
+        "DELETE_CYCLE",
+        "billing_cycles",
+        Some(cycle_id),
+        &format!(
+            "Deleted latest cycle {} to {} ({})",
+            cycle_row.get::<String, _>("period_start"),
+            cycle_row.get::<String, _>("period_end"),
+            cycle_row.get::<String, _>("status")
+        ),
+    )
+    .await
+    .ok();
+
+    Ok(())
+}
+
 #[derive(Debug, Serialize)]
 pub struct BldgSubReadingRow {
     pub building_id: i64,
@@ -464,8 +790,9 @@ pub async fn generate_bills_for_cycle(
     let mut skipped: i64 = 0;
     let mut errors: Vec<String> = vec![];
 
-    // Due date: 11 days after period_end
-    let due_date = format!("{}", period_end); // Simplified; in production compute +11 days
+    let due_date = compute_bill_due_date(parse_cycle_date(&period_end, "Cycle end date")?)?
+        .format("%Y-%m-%d")
+        .to_string();
 
     for r in &readings {
         let unit_id: i64 = r.get("unit_id");
@@ -583,10 +910,16 @@ pub struct BillRow {
     pub rate_per_cubicm: f64,
     pub total_paid: f64,
     pub remaining_balance: f64,
+    pub account_outstanding_balance: f64,
     pub payments_count: i64,
     pub latest_payment_id: Option<i64>,
     pub latest_receipt_number: Option<String>,
     pub latest_payment_date: Option<String>,
+    pub disconnection_notice: String,
+    pub disconnection_effective_date: Option<String>,
+    pub disconnection_trigger_unpaid_bills: i64,
+    pub unpaid_periods: i64,
+    pub is_subject_for_disconnection: bool,
 }
 
 #[tauri::command]
@@ -595,7 +928,7 @@ pub async fn get_bill(bill_id: i64, state: State<'_, AppState>) -> Result<BillRo
     let pool = state.db.lock().await;
 
     let r = sqlx::query(
-        "SELECT b.*, a.account_number, a.resident_name,
+        "SELECT b.*, a.account_number, a.resident_name, a.outstanding_balance,
                 u.unit_number, bldg.code as building_code,
                 bc.period_start, bc.period_end, bc.rate_per_cubicm,
                 COALESCE((
@@ -644,17 +977,22 @@ pub async fn get_bill(bill_id: i64, state: State<'_, AppState>) -> Result<BillRo
 
     let total_amount_due: f64 = r.get("total_amount_due");
     let total_paid: f64 = r.get("total_paid");
+    let account_id: i64 = r.get("account_id");
+    let period_end: String = r.get("period_end");
+    let due_date = normalize_due_date(&period_end, r.get("due_date"))?;
+    let disconnection = build_disconnection_policy(&pool, account_id).await?;
+    let bill_notice = build_uniform_bill_notice(&pool).await?;
 
     Ok(BillRow {
         id: r.get("id"),
-        account_id: r.get("account_id"),
+        account_id,
         account_number: r.get("account_number"),
         resident_name: r.get("resident_name"),
         unit_number: r.get("unit_number"),
         building_code: r.get("building_code"),
         billing_cycle_id: r.get("billing_cycle_id"),
         period_start: r.get("period_start"),
-        period_end: r.get("period_end"),
+        period_end,
         consumption_cubicm: r.get("consumption_cubicm"),
         water_charge: r.get("water_charge"),
         sys_loss_charge: r.get("sys_loss_charge"),
@@ -665,15 +1003,21 @@ pub async fn get_bill(bill_id: i64, state: State<'_, AppState>) -> Result<BillRo
         total_for_month: r.get("total_for_month"),
         total_amount_due,
         status: r.get("status"),
-        due_date: r.get("due_date"),
+        due_date: Some(due_date),
         generated_at: r.get("generated_at"),
         rate_per_cubicm: r.get("rate_per_cubicm"),
         total_paid,
         remaining_balance: round2((total_amount_due - total_paid).max(0.0)),
+        account_outstanding_balance: r.get("outstanding_balance"),
         payments_count: r.get("payments_count"),
         latest_payment_id: r.get("latest_payment_id"),
         latest_receipt_number: r.get("latest_receipt_number"),
         latest_payment_date: r.get("latest_payment_date"),
+        disconnection_notice: bill_notice,
+        disconnection_effective_date: disconnection.effective_date,
+        disconnection_trigger_unpaid_bills: disconnection.trigger_unpaid_bills,
+        unpaid_periods: disconnection.unpaid_periods,
+        is_subject_for_disconnection: disconnection.is_eligible,
     })
 }
 
@@ -689,7 +1033,7 @@ pub async fn list_bills_for_cycle(
     let filter = status_filter.as_deref().unwrap_or("%");
 
     let rows = sqlx::query(
-        "SELECT b.*, a.account_number, a.resident_name,
+        "SELECT b.*, a.account_number, a.resident_name, a.outstanding_balance,
                 u.unit_number, bldg.code as building_code,
                 bc.period_start, bc.period_end, bc.rate_per_cubicm,
                 COALESCE((
@@ -744,6 +1088,9 @@ pub async fn list_bills_for_cycle(
         .map(|r| {
             let total_amount_due: f64 = r.get("total_amount_due");
             let total_paid: f64 = r.get("total_paid");
+            let period_end: String = r.get("period_end");
+            let due_date = normalize_due_date(&period_end, r.get("due_date"))
+                .unwrap_or_else(|_| period_end.clone());
 
             BillRow {
                 id: r.get("id"),
@@ -754,7 +1101,7 @@ pub async fn list_bills_for_cycle(
                 building_code: r.get("building_code"),
                 billing_cycle_id: r.get("billing_cycle_id"),
                 period_start: r.get("period_start"),
-                period_end: r.get("period_end"),
+                period_end,
                 consumption_cubicm: r.get("consumption_cubicm"),
                 water_charge: r.get("water_charge"),
                 sys_loss_charge: r.get("sys_loss_charge"),
@@ -765,16 +1112,119 @@ pub async fn list_bills_for_cycle(
                 total_for_month: r.get("total_for_month"),
                 total_amount_due,
                 status: r.get("status"),
-                due_date: r.get("due_date"),
+                due_date: Some(due_date),
                 generated_at: r.get("generated_at"),
                 rate_per_cubicm: r.get("rate_per_cubicm"),
                 total_paid,
                 remaining_balance: round2((total_amount_due - total_paid).max(0.0)),
+                account_outstanding_balance: r.get("outstanding_balance"),
                 payments_count: r.get("payments_count"),
                 latest_payment_id: r.get("latest_payment_id"),
                 latest_receipt_number: r.get("latest_receipt_number"),
                 latest_payment_date: r.get("latest_payment_date"),
+                disconnection_notice: String::new(),
+                disconnection_effective_date: None,
+                disconnection_trigger_unpaid_bills: 0,
+                unpaid_periods: 0,
+                is_subject_for_disconnection: false,
             }
         })
         .collect())
+}
+
+#[derive(Debug, Serialize)]
+pub struct AccountBillPaymentRow {
+    pub id: i64,
+    pub billing_cycle_id: i64,
+    pub period_start: String,
+    pub period_end: String,
+    pub status: String,
+    pub due_date: Option<String>,
+    pub previous_balance: f64,
+    pub total_for_month: f64,
+    pub total_amount_due: f64,
+    pub total_paid_on_bill: f64,
+    pub local_remaining_balance: f64,
+    pub effective_open_balance: f64,
+    pub is_oldest_open: bool,
+}
+
+#[tauri::command]
+pub async fn list_bills_for_account(
+    account_id: i64,
+    state: State<'_, AppState>,
+) -> Result<Vec<AccountBillPaymentRow>, String> {
+    require_role(&["admin", "billing_staff", "cashier"])?;
+    let pool = state.db.lock().await;
+
+    let rows = sqlx::query(
+        "SELECT b.id, b.billing_cycle_id, b.status, b.due_date, b.previous_balance,
+                b.total_for_month, b.total_amount_due, bc.period_start, bc.period_end,
+                COALESCE((
+                    SELECT CAST(SUM(p.amount_paid) AS REAL)
+                    FROM payments p
+                    WHERE p.bill_id = b.id AND p.is_void = 0
+                ), 0.0) as total_paid_on_bill
+         FROM bills b
+         JOIN billing_cycles bc ON bc.id = b.billing_cycle_id
+         WHERE b.account_id = ?
+         ORDER BY bc.period_start ASC, b.id ASC"
+    )
+    .bind(account_id)
+    .fetch_all(&*pool)
+    .await
+    .map_err(|e| e.to_string())?;
+
+    let total_payments: f64 = sqlx::query_scalar(
+        "SELECT COALESCE(CAST(SUM(p.amount_paid) AS REAL), 0.0)
+         FROM payments p
+         JOIN bills b ON b.id = p.bill_id
+         WHERE b.account_id = ? AND p.is_void = 0"
+    )
+    .bind(account_id)
+    .fetch_one(&*pool)
+    .await
+    .map_err(|e| e.to_string())?;
+
+    let mut remaining_payment_credit = round2(total_payments.max(0.0));
+    let mut rows_out = Vec::with_capacity(rows.len());
+    let mut oldest_open_seen = false;
+
+    for row in rows {
+        let total_for_month: f64 = row.get("total_for_month");
+        let local_remaining_balance =
+            round2((row.get::<f64, _>("total_amount_due") - row.get::<f64, _>("total_paid_on_bill")).max(0.0));
+
+        let effective_open_balance = if remaining_payment_credit >= total_for_month {
+            remaining_payment_credit = round2(remaining_payment_credit - total_for_month);
+            0.0
+        } else {
+            let open = round2(total_for_month - remaining_payment_credit);
+            remaining_payment_credit = 0.0;
+            open
+        };
+
+        let is_oldest_open = effective_open_balance > 0.0 && !oldest_open_seen;
+        if is_oldest_open {
+            oldest_open_seen = true;
+        }
+
+        rows_out.push(AccountBillPaymentRow {
+            id: row.get("id"),
+            billing_cycle_id: row.get("billing_cycle_id"),
+            period_start: row.get("period_start"),
+            period_end: row.get("period_end"),
+            status: row.get("status"),
+            due_date: row.get("due_date"),
+            previous_balance: row.get("previous_balance"),
+            total_for_month,
+            total_amount_due: row.get("total_amount_due"),
+            total_paid_on_bill: row.get("total_paid_on_bill"),
+            local_remaining_balance,
+            effective_open_balance,
+            is_oldest_open,
+        });
+    }
+
+    Ok(rows_out)
 }

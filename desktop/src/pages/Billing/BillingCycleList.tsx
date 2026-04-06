@@ -445,6 +445,16 @@ export function BillingCycleList() {
         </div>
       )}
 
+      <div className="rounded-xl border border-blue-200 bg-blue-50 p-4">
+        <p className="text-sm font-semibold text-blue-900">What Billing Cycles are for</p>
+        <p className="mt-2 text-sm text-blue-900">
+          Billing owns the monthly cycle: stage readings, maintain loss inputs, generate or rebuild
+          bills, batch print statements, issue them, and close the month. Cash collections are
+          posted only from Payment Queue, not from the Billing screens. Actual disconnection and
+          reconnection work is tracked separately in Service Cases.
+        </p>
+      </div>
+
       <DataTable
         columns={columns}
         data={cycles}

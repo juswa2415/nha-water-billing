@@ -12,7 +12,8 @@ const EDITABLE_KEYS = [
   { key: 'district_office', label: 'District Office', type: 'text' },
   { key: 'community_name', label: 'Community Name', type: 'text' },
   { key: 'receipt_prefix', label: 'Receipt Number Prefix', type: 'text' },
-  { key: 'disconnection_notice_days', label: 'Disconnection Notice Days', type: 'number' },
+  { key: 'disconnection_notice_days', label: 'Disconnection Grace Days After Due Date', type: 'number' },
+  { key: 'disconnection_trigger_unpaid_bills', label: 'Unpaid Billing Periods Allowed Before Disconnection', type: 'number' },
   { key: 'penalty_rate', label: 'Penalty Rate (%)', type: 'number', step: '0.01' },
 ];
 
